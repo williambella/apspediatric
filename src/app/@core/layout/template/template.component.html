@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+    <!-- fxHide.gt-sm="true" -->
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-button [routerLink]="['/']">
       <mat-icon>home</mat-icon>
-      {{ 'app.title' | translate }}
     </button>
     <span class="example-spacer"></span>
     <app-menu-top fxShow="true" fxHide.lt-md="true"></app-menu-top>
@@ -13,7 +13,8 @@
 </mat-toolbar>
 
 <mat-sidenav-container fxFlexFill class="example-container">
-  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+  <!-- fxHide.gt-sm="true" -->
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false">
     <div fxLayout="column">
       <app-menu></app-menu>
     </div>
