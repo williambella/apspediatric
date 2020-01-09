@@ -7,8 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularWebStorageModule, LocalStorageService } from 'angular-web-storage';
 import { LanguagesService } from '@core/services/languages.service';
 import { StorageService } from '@core/services/storage.service';
-
-
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,9 @@ import { StorageService } from '@core/services/storage.service';
     HttpClientModule,
     AngularWebStorageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OrderModule,
+    FilterPipeModule
   ],
   exports: [
     CommonModule,

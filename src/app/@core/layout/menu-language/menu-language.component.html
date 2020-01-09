@@ -1,5 +1,5 @@
 <button mat-button [matMenuTriggerFor]="matMenuLanguages">
-  <span [ngClass]="'flag-icon-' + (actualLanguage | async).abbrev.toLowerCase()" class="flag-icon flag-icon-menu"></span>
+  <span [ngClass]="'flag-icon-' + (actualLanguage | async).icon?.toLowerCase()" class="flag-icon flag-icon-menu"></span>
   {{  (actualLanguage | async).label }}
 </button>
 
@@ -7,7 +7,7 @@
   <ng-container *ngFor="let lang of languages | async">
     <button mat-menu-item (click)="change(lang)">
       <mat-icon>
-        <span [ngClass]="'flag-icon-' + lang.abbrev.toLowerCase()" class="flag-icon flag-icon-menu"></span>
+        <span [ngClass]="'flag-icon-' + lang.icon?.toLowerCase()" class="flag-icon flag-icon-menu"></span>
       </mat-icon>
       <span>{{ lang.label }}</span>
     </button>
