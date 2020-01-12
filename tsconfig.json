@@ -25,6 +25,9 @@
       ],
       "@environments/*": [
         "src/environments/*"
+      ],
+      "@helpers/*": [
+        "src/helpers/*"
       ]
     }
   },

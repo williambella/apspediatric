@@ -1,3 +1,4 @@
+import { CoreModule } from './@core/core.module';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +16,7 @@ import { LayoutModule } from '@core/layout/layout.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule
-  ],
-  exports: [
+    CoreModule,
     LayoutModule
   ],
   providers: [],

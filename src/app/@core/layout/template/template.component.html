@@ -12,7 +12,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container fxFlexFill class="example-container">
+<mat-sidenav-container fxFlexFill>
   <!-- fxHide.gt-sm="true" -->
   <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false">
     <div fxLayout="column">
@@ -21,6 +21,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content fxFlexFill>
-    <router-outlet></router-outlet>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

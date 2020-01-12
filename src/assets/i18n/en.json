@@ -4,5 +4,10 @@
   },
   "language": {
     "title": "Language"
+  },
+  "appointment": {
+    "form": {
+      "title": "Creat Appointment"
+    }
   }
 }
