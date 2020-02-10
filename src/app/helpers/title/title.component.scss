@@ -1,12 +1,13 @@
 .title-container {
-  position: relative;
-}
+  margin-bottom: 2em;
 
-.icon {
-  top: 3px;
-  position: absolute;
-}
+  h2 {
+    position: relative;
 
-.title {
-  margin-left: 30px;
+    .title {
+      position: absolute;
+      left: 1.13em;
+      top: -0.13em;
+    }
+  }
 }

@@ -2,6 +2,17 @@
   "app" : {
     "title": "Apspediatric EN"
   },
+  "table": {
+    "actions": "Actions",
+    "buttons": {
+      "active": "Active",
+      "edit": "Edit",
+      "remove": "Remove"
+    }
+  },
+  "app_title": {
+    "new": "New"
+  },
   "language": {
     "title": "Language"
   },
