@@ -23,6 +23,12 @@
       "@core/*": [
         "src/app/@core/*"
       ],
+      "@appointment/*": [
+        "src/app/appointment/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
       "@environments/*": [
         "src/environments/*"
       ],

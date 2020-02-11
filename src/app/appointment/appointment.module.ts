@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
-import { AppointmentRoutingModule } from './appointment.routing';
-import { AppointmentListComponent } from './questions/question-list/appointment-list.component';
-import { SharedModule } from '../shared/shared.module';
-import { QuestionFormComponent } from './questions/question-form/question-form.component';
-import { QuestionResolver } from './resolvers/question.resolver';
+import { QuestionFormComponent } from '@appointment/questions/question-form/question-form.component';
+import { AppointmentListComponent } from '@appointment/questions/question-list/appointment-list.component';
+import { GroupFormComponent } from '@appointment/group/group-form/group-form.component';
+import { GroupListComponent } from '@appointment/group/group-list/group-list.component';
+import { AppointmentRoutingModule } from '@appointment/appointment.routing';
+import { QuestionResolver } from '@appointment/resolvers/question.resolver';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
     QuestionFormComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    GroupFormComponent,
+    GroupListComponent
   ],
   imports: [
     SharedModule,

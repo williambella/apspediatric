@@ -10,6 +10,12 @@
       "remove": "Remove"
     }
   },
+  "form": {
+    "order": "Order",
+    "validation": {
+      "required": "Field is required"
+    }
+  },
   "app_title": {
     "new": "New"
   },
@@ -20,5 +26,14 @@
     "form": {
       "title": "Creat Appointment"
     }
+  },
+  "group": {
+    "form": {
+      "title": "Creat Group",
+      "group": "Group Title"
+    }
+  },
+  "commom": {
+    "save": "Save"
   }
 }

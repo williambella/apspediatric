@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material/material.module';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularWebStorageModule, LocalStorageService } from 'angular-web-storage';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LanguagesService } from './services/languages.service';
@@ -24,7 +23,6 @@ export function createTranslateLoader(http: HttpClient) {
     MaterialModule,
     HttpClientModule,
     AngularWebStorageModule,
-    ReactiveFormsModule,
     FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {

@@ -12,6 +12,12 @@ export class QuestiontService {
 
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * Find a Question by Id
+   *
+   * @param id: number
+   * @returns Observable<Question>
+   */
   findById(id: number): Observable<Question> {
     const params = new HttpParams()
     .set('cdAdmMunSolicitacao', String(id));

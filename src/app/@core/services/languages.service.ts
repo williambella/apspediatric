@@ -46,7 +46,7 @@ export class LanguagesService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.arraySubscriptions.map(a => a.unsubscribe());
+    this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
   switchLanguage(lang: Language): Observable<any> {
@@ -72,5 +72,9 @@ export class LanguagesService implements OnDestroy {
 
   getLangs(): string[] {
     return this.translateService.getLangs();
+  }
+
+  geCurrenttLang(): Language {
+    return this.storageService.get('lang') as Language;
   }
 }

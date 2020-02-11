@@ -6,6 +6,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HelpersModule } from '../helpers/helpers.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,14 +15,16 @@ import { HelpersModule } from '../helpers/helpers.module';
     CommonModule,
     OrderModule,
     FilterPipeModule,
-    HelpersModule
+    HelpersModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
     RouterModule,
     MaterialModule,
     FlexLayoutModule,
-    HelpersModule
+    HelpersModule,
+    ReactiveFormsModule
   ],
   providers: []
 })
