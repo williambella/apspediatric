@@ -34,7 +34,7 @@ export class LanguagesService implements OnDestroy {
           langs.map((lang: Language) => String(lang.abbrev).toLocaleLowerCase())
         );
 
-        this.defaultLanguage = langs.find((lang: Language) => lang.def === true);
+        this.defaultLanguage = this.geCurrenttLang() || langs.find((lang: Language) => lang.def === true);
 
         this.switchLanguage(this.defaultLanguage).subscribe(() => {
           resolve();

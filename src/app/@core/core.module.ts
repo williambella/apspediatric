@@ -1,3 +1,5 @@
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { HeaderInterceptor } from './interceptors/header.interceptor';
 import { StorageService } from '@core/services/storage.service';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -42,6 +44,16 @@ export function createTranslateLoader(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     {
