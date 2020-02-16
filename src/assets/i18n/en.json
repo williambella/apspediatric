@@ -31,6 +31,9 @@
     "form": {
       "title": "Creat Group",
       "group": "Group Title"
+    },
+    "list": {
+      "title": "Groups"
     }
   },
   "commom": {

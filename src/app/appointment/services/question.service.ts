@@ -15,12 +15,12 @@ export class QuestiontService {
   /**
    * Find a Question by Id
    *
-   * @param id: number
+   * @param id: string
    * @returns Observable<Question>
    */
-  findById(id: number): Observable<Question> {
+  findById(id: string): Observable<Question> {
     const params = new HttpParams()
-    .set('cdAdmMunSolicitacao', String(id));
+    .set('id', String(id));
 
     return this.httpClient.get<Question>(`${this.endpoint}/findById`, { params });
   }

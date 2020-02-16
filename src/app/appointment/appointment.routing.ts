@@ -1,3 +1,4 @@
+import { GroupResolver } from './resolvers/group.resolver';
 import { Routes, RouterModule } from '@angular/router';
 import { GroupListComponent } from '@appointment/group/group-list/group-list.component';
 import { GroupFormComponent } from '@appointment/group/group-form/group-form.component';
@@ -8,18 +9,25 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
   {
     path: '',
-    component: GroupListComponent
+    pathMatch: 'full',
+    redirectTo: 'groups'
   },
   {
-    path: 'new',
-    component: GroupFormComponent
-  },
-  {
-    path: ':id',
-    component: QuestionFormComponent,
-    resolve: {
-      appointment: QuestionResolver
-    }
+    path: 'groups',
+    component: GroupListComponent,
+    children: [
+      {
+        path: 'new',
+        component: GroupFormComponent
+      },
+      {
+        path: ':id',
+        component: GroupFormComponent,
+        resolve: {
+          group: GroupResolver
+        }
+      }
+    ]
   }
 ];
 
