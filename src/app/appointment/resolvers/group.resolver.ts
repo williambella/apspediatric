@@ -9,8 +9,6 @@ export class GroupResolver implements Resolve<Observable<Group>> {
   constructor(private groupService: GroupService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Group> {
-    if (route.params.id) {
-      return this.groupService.findById(route.params.id);
-    }
+    return this.groupService.findById(route.params.id);
   }
 }

@@ -32,7 +32,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.data.subscribe((data: any) => {
+    const routeSubscription: Subscription = this.route.data.subscribe((data: any) => {
       if (data && data.group) {
         this.group = data.group as Group;
 
@@ -40,6 +40,8 @@ export class GroupFormComponent implements OnInit, OnDestroy {
         this.formGroup.get('order').setValue(this.group.order);
       }
     });
+
+    this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,12 @@
 <div class="container">
   <app-title icon="poll" title="group.list.title">
-    <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+    <ng-container *ngIf="!group">
+      <button mat-flat-button color="primary" [routerLink]="['../new']">{{ 'app_title.new' | translate }}</button>
+    </ng-container>
+
+    <ng-container *ngIf="group">
+      <button mat-flat-button color="primary" [routerLink]="['edit']">{{ 'app_title.edit' | translate }}</button>
+    </ng-container>
   </app-title>
 
   <mat-card>
@@ -42,3 +48,5 @@
     </app-table> -->
   </mat-card>
 </div>
+
+<pre>{{ group }}</pre>

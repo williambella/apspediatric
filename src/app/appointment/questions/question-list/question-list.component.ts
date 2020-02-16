@@ -8,11 +8,11 @@ export interface PeriodicElement {
 }
 
 @Component({
-  selector: 'app-appointment-list',
-  templateUrl: './appointment-list.component.html',
-  styleUrls: ['./appointment-list.component.scss']
+  selector: 'app-question-list',
+  templateUrl: './question-list.component.html',
+  styleUrls: ['./question-list.component.scss']
 })
-export class AppointmentListComponent implements OnInit {
+export class QuestionListComponent implements OnInit {
 
   data: PeriodicElement[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},

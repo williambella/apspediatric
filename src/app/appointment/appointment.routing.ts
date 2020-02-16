@@ -1,10 +1,9 @@
-import { GroupResolver } from './resolvers/group.resolver';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { QuestionListComponent } from './questions/question-list/question-list.component';
+import { GroupResolver } from './resolvers/group.resolver';
 import { GroupListComponent } from '@appointment/group/group-list/group-list.component';
 import { GroupFormComponent } from '@appointment/group/group-form/group-form.component';
-import { QuestionFormComponent } from '@appointment/questions/question-form/question-form.component';
-import { QuestionResolver } from '@appointment/resolvers/question.resolver';
-import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
@@ -22,10 +21,16 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: GroupFormComponent,
+        component: QuestionListComponent,
         resolve: {
           group: GroupResolver
-        }
+        },
+        children: [
+          {
+            path: 'edit',
+            component: GroupFormComponent
+          }
+        ],
       }
     ]
   }

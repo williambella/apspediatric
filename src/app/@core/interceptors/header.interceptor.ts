@@ -10,7 +10,7 @@ export class HeaderInterceptor implements HttpInterceptor  {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headers = new HttpHeaders();
 
-    const currentLang = this.languageService.geCurrenttLang()
+    const currentLang = this.languageService.geCurrenttLang();
 
     if (currentLang) {
       headers.set('idLang', this.languageService.geCurrenttLang().id);
