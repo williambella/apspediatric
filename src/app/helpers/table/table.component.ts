@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef, Directive, ContentChild, Output, EventEmitter, ContentChildren, AfterContentInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
-import { PeriodicElement } from '@appointment/questions/question-list/question-list.component';
+import { PeriodicElement } from '@appointment/components/questions/question-list/question-list.component';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Directive({selector: '[appBtnActions]'})
