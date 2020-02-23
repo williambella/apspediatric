@@ -1,21 +1,21 @@
 import { LanguagesService } from '@core/services/languages.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Group } from '@appointment/models/group';
 import { GroupService } from '@appointment/services/group.service';
 import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessagesService } from '@core/services/messages.service';
+import { CanDeactiveAbstract } from '@core/abstracts/can-deactive-abstract';
 
 @Component({
   selector: 'app-group-form',
   templateUrl: './group-form.component.html',
   styleUrls: ['./group-form.component.scss']
 })
-export class GroupFormComponent implements OnInit, OnDestroy {
-
-  group: Group;
+export class GroupFormComponent extends CanDeactiveAbstract implements OnInit, OnDestroy {
   formGroup: FormGroup;
+  group: Group;
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 
@@ -25,16 +25,14 @@ export class GroupFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private languageService: LanguagesService,
-    private messageService: MessagesService
+    public messageService: MessagesService
   ) {
+    super();
+
     this.formGroup = this.formBuilder.group({
       group: [null, Validators.compose([Validators.required])],
       order: [null, Validators.compose([Validators.pattern(/^[0-9]\d*$/)])]
     });
-  }
-
-  canDeactivate(): Observable<boolean> | boolean {
-    return this.formGroup.dirty ? this.messageService.confirm() : true;
   }
 
   ngOnInit() {
@@ -52,6 +50,10 @@ export class GroupFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
+  }
+
+  canDeactivate(): Observable<boolean> | boolean  {
+    return super.canDeactivate(this.formGroup.dirty);
   }
 
   formSubmit(): void {
