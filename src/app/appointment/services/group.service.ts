@@ -29,6 +29,10 @@ export class GroupService {
    * @returns Observable<Group>
    */
   save(group: Group): Observable<Group> {
-    return this.httpClient.post<Group>(`${this.endpoint}/${group.id ? 'edit' : 'save'}`, group);
+    if (group.id) {
+      return this.httpClient.put<Group>(`${this.endpoint}/edit`, group);
+    } else {
+      return this.httpClient.post<Group>(`${this.endpoint}/save`, group);
+    }
   }
 }

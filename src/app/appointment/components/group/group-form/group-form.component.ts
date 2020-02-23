@@ -36,7 +36,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
       if (data && data.group) {
         this.group = data.group as Group;
 
-        this.formGroup.get('group').setValue(this.group.id);
+        this.formGroup.get('group').setValue(this.group.group);
         this.formGroup.get('order').setValue(this.group.order);
       }
     });
@@ -53,12 +53,16 @@ export class GroupFormComponent implements OnInit, OnDestroy {
       const localGroup: Group = {
         group: this.formGroup.get('group').value,
         order: this.formGroup.get('order').value,
-        idLang: this.group ? this.group.idLang : this.languageService.geCurrenttLang().id
+        idLang: this.group && this.group.idLang ? this.group.idLang : this.languageService.geCurrenttLang().id
       };
+
+      if (this.group) {
+        localGroup.id = this.group.id;
+      }
 
       const formSubmitSubscription: Subscription =  this.groupService.save(localGroup)
       .subscribe((group: Group) => {
-        this.router.navigate([`/${group.id}`], {relativeTo: this.route});
+        this.router.navigate([`./${group.id}`], {relativeTo: this.route.parent});
       });
 
       this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];

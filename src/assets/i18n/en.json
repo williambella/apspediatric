@@ -2,6 +2,11 @@
   "app" : {
     "title": "Apspediatric EN"
   },
+  "auth": {
+    "login": "Login",
+    "successful": "Login with successful",
+    "warning": "Wrong Email or password"
+  },
   "table": {
     "actions": "Actions",
     "buttons": {
@@ -12,12 +17,15 @@
   },
   "form": {
     "order": "Order",
+    "submit": "Submit",
     "validation": {
-      "required": "Field is required"
+      "required": "Field is required",
+      "email": "Wrong email format"
     }
   },
   "app_title": {
-    "new": "New"
+    "new": "New",
+    "edit": "Edit"
   },
   "language": {
     "title": "Language"
@@ -29,7 +37,8 @@
   },
   "group": {
     "form": {
-      "title": "Creat Group",
+      "new": "New Group",
+      "edit": "Edit Group",
       "group": "Group Title"
     },
     "list": {
@@ -37,6 +46,13 @@
     }
   },
   "commom": {
-    "save": "Save"
+    "save": "Save",
+    "email": "Email",
+    "password": "Password"
+  },
+  "messages": {
+    "SUCCESS": "Success ",
+    "WARNING": "Warning",
+    "ERROR": "Error"
   }
 }
