@@ -2,6 +2,7 @@ import { LanguagesService } from './languages.service';
 import { MessagesStatus } from './../enum/messages-status.enum';
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,17 @@ export class MessagesService {
    */
   set config(matSnackBarConfig: MatSnackBarConfig) {
     this.matSnackBarConfig = matSnackBarConfig;
+  }
+
+  /**
+   * Native confirm to use with CanDeactive
+   *
+   * @param message: string
+   * @returns Observable<boolean>
+   */
+  confirm(message: string = 'form.sure'): Observable<boolean> {
+    const confirmation = window.confirm(this.langageService.getTranslate(message));
+
+    return of(confirmation);
   }
 }

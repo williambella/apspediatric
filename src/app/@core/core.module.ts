@@ -12,6 +12,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LanguagesService } from './services/languages.service';
 import { UrlInterceptor } from './interceptors/url.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AuthGuard } from './guard/auth.guard';
+import { DeactiveGuard } from './guard/deactive.guard';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,6 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
     LocalStorageService,
     LanguagesService,
     StorageService,
+    AuthGuard,
+    DeactiveGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,

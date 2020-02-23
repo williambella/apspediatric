@@ -18,6 +18,7 @@
   "form": {
     "order": "Order",
     "submit": "Submit",
+    "sure": "Form data has been modified. Are you sure ?",
     "validation": {
       "required": "Field is required",
       "email": "Wrong email format"

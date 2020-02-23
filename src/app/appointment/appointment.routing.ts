@@ -4,11 +4,14 @@ import { GroupResolver } from './resolvers/group.resolver';
 import { GroupListComponent } from '@appointment/components/group/group-list/group-list.component';
 import { GroupFormComponent } from '@appointment/components/group/group-form/group-form.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { AuthGuard } from '@core/guard/auth.guard';
+import { DeactiveGuard } from '@core/guard/deactive.guard';
 
 const routes: Routes = [
   {
     path: 'groups',
     component: AppointmentComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'new',
@@ -28,6 +31,7 @@ const routes: Routes = [
       {
         path: ':id/edit',
         component: GroupFormComponent,
+        canDeactivate: [DeactiveGuard],
         resolve: {
           group: GroupResolver
         }

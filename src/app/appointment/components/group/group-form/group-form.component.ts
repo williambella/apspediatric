@@ -3,8 +3,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Group } from '@appointment/models/group';
 import { GroupService } from '@appointment/services/group.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessagesService } from '@core/services/messages.service';
 
 @Component({
   selector: 'app-group-form',
@@ -23,12 +24,17 @@ export class GroupFormComponent implements OnInit, OnDestroy {
     private groupService: GroupService,
     private route: ActivatedRoute,
     private router: Router,
-    private languageService: LanguagesService
+    private languageService: LanguagesService,
+    private messageService: MessagesService
   ) {
     this.formGroup = this.formBuilder.group({
       group: [null, Validators.compose([Validators.required])],
       order: [null, Validators.compose([Validators.pattern(/^[0-9]\d*$/)])]
     });
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    return this.formGroup.dirty ? this.messageService.confirm() : true;
   }
 
   ngOnInit() {
@@ -62,6 +68,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
 
       const formSubmitSubscription: Subscription =  this.groupService.save(localGroup)
       .subscribe((group: Group) => {
+        this.formGroup.markAsPristine();
         this.router.navigate([`./${group.id}`], {relativeTo: this.route.parent});
       });
 
