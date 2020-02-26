@@ -5,7 +5,8 @@
   "auth": {
     "login": "Login",
     "successful": "Login with successful",
-    "warning": "Wrong Email or password"
+    "warning": "Wrong Email or password",
+    "wait": "Wait..."
   },
   "table": {
     "actions": "Actions",

@@ -1,3 +1,4 @@
+import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -5,14 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    // component: LoginComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      }
-    ]
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   }
 ];
 
