@@ -6,6 +6,7 @@ import { GroupFormComponent } from '@appointment/components/group/group-form/gro
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AuthGuard } from '@core/guard/auth.guard';
 import { DeactiveGuard } from '@core/guard/deactive.guard';
+import { QuestionListComponent } from './components/questions/question-list/question-list.component';
 
 const routes: Routes = [
   {
@@ -15,20 +16,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'all'
+        component: GroupListComponent
       },
       {
         path: 'new',
         component: GroupFormComponent
       },
-      {
-        path: 'all',
-        component: GroupListComponent
-      },
+      // {
+      //   path: 'all',
+      //   component: GroupListComponent
+      // },
       {
         path: ':id',
-        component: GroupListComponent,
+        component: QuestionListComponent,
         resolve: {
           group: GroupResolver
         }

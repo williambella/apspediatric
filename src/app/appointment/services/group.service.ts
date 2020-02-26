@@ -13,10 +13,19 @@ export class GroupService {
   constructor(private httpClient: HttpClient) { }
 
   /**
+   * Find All
+   *
+   * @returns Observable<Array<Group>>
+   */
+  findAll(): Observable<Array<Group>> {
+    return this.httpClient.get<Array<Group>>(this.endpoint);
+  }
+
+  /**
    * Find a Group by Id
    *
    * @param id: string
-   * @returns Observable<Question>
+   * @returns Observable<Group>
    */
   findById(id: string): Observable<Group> {
     return this.httpClient.get<Group>(`${this.endpoint}/findById/${id}`);

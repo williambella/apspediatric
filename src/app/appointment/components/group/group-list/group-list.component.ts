@@ -1,10 +1,9 @@
-import { Question } from './../../../models/question';
-import { Component, OnInit, OnDestroy, ErrorHandler } from '@angular/core';
+import { GroupService } from '@appointment/services/group.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, of } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Group } from '@appointment/models/group';
-import { catchError, mergeMap } from 'rxjs/operators';
-import { QuestiontService } from '@appointment/services/question.service';
+import { TableHeader } from 'src/app/helpers/table/table.component';
 
 @Component({
   selector: 'app-group-list',
@@ -13,22 +12,30 @@ import { QuestiontService } from '@appointment/services/question.service';
 })
 export class GroupListComponent implements OnInit, OnDestroy {
 
-  group: Group;
-  questions: Array<Question>;
+  groups: Array<Group>;
+
+  headers: Array<TableHeader> = [
+    {
+      title: 'group.form.group',
+      field: 'group'
+    },
+    {
+      title: 'form.order',
+      field: 'order'
+    }
+  ];
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private questionService: QuestiontService
+    private groupService: GroupService
   ) { }
 
   ngOnInit() {
-    const routeSubscription: Subscription = this.activatedRoute.data.subscribe((data: any) => {
-      if (data && data.group) {
-        this.group = data.group as Group;
-        this.findQuestions();
-      }
+    const routeSubscription: Subscription = this.groupService.findAll()
+    .subscribe((groups: Array<Group>) => {
+      this.groups = groups;
     });
 
     this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
@@ -37,14 +44,4 @@ export class GroupListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
-
-  private findQuestions(): void {
-    const findQuestionsSubscription: Subscription = this.questionService.findAllByGroupId(this.group.id)
-    .subscribe((questions: Array<Question>) => {
-      this.questions = questions;
-    });
-
-    this.arraySubscriptions = [...this.arraySubscriptions, findQuestionsSubscription];
-  }
-
 }

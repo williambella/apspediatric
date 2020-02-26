@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { QuestiontService } from '@appointment/services/question.service';
+import { Group } from '@appointment/models/group';
+import { Question } from '@appointment/models/question';
 
 export interface PeriodicElement {
   name: string;
@@ -12,7 +17,10 @@ export interface PeriodicElement {
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
-export class QuestionListComponent implements OnInit {
+export class QuestionListComponent implements OnInit, OnDestroy {
+
+  group: Group;
+  questions: Array<Question>;
 
   data: PeriodicElement[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -29,9 +37,26 @@ export class QuestionListComponent implements OnInit {
 
   columns: Array<string> = ['radio', 'position', 'name', 'weight', 'symbol', 'actions', 'star'];
 
-  constructor() { }
+  private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private questionService: QuestiontService
+  ) { }
 
   ngOnInit() {
+    const routeSubscription: Subscription = this.activatedRoute.data.subscribe((data: any) => {
+      if (data && data.group) {
+        this.group = data.group as Group;
+        this.findQuestions();
+      }
+    });
+
+    this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
+  }
+
+  ngOnDestroy(): void {
+    this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
   edit(event: PeriodicElement): void {
@@ -44,6 +69,15 @@ export class QuestionListComponent implements OnInit {
 
   toggle(data: PeriodicElement): void {
     console.log(data);
+  }
+
+  private findQuestions(): void {
+    const findQuestionsSubscription: Subscription = this.questionService.findAllByGroupId(this.group.id)
+    .subscribe((questions: Array<Question>) => {
+      this.questions = questions;
+    });
+
+    this.arraySubscriptions = [...this.arraySubscriptions, findQuestionsSubscription];
   }
 
 }

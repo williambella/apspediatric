@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, TemplateRef, Directive, ContentChild, Output, EventEmitter, ContentChildren, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, TemplateRef, Directive, ContentChild, Output, EventEmitter, ContentChildren } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import { PeriodicElement } from '@appointment/components/questions/question-list/question-list.component';
@@ -19,20 +19,29 @@ export class TableColumnsDirective {
   constructor(public templateRef: TemplateRef<any>) { }
 }
 
+export interface TableHeader {
+  title: string;
+  field: string;
+}
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit, AfterContentInit {
+export class TableComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
+  headersLabels: Array<string>;
+  defaultHeadersValues: Array<TableHeader>;
+
+  @Input() set headers(headers: Array<TableHeader>) {
+    this.headersLabels = headers.map((header: TableHeader) => header.title);
+    this.defaultHeadersValues = headers;
+  }
 
   @Input() set data(data: Array<any>) {
     this.dataSource = new MatTableDataSource(data);
   }
-
-  // @Input() data: Array<any>;
 
   matHeaderRowDef: Array<any> = [];
 
@@ -83,29 +92,7 @@ export class TableComponent implements OnInit, AfterContentInit {
     this.dataSource.sort = this.sort;
   }
 
-  ngAfterContentInit() {
-    // this.tableColumns.toArray().map((a: any, index: number) => {
-    //   return console.log(a);
-    // });
-
-    // this.matHeaderRowDef = this.tableHeaders.toArray().map((_, i) => `column-${i}`);
+  columnField(column: string): string {
+    return this.defaultHeadersValues.find((header: TableHeader) => header.title === column).field;
   }
-
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  masterToggle() {
-    this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  checkboxLabel(row?: PeriodicElement): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-  }
-
 }
