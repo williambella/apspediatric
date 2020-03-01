@@ -1,9 +1,10 @@
-import { DialogService, DialogConfirmSettings } from '@core/services/dialog.service';
-import { GroupService } from '@appointment/services/group.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DialogService, DialogConfirmSettings } from '@core/services/dialog.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { GroupService } from '@appointment/services/group.service';
 import { Group } from '@appointment/models/group';
 import { Subscription } from 'rxjs';
+import { MessagesService } from '@core/services/messages.service';
 
 @Component({
   selector: 'app-group-list',
@@ -20,7 +21,8 @@ export class GroupListComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private groupService: GroupService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private messageService: MessagesService
   ) { }
 
   ngOnInit() {
@@ -38,10 +40,14 @@ export class GroupListComponent implements OnInit, OnDestroy {
     });
 
     this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
-  };
+  }
+
+  questions(group: Group): void {
+    this.router.navigate([`./${group.id}/questions`], {relativeTo: this.activatedRoute});
+  }
 
   edit(group: Group): void {
-    this.router.navigate([`./${group.id}`], {relativeTo: this.activatedRoute});
+    this.router.navigate([`./${group.id}/edit`], {relativeTo: this.activatedRoute});
   }
 
   delete(group: Group): void {
@@ -52,6 +58,7 @@ export class GroupListComponent implements OnInit, OnDestroy {
     .then(() => {
       const deleteSubscription: Subscription = this.groupService.delete(group.id)
       .subscribe((groups: Array<Group>) => {
+        this.messageService.message('form.removed');
         // TODO: Retornar a lista atualizada: this.groups = groups;
         this.findAll();
       });

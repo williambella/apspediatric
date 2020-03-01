@@ -22,6 +22,10 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
+      <button mat-flat-button [routerLink]="['/','appointment','groups']">
+        {{ 'commom.back' | translate }}
+      </button>
+
       <button mat-flat-button color="primary">
         {{ 'commom.save' | translate }}
       </button>

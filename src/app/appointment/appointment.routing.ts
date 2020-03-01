@@ -1,3 +1,5 @@
+import { QuestionResolver } from '@appointment/resolvers/question.resolver';
+import { QuestionFormComponent } from '@appointment/components/questions/question-form/question-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GroupResolver } from './resolvers/group.resolver';
@@ -22,24 +24,33 @@ const routes: Routes = [
         path: 'new',
         component: GroupFormComponent
       },
-      // {
-      //   path: 'all',
-      //   component: GroupListComponent
-      // },
       {
-        path: ':id',
-        component: QuestionListComponent,
+        path: ':id/edit',
+        component: GroupFormComponent,
         resolve: {
           group: GroupResolver
         }
       },
       {
-        path: ':id/edit',
-        component: GroupFormComponent,
+        path: ':id/questions',
+        component: QuestionListComponent,
         canDeactivate: [DeactiveGuard],
         resolve: {
           group: GroupResolver
-        }
+        },
+        children: [
+          {
+            path: 'new',
+            component: QuestionFormComponent,
+          },
+          {
+            path: ':id',
+            component: QuestionFormComponent,
+            resolve: {
+              question: QuestionResolver
+            }
+          }
+        ]
       }
     ]
   }

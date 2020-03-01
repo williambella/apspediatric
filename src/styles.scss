@@ -1,3 +1,5 @@
+@import '~@sweetalert2/themes/dark/dark.scss';
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -42,7 +44,19 @@ table {
   }
 }
 
+// mat-form-field
 mat-form-field {
   min-width: 100%;
 }
 
+
+// mat-card-actions
+mat-card-actions {
+  button {
+    margin-right: 8px !important;
+
+    &::last-child() {
+      margin-right: inherit;
+    }
+  }
+}

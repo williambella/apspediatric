@@ -23,7 +23,9 @@
     "validation": {
       "required": "Field is required",
       "email": "Wrong email format"
-    }
+    },
+    "updated": "Register updated",
+    "removed": "Register removed"
   },
   "app_title": {
     "new": "New",
@@ -32,9 +34,10 @@
   "language": {
     "title": "Language"
   },
-  "appointment": {
+  "question": {
+    "title": "Question",
     "form": {
-      "title": "Creat Appointment"
+      "questions": "Questions"
     }
   },
   "group": {
@@ -53,7 +56,8 @@
   "commom": {
     "save": "Save",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "back": "Back"
   },
   "messages": {
     "SUCCESS": "Success ",

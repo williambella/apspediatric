@@ -71,7 +71,9 @@ export class GroupFormComponent extends CanDeactiveAbstract implements OnInit, O
       const formSubmitSubscription: Subscription =  this.groupService.save(localGroup)
       .subscribe((group: Group) => {
         this.formGroup.markAsPristine();
-        this.router.navigate([`./${group.id}`], {relativeTo: this.route.parent});
+        this.router.navigate([`./${group.id}/edit`], {relativeTo: this.route.parent});
+
+        this.messageService.message('form.updated');
       });
 
       this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
