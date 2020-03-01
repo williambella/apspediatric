@@ -34,6 +34,9 @@
   "language": {
     "title": "Language"
   },
+  "appointment": {
+    "title": "Appointments"
+  },
   "question": {
     "title": "Question",
     "form": {
