@@ -1,4 +1,76 @@
+@import '~@sweetalert2/themes/dark/dark.scss';
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// table
+table {
+  width: 100%;
+
+  thead {
+    tr {
+      text-align: left;
+
+      th {
+        margin-bottom: 1em;
+        &.actions {
+          text-align: center;
+          width: 15%;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &.actions {
+          text-align: center;
+
+          button {
+            margin-right: 8px;
+            transition: none !important;
+            box-shadow: none !important;
+
+            &::last-child {
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// mat-form-field
+mat-form-field {
+  min-width: 100%;
+}
+
+
+// mat-card-actions
+mat-card-actions {
+  button {
+    margin-right: 8px !important;
+
+    &::last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+
+
+.title-container {
+  button {
+    margin-right: 8px !important;
+
+    &:last-child {
+      margin-right: 0 !important;
+    }
+  }
+}

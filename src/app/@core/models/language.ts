@@ -4,4 +4,5 @@ export interface Language {
   label: string;
   abbrev: string;
   status?: boolean;
+  icon?: string;
 }

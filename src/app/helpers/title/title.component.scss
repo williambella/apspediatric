@@ -1,0 +1,13 @@
+.title-container {
+  margin-bottom: 2em;
+
+  h2 {
+    position: relative;
+
+    .title {
+      position: absolute;
+      left: 1.13em;
+      top: -0.13em;
+    }
+  }
+}

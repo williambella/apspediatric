@@ -1,10 +1,5 @@
 <mat-nav-list>
-  <a mat-list-item routerLink="/">
-    <mat-icon class="material-icons">create</mat-icon>
-    About us
+  <a *ngFor="let menu of menus" mat-list-item [routerLink]="menu.routerLink">
+    {{ menu.title | translate }}
   </a>
-  <a mat-list-item routerLink="/">Prices</a>
-  <a mat-list-item routerLink="/">Start page</a>
-  <a mat-list-item routerLink="/">Offer</a>
-  <a mat-list-item routerLink="/">Contact</a>
 </mat-nav-list>

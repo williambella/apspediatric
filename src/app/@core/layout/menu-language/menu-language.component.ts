@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-menu-language',
   templateUrl: './menu-language.component.html',
-  styles: ['menu-language.component.scss']
+  styleUrls: ['menu-language.component.scss']
 })
 export class MenuLanguageComponent {
 

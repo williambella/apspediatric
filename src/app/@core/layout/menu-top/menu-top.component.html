@@ -1,8 +1,7 @@
-<button mat-button [matMenuTriggerFor]="menu">Appointment</button>
+<button mat-button [matMenuTriggerFor]="menu">{{ 'appointment.title' | translate }}</button>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/appointment']">Form</button>
-  <button mat-menu-item>Result</button>
+  <button mat-menu-item [routerLink]="['/appointment', 'groups']">{{ 'group.list.title' | translate }}</button>
 </mat-menu>
 
 <app-menu-language></app-menu-language>

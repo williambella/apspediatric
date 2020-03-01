@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  menus: Array<any>;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.menus = [
+      {
+        title: 'appointment.title',
+        routerLink: '/appointment/groups/'
+      }
+    ];
   }
 
 }

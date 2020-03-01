@@ -1,0 +1,13 @@
+<div class="title-container">
+  <div fxLayout="row">
+    <div fxFlex>
+      <h2>
+        <mat-icon>{{ icon }}</mat-icon> <span class="title">{{ title | translate }}</span>
+      </h2>
+    </div>
+
+    <div fxFlex align="end">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

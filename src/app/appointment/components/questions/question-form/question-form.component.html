@@ -1,0 +1,37 @@
+<app-title icon="poll" [title]="question ? 'question.form.edit' : 'question.form.new'"></app-title>
+
+<form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
+  <mat-card>
+    <mat-card-content>
+      <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+        <div fxFlex.lg="70">
+          <mat-form-field>
+            <input matInput #title formControlName="question" [maxLength]="200" required type="text" [placeholder]="'question.form.question' | translate" autocomplete="off" />
+            <mat-hint align="end">{{title.value.length}} / {{title.maxLength}}</mat-hint>
+            <mat-error *ngIf="formGroup.hasError('required',['question'])">{{'form.validation.required' | translate}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex.lg="30">
+          <mat-form-field>
+            <mat-select formControlName="idType" required placeholder="{{ 'type.title' | translate }}">
+              <mat-option *ngFor="let type of types" [value]="type.id">
+                {{ type.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button type="button" mat-flat-button [routerLink]="['/','appointment','groups', group?.id, 'questions']">
+        {{ 'commom.back' | translate }}
+      </button>
+
+      <button mat-flat-button color="primary">
+        {{ 'commom.save' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

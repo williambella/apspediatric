@@ -1,0 +1,35 @@
+<app-title icon="format_list_bulleted" title="{{ group.group }}">
+  <button mat-flat-button [routerLink]="['/', 'appointment', 'groups']">
+    {{ 'commom.back' | translate }}
+  </button>
+
+  <button mat-flat-button color="primary" [routerLink]="['new']">
+    {{ 'app_title.new' | translate }}
+  </button>
+</app-title>
+
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'question.title' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let question of questions">
+        <td>{{ question.question }}</td>
+        <td class="actions">
+          <button type="button" mat-mini-fab color="accent" (click)="edit(question)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(question)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
