@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { DialogService, DialogConfirmSettings } from '@core/services/dialog.service';
+import { DialogService, DialogConfirmSettings, DialogConfirmAction } from '@core/services/dialog.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GroupService } from '@appointment/services/group.service';
 import { Group } from '@appointment/models/group';
@@ -33,15 +33,6 @@ export class GroupListComponent implements OnInit, OnDestroy {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  findAll(): void {
-    const routeSubscription: Subscription = this.groupService.findAll()
-    .subscribe((groups: Array<Group>) => {
-      this.groups = groups;
-    });
-
-    this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
-  }
-
   questions(group: Group): void {
     this.router.navigate([`./${group.id}/questions`], {relativeTo: this.activatedRoute});
   }
@@ -55,15 +46,25 @@ export class GroupListComponent implements OnInit, OnDestroy {
     };
 
     this.dialogService.confirm(dialogConfirmSettings)
-    .then(() => {
-      const deleteSubscription: Subscription = this.groupService.delete(group.id)
-      .subscribe((groups: Array<Group>) => {
-        this.messageService.message('form.removed');
-        // TODO: Retornar a lista atualizada: this.groups = groups;
-        this.findAll();
-      });
+    .then((confirm: DialogConfirmAction) => {
+      if (confirm.value) {
+        const deleteSubscription: Subscription = this.groupService.delete(group.id)
+        .subscribe((groups: Array<Group>) => {
+          this.messageService.message('form.removed');
+          this.findAll();
+        });
 
-      this.arraySubscriptions = [...this.arraySubscriptions, deleteSubscription];
+        this.arraySubscriptions = [...this.arraySubscriptions, deleteSubscription];
+      }
     });
+  }
+
+  private findAll(): void {
+    const routeSubscription: Subscription = this.groupService.findAll()
+    .subscribe((groups: Array<Group>) => {
+      this.groups = groups;
+    });
+
+    this.arraySubscriptions = [...this.arraySubscriptions, routeSubscription];
   }
 }

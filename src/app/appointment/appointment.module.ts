@@ -9,6 +9,7 @@ import { GroupResolver } from './resolvers/group.resolver';
 import { SharedModule } from '@shared/shared.module';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { QuestionsComponent } from './components/questions/questions/questions.component';
+import { TypesResolver } from './resolvers/types.resolver';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { QuestionsComponent } from './components/questions/questions/questions.c
   ],
   providers: [
     QuestionResolver,
-    GroupResolver
+    GroupResolver,
+    TypesResolver
   ]
 })
 export class AppointmentModule { }

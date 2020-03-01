@@ -1,5 +1,11 @@
 <app-title icon="format_list_bulleted" title="{{ group.group }}">
-  <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+  <button mat-flat-button [routerLink]="['/', 'appointment', 'groups']">
+    {{ 'commom.back' | translate }}
+  </button>
+
+  <button mat-flat-button color="primary" [routerLink]="['new']">
+    {{ 'app_title.new' | translate }}
+  </button>
 </app-title>
 
 <mat-card>

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef, Directive, ContentChild, Output, EventEmitter, ContentChildren } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
-import { PeriodicElement } from '@appointment/components/questions/question-list/question-list.component';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Directive({selector: '[appBtnActions]'})
@@ -81,7 +80,7 @@ export class TableComponent implements OnInit {
   @ContentChildren(TableColumnsDirective, { read: TemplateRef })
   tableColumns: TableColumnsDirective;
 
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  selection = new SelectionModel<any>(true, []);
 
   initialSelection = [];
   allowMultiSelect = true;

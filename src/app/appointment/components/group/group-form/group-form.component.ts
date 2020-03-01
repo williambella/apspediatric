@@ -61,11 +61,12 @@ export class GroupFormComponent extends CanDeactiveAbstract implements OnInit, O
       const localGroup: Group = {
         group: this.formGroup.get('group').value,
         order: this.formGroup.get('order').value,
-        idLang: this.group && this.group.idLang ? this.group.idLang : this.languageService.geCurrenttLang().id
+        idLang: this.languageService.geCurrenttLang().id
       };
 
       if (this.group) {
         localGroup.id = this.group.id;
+        localGroup.idLang = this.group.idLang;
       }
 
       const formSubmitSubscription: Subscription =  this.groupService.save(localGroup)

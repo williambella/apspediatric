@@ -38,8 +38,9 @@
     "title": "Question",
     "form": {
       "new": "New Question",
-      "edito": "Edit Question",
-      "questions": "Questions"
+      "edit": "Edit Question",
+      "questions": "Questions",
+      "question": "Question"
     }
   },
   "group": {
@@ -54,6 +55,9 @@
         "questions": "Manage Questions from Group"
       }
     }
+  },
+  "type": {
+    "title": "Type"
   },
   "commom": {
     "save": "Save",

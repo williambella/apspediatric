@@ -10,6 +10,7 @@ import { AuthGuard } from '@core/guard/auth.guard';
 import { DeactiveGuard } from '@core/guard/deactive.guard';
 import { QuestionListComponent } from './components/questions/question-list/question-list.component';
 import { QuestionsComponent } from './components/questions/questions/questions.component';
+import { TypesResolver } from './resolvers/types.resolver';
 
 const routes: Routes = [
   {
@@ -23,10 +24,12 @@ const routes: Routes = [
       },
       {
         path: 'new',
+        canDeactivate: [DeactiveGuard],
         component: GroupFormComponent
       },
       {
         path: ':id/edit',
+        canDeactivate: [DeactiveGuard],
         component: GroupFormComponent,
         resolve: {
           group: GroupResolver
@@ -35,7 +38,6 @@ const routes: Routes = [
       {
         path: ':id/questions',
         component: QuestionsComponent,
-        canDeactivate: [DeactiveGuard],
         resolve: {
           group: GroupResolver
         },
@@ -46,13 +48,19 @@ const routes: Routes = [
           },
           {
             path: 'new',
+            canDeactivate: [DeactiveGuard],
             component: QuestionFormComponent,
+            resolve: {
+              types: TypesResolver
+            }
           },
           {
             path: ':id',
+            canDeactivate: [DeactiveGuard],
             component: QuestionFormComponent,
             resolve: {
-              question: QuestionResolver
+              question: QuestionResolver,
+              types: TypesResolver
             }
           }
         ]

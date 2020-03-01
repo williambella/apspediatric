@@ -4,13 +4,8 @@ import { Subscription } from 'rxjs';
 import { QuestiontService } from '@appointment/services/question.service';
 import { Group } from '@appointment/models/group';
 import { Question } from '@appointment/models/question';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { DialogService, DialogConfirmSettings, DialogConfirmAction } from '@core/services/dialog.service';
+import { MessagesService } from '@core/services/messages.service';
 
 @Component({
   selector: 'app-question-list',
@@ -22,34 +17,22 @@ export class QuestionListComponent implements OnInit, OnDestroy {
   group: Group;
   questions: Array<Question>;
 
-  data: PeriodicElement[] = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
-
-  columns: Array<string> = ['radio', 'position', 'name', 'weight', 'symbol', 'actions', 'star'];
-
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private questionService: QuestiontService
+    private questionService: QuestiontService,
+    private dialogService: DialogService,
+    private messageService: MessagesService
   ) { }
 
   ngOnInit() {
     const routeSubscription: Subscription = this.activatedRoute.data.subscribe((data: any) => {
       if (data && data.group) {
         this.group = data.group as Group;
-        this.findQuestions();
+
+        this.findAll();
       }
     });
 
@@ -64,15 +47,30 @@ export class QuestionListComponent implements OnInit, OnDestroy {
     this.router.navigate([`./${question.id}`], {relativeTo: this.activatedRoute});
   }
 
-  delete(data: PeriodicElement): void {
-    console.log(data);
+  delete(question: Question): void {
+    const dialogConfirmSettings: DialogConfirmSettings = {
+    };
+
+    this.dialogService.confirm(dialogConfirmSettings)
+    .then((confirm: DialogConfirmAction) => {
+      if (confirm.value) {
+        const deleteSubscription: Subscription = this.questionService.delete(question.id)
+        .subscribe(() => {
+          this.messageService.message('form.removed');
+
+          this.findAll();
+        });
+
+        this.arraySubscriptions = [...this.arraySubscriptions, deleteSubscription];
+      }
+    });
   }
 
-  toggle(data: PeriodicElement): void {
-    console.log(data);
+  toggle(question: Question): void {
+    console.log(question);
   }
 
-  private findQuestions(): void {
+  private findAll(): void {
     const findQuestionsSubscription: Subscription = this.questionService.findAllByGroupId(this.group.id)
     .subscribe((questions: Array<Question>) => {
       this.questions = questions;

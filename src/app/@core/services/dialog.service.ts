@@ -12,6 +12,11 @@ export interface DialogConfirmSettings  {
   cancelButtonText?: string;
 }
 
+export interface DialogConfirmAction {
+  value?: boolean;
+  dismiss?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })

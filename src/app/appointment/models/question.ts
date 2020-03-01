@@ -3,5 +3,5 @@ export interface Question {
   idGroup: string;
   idType: string;
   question: string;
-  lang: string;
+  idLang: string;
 }

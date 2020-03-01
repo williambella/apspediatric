@@ -11,6 +11,18 @@ export class QuestiontService {
   private endpoint = '/question';
 
   constructor(private httpClient: HttpClient) { }
+  /**
+   * Find a Question by Id
+   *
+   * @param id: string
+   * @returns Observable<Question>
+   */
+  findAllByGroupId(id: string): Observable<Array<Question>> {
+    const params = new HttpParams()
+    .set('idGroup', String(id));
+
+    return this.httpClient.get<Array<Question>>(`${this.endpoint}`, { params });
+  }
 
   /**
    * Find a Question by Id
@@ -26,15 +38,32 @@ export class QuestiontService {
   }
 
   /**
-   * Find a Question by Id
+   * Create or Update an Group
+   *
+   * @param group: Group
+   * @returns Observable<Group>
+   */
+  save(question: Question): Observable<Question> {
+    // TODO: Fix Route ro Update with /edit
+    if (question.id) {
+      return this.httpClient.put<Question>(`${this.endpoint}/`, question);
+    } else {
+      return this.httpClient.post<Question>(`${this.endpoint}/save`, question);
+    }
+  }
+
+  /**
+   * Delete Question by Id
    *
    * @param id: string
-   * @returns Observable<Question>
+   * @returns Observable<Array<any>>
    */
-  findAllByGroupId(id: string): Observable<Array<Question>> {
+  delete(id: string): Observable<any> {
+    // TODO: Fix Route to delete
     const params = new HttpParams()
-    .set('idGroup', String(id));
+    .set('id', String(id));
 
-    return this.httpClient.get<Array<Question>>(`${this.endpoint}`, { params });
+    return this.httpClient.delete<any>(`${this.endpoint}/`, { params });
   }
+
 }
