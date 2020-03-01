@@ -18,10 +18,7 @@ export class QuestiontService {
    * @returns Observable<Question>
    */
   findAllByGroupId(id: string): Observable<Array<Question>> {
-    const params = new HttpParams()
-    .set('idGroup', String(id));
-
-    return this.httpClient.get<Array<Question>>(`${this.endpoint}`, { params });
+    return this.httpClient.get<Array<Question>>(`${this.endpoint}/${id}`);
   }
 
   /**
