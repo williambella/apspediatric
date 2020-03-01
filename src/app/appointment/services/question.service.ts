@@ -22,7 +22,7 @@ export class QuestiontService {
     const params = new HttpParams()
     .set('id', String(id));
 
-    return this.httpClient.get<Question>(`${this.endpoint}/findById/${id}`, { params });
+    return this.httpClient.get<Question>(`${this.endpoint}/findById`, { params });
   }
 
   /**

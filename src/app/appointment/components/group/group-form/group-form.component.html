@@ -1,4 +1,4 @@
-<app-title icon="poll" [title]="(group && group.id) ? 'group.form.edit' : 'group.form.new'"></app-title>
+<app-title icon="poll" [title]="group ? 'group.form.edit' : 'group.form.new'"></app-title>
 
 <form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
   <mat-card>

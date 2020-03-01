@@ -1,4 +1,4 @@
-<app-title icon="poll" title="appointment.form.title"></app-title>
+<app-title icon="poll" [title]="question ? 'question.form.edit' : 'question.form.new'"></app-title>
 
 <mat-card>
   <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">

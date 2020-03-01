@@ -9,6 +9,7 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
 import { AuthGuard } from '@core/guard/auth.guard';
 import { DeactiveGuard } from '@core/guard/deactive.guard';
 import { QuestionListComponent } from './components/questions/question-list/question-list.component';
+import { QuestionsComponent } from './components/questions/questions/questions.component';
 
 const routes: Routes = [
   {
@@ -33,12 +34,16 @@ const routes: Routes = [
       },
       {
         path: ':id/questions',
-        component: QuestionListComponent,
+        component: QuestionsComponent,
         canDeactivate: [DeactiveGuard],
         resolve: {
           group: GroupResolver
         },
         children: [
+          {
+            path: '',
+            component: QuestionListComponent
+          },
           {
             path: 'new',
             component: QuestionFormComponent,

@@ -37,6 +37,8 @@
   "question": {
     "title": "Question",
     "form": {
+      "new": "New Question",
+      "edito": "Edit Question",
       "questions": "Questions"
     }
   },

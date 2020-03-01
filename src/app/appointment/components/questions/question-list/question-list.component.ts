@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QuestiontService } from '@appointment/services/question.service';
@@ -41,6 +41,7 @@ export class QuestionListComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private questionService: QuestiontService
   ) { }
 
@@ -59,8 +60,8 @@ export class QuestionListComponent implements OnInit, OnDestroy {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  edit(event: PeriodicElement): void {
-    console.log(event);
+  edit(question: Question): void {
+    this.router.navigate([`./${question.id}`], {relativeTo: this.activatedRoute});
   }
 
   delete(data: PeriodicElement): void {

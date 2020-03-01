@@ -8,6 +8,7 @@ import { QuestionResolver } from '@appointment/resolvers/question.resolver';
 import { GroupResolver } from './resolvers/group.resolver';
 import { SharedModule } from '@shared/shared.module';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { QuestionsComponent } from './components/questions/questions/questions.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
     QuestionListComponent,
     GroupFormComponent,
     GroupListComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    QuestionsComponent
   ],
   imports: [
     SharedModule,
