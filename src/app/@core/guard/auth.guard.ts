@@ -1,3 +1,4 @@
+import { User } from '@core/models/user';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -7,7 +8,8 @@ import {
   UrlSegment,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree
+  UrlTree,
+  Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '@core/services/user.service';
@@ -16,7 +18,10 @@ import { UserService } from '@core/services/user.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -37,6 +42,14 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   protected checkUser(): boolean {
-    return this.userService.getUser() ? true : false;
+    const user: User = this.userService.getUser();
+
+    if(!user) {
+      this.userService.gotoLogin().then(() => {
+        return false;
+      });
+    } else {
+      return true;
+    }
   }
 }

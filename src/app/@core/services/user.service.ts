@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +15,8 @@ export class UserService {
 
   constructor(
     private storageService: StorageService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) { }
 
   /**
@@ -44,5 +46,13 @@ export class UserService {
    */
   getUser(): User {
     return this.storageService.get('user') as User;
+  }
+
+  /**
+   * Redirect to Login
+   *
+   */
+  gotoLogin(): Promise<boolean> {
+    return this.router.navigate(['/', 'auth', 'login']);
   }
 }

@@ -16,8 +16,10 @@ table {
       text-align: left;
 
       th {
+        margin-bottom: 1em;
         &.actions {
           text-align: center;
+          width: 15%;
         }
       }
     }
