@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { MessagesService } from './../../@core/services/messages.service';
+import { MessagesService } from '@core/services/messages.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@core/services/user.service';

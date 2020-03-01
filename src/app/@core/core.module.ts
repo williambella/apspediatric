@@ -1,3 +1,5 @@
+import { DialogService } from './services/dialog.service';
+import { MessagesService } from '@core/services/messages.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HeaderInterceptor } from './interceptors/header.interceptor';
 import { StorageService } from '@core/services/storage.service';
@@ -42,6 +44,8 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     LocalStorageService,
     LanguagesService,
+    MessagesService,
+    DialogService,
     StorageService,
     AuthGuard,
     DeactiveGuard,

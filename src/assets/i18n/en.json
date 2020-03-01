@@ -44,7 +44,10 @@
       "group": "Group Title"
     },
     "list": {
-      "title": "Groups"
+      "title": "Groups",
+      "tooptip": {
+        "questions": "Manage Questions from Group"
+      }
     }
   },
   "commom": {
@@ -56,5 +59,13 @@
     "SUCCESS": "Success ",
     "WARNING": "Warning",
     "ERROR": "Error"
+  },
+  "dialog": {
+    "confirm": {
+      "title": "Confirm Action",
+      "text": "Are you sure ?",
+      "confirm": "Yes. Do it!",
+      "cancel": "Cancel"
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './@core/layout/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '@core/layout/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TemplateComponent } from '@core/layout/template/template.component';

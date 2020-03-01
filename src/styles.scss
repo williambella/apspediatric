@@ -3,8 +3,43 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+
+// table
 table {
   width: 100%;
+
+  thead {
+    tr {
+      text-align: left;
+
+      th {
+        &.actions {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &.actions {
+          text-align: center;
+
+          button {
+            margin-right: 8px;
+            transition: none !important;
+            box-shadow: none !important;
+
+            &::last-child() {
+              margin-right: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 mat-form-field {

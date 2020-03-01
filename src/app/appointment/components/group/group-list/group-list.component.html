@@ -3,15 +3,33 @@
 </app-title>
 
 <mat-card>
-  <app-table [data]="groups" [headers]="headers" [radio]="true" [columns]="columns" [edit]="true" (editEmitter)="edit($event)" [delete]="true" (deleteEmitter)="delete($event)" [toggle]="true" (toggleEmitter)="toggle($event)">
-    <ng-template appBtnActions>
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'group.form.group' | translate }}</th>
+        <th>{{ 'form.order' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
 
-      <button mat-icon-button color="primary">
-        <mat-icon>close</mat-icon>
-      </button>
-    </ng-template>
-  </app-table>
+    <tbody>
+      <tr *ngFor="let group of groups">
+        <td>{{ group.group }}</td>
+        <td>{{ group.order }}</td>
+        <td class="actions">
+          <button type="button" mat-mini-fab color="primary" (click)="edit(group)" matTooltip="{{ 'group.list.tooptip.questions' | translate }}">
+            <mat-icon>format_list_bulleted</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="accent" (click)="edit(group)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(group)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </mat-card>

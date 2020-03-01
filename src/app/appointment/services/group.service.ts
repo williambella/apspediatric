@@ -44,4 +44,14 @@ export class GroupService {
       return this.httpClient.post<Group>(`${this.endpoint}/save`, group);
     }
   }
+
+  /**
+   * Delete Group by Id
+   *
+   * @param id: string
+   * @returns Observable<Array<Group>>
+   */
+  delete(id: string): Observable<Array<Group>> {
+    return this.httpClient.delete<Array<Group>>(`${this.endpoint}/${id}`);
+  }
 }
