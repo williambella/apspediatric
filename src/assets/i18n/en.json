@@ -64,6 +64,9 @@
   "type": {
     "title": "Type"
   },
+  "survey": {
+    "title": "Pediatric Dentistry Pre Appointment Survey"
+  },
   "commom": {
     "save": "Save",
     "email": "Email",

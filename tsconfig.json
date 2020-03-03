@@ -26,6 +26,9 @@
       "@appointment/*": [
         "src/app/appointment/*"
       ],
+      "@reports/*": [
+        "src/app/survey/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ],

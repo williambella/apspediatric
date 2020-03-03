@@ -14,12 +14,16 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'appointment',
-        loadChildren: () => import('./appointment/appointment.module').then(a => a.AppointmentModule)
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(auth => auth.AuthModule)
       },
       {
-        path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(r => r.AuthModule)
+        path: 'appointment',
+        loadChildren: () => import('./appointment/appointment.module').then(appointment => appointment.AppointmentModule)
+      },
+      {
+        path: 'survey',
+        loadChildren: () => import('./survey/survey.module').then(reports => reports.SurveyModule)
       },
     ]
   },
