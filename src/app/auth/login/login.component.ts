@@ -35,16 +35,11 @@ export class LoginComponent implements OnInit {
   formSubmit(): void {
     if (this.formGroup.valid) {
       this.userService.login(this.formGroup.value as Login)
-      .subscribe(
-      (user: User) => {
+      .subscribe((user: User) => {
         this.userService.setUSer(user);
         this.messagesService.message('auth.successful', MessagesStatus.SUCCESS);
 
         this.router.navigate(['/']);
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-        this.messagesService.message('auth.warning', MessagesStatus.WARNING);
       });
     }
   }

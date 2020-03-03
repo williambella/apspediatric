@@ -6,7 +6,9 @@
     "login": "Login",
     "successful": "Login with successful",
     "warning": "Wrong Email or password",
-    "wait": "Wait..."
+    "wait": "Wait...",
+    "error": "Application Error",
+    "network_error": "Network  error"
   },
   "table": {
     "actions": "Actions",
@@ -71,7 +73,8 @@
   "messages": {
     "SUCCESS": "Success ",
     "WARNING": "Warning",
-    "ERROR": "Error"
+    "ERROR": "Error",
+    "NETWORK": "Connection"
   },
   "dialog": {
     "confirm": {

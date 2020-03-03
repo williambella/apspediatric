@@ -22,7 +22,7 @@ export class HeaderInterceptor implements HttpInterceptor  {
     headers =  headers.set('Content-Type', 'application/json');
 
     if (currentLang) {
-      headers = headers.set('idLang', this.languageService.geCurrenttLang().id);
+      // headers = headers.set('idLang', this.languageService.geCurrenttLang().id);
     }
 
     if (user) {
