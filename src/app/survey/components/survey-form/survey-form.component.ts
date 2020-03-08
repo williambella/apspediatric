@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./survey-form.component.scss']
 })
 export class SurveyFormComponent implements OnInit {
+  isLinear = true;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: [null, Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: [null, Validators.required]
+    });
+  }
 
   ngOnInit() {
   }

@@ -65,13 +65,29 @@
     "title": "Type"
   },
   "survey": {
-    "title": "Pediatric Dentistry Pre Appointment Survey"
+    "title": "Pediatric Dentistry Pre Appointment Survey",
+    "stepper": {
+      "identificatin": {
+        "title": "Identification",
+        "name": "You Name",
+        "child_name": "Child Name",
+        "child_age": "Child Age",
+        "parental_degree": "Parental Degree"
+      },
+      "questions": {
+        "title": "Questions"
+      },
+      "done": {
+        "title": "Done"
+      }
+    }
   },
   "commom": {
     "save": "Save",
     "email": "Email",
     "password": "Password",
-    "back": "Back"
+    "back": "Back",
+    "date": "Date"
   },
   "messages": {
     "SUCCESS": "Success ",
