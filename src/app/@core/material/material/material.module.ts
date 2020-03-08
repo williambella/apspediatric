@@ -23,7 +23,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   exports: [
@@ -50,7 +51,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTabsModule
   ],
   providers: [
     MatDatepickerModule,

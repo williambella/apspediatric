@@ -69,10 +69,13 @@
     "stepper": {
       "identificatin": {
         "title": "Identification",
-        "name": "You Name",
-        "child_name": "Child Name",
-        "child_age": "Child Age",
-        "parental_degree": "Parental Degree"
+        "responsible": {
+          "title": "Responsible",
+          "name": "Responsible Name",
+          "child_name": "Child Name",
+          "child_age": "Child Age",
+          "parental_degree": "Parental Degree"
+        }
       },
       "questions": {
         "title": "Questions"

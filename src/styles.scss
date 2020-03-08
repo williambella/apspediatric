@@ -63,8 +63,6 @@ mat-card-actions {
   }
 }
 
-
-
 .title-container {
   button {
     margin-right: 8px !important;
@@ -72,5 +70,13 @@ mat-card-actions {
     &:last-child {
       margin-right: 0 !important;
     }
+  }
+}
+
+// form
+form {
+  .form-stepper {
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 }

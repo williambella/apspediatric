@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" (submit)="formSubmit()">
+  <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+    <div fxFlex.lg="50">
+      <mat-form-field>
+        <input matInput [placeholder]="'survey.stepper.identificatin.responsible.name' | translate" formControlName="name" required autocomplete="off" >
+      </mat-form-field>
+    </div>
+
+    <div fxFlex.lg="50">
+      <mat-form-field>
+        <mat-select [placeholder]="'survey.stepper.identificatin.responsible.parental_degree' | translate" formControlName="parentalDegree" >
+          <mat-option *ngFor="let p of parentalDegree" [value]="p">
+            {{ p }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div align="end">
+    <button mat-flat-button color="primary" matStepperNext>{{ 'commom.save' | translate }}</button>
+  </div>
+</form>
