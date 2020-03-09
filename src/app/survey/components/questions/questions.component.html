@@ -4,7 +4,7 @@
       <h3>{{ group.group }}</h3>
 
       <mat-accordion formArrayName="formArrayQuestions">
-        <mat-expansion-panel [id]="group.id" *ngFor="let question of group.questions; let last = last;">
+        <mat-expansion-panel [id]="group.id" *ngFor="let question of group.questions">
           <mat-expansion-panel-header>
             {{ question.question }}
           </mat-expansion-panel-header>
@@ -17,8 +17,6 @@
           </ng-template>
         </mat-expansion-panel>
       </mat-accordion>
-
-      <mat-divider *ngIf="!last"></mat-divider>
     </div>
   </div>
 
