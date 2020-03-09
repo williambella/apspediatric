@@ -1,14 +1,22 @@
 <mat-tab-group dynamicHeight>
-  <mat-tab label="Short tab">
+  <mat-tab>
     <ng-template mat-tab-label>
-      {{ 'survey.stepper.identificatin.responsible.title' | translate }}
+      {{ 'responsible.identification.title' | translate }}
     </ng-template>
-    <app-responsible [formGroup]="formGroup"></app-responsible>
+    <app-responsible [formGroup]="formGroupResponsible"></app-responsible>
   </mat-tab>
 
-  <mat-tab label="Long tab">
-    <div class="example-large-box mat-elevation-z4">
-      Large content
-    </div>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'responsible.patients.title' | translate }}
+    </ng-template>
+    <app-questions [formGroup]="formGroup"></app-questions>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'responsible.contacts.title' | translate }}
+    </ng-template>
+    <!-- <app-responsible [formGroup]="formGroup"></app-responsible> -->
   </mat-tab>
 </mat-tab-group>

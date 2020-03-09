@@ -52,7 +52,8 @@
     "form": {
       "new": "New Group",
       "edit": "Edit Group",
-      "group": "Group Title"
+      "group": "Group Title",
+      "select_group": "Select Group"
     },
     "list": {
       "title": "Groups",
@@ -65,32 +66,32 @@
     "title": "Type"
   },
   "survey": {
-    "title": "Pediatric Dentistry Pre Appointment Survey",
-    "stepper": {
-      "identificatin": {
-        "title": "Identification",
-        "responsible": {
-          "title": "Responsible",
-          "name": "Responsible Name",
-          "child_name": "Child Name",
-          "child_age": "Child Age",
-          "parental_degree": "Parental Degree"
-        }
-      },
-      "questions": {
-        "title": "Questions"
-      },
-      "done": {
-        "title": "Done"
-      }
+    "title": "Survey"
+  },
+  "responsible": {
+    "title": "Responsible",
+    "identification": {
+      "title": "Identification",
+      "name": "Responsible Name",
+      "child_name": "Child Name",
+      "child_age": "Child Age",
+      "parental_degree": "Parental Degree"
+    },
+    "patients": {
+      "title": "Patients"
+    },
+    "contacts": {
+      "title": "Contacts"
     }
   },
   "commom": {
     "save": "Save",
     "email": "Email",
     "password": "Password",
+    "next": "Next",
     "back": "Back",
-    "date": "Date"
+    "date": "Date",
+    "done": "Done"
   },
   "messages": {
     "SUCCESS": "Success ",

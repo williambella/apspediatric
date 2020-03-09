@@ -63,6 +63,16 @@ mat-card-actions {
   }
 }
 
+// form
+form {
+  .form-stepper {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+
+// Custom
 .title-container {
   button {
     margin-right: 8px !important;
@@ -73,10 +83,6 @@ mat-card-actions {
   }
 }
 
-// form
-form {
-  .form-stepper {
-    margin-top: 25px;
-    margin-bottom: 25px;
-  }
+.margin-bottom {
+  margin-bottom: 20px;
 }
