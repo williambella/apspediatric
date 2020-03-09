@@ -69,7 +69,7 @@ export class GroupFormComponent extends CanDeactiveAbstract implements OnInit, O
         localGroup.idLang = this.group.idLang;
       }
 
-      const formSubmitSubscription: Subscription =  this.groupService.save(localGroup)
+      const formSubmitSubscription: Subscription = this.groupService.save(localGroup)
       .subscribe((group: Group) => {
         this.formGroup.markAsPristine();
         this.router.navigate([`./${group.id}/edit`], {relativeTo: this.route.parent});

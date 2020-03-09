@@ -1,0 +1,22 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'responsible.identification.title' | translate }}
+    </ng-template>
+    <app-responsible [formGroup]="formGroup"></app-responsible>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'responsible.patients.title' | translate }}
+    </ng-template>
+    <app-questions [formGroup]="formGroup"></app-questions>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'responsible.contacts.title' | translate }}
+    </ng-template>
+    <!-- <app-responsible [formGroup]="formGroup"></app-responsible> -->
+  </mat-tab>
+</mat-tab-group>

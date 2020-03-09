@@ -26,6 +26,15 @@
       "@appointment/*": [
         "src/app/appointment/*"
       ],
+      "@survey/*": [
+        "src/app/survey/*"
+      ],
+      "@responsible/*": [
+        "src/app/responsible/*"
+      ],
+      "@reports/*": [
+        "src/app/survey/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ],

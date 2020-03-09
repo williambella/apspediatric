@@ -6,7 +6,9 @@
     "login": "Login",
     "successful": "Login with successful",
     "warning": "Wrong Email or password",
-    "wait": "Wait..."
+    "wait": "Wait...",
+    "error": "Application Error",
+    "network_error": "Network  error"
   },
   "table": {
     "actions": "Actions",
@@ -50,7 +52,8 @@
     "form": {
       "new": "New Group",
       "edit": "Edit Group",
-      "group": "Group Title"
+      "group": "Group Title",
+      "select_group": "Select Group"
     },
     "list": {
       "title": "Groups",
@@ -62,16 +65,39 @@
   "type": {
     "title": "Type"
   },
+  "survey": {
+    "title": "Survey"
+  },
+  "responsible": {
+    "title": "Responsible",
+    "identification": {
+      "title": "Identification",
+      "name": "Responsible Name",
+      "child_name": "Child Name",
+      "child_age": "Child Age",
+      "parental_degree": "Parental Degree"
+    },
+    "patients": {
+      "title": "Patients"
+    },
+    "contacts": {
+      "title": "Contacts"
+    }
+  },
   "commom": {
     "save": "Save",
     "email": "Email",
     "password": "Password",
-    "back": "Back"
+    "next": "Next",
+    "back": "Back",
+    "date": "Date",
+    "done": "Done"
   },
   "messages": {
     "SUCCESS": "Success ",
     "WARNING": "Warning",
-    "ERROR": "Error"
+    "ERROR": "Error",
+    "NETWORK": "Connection"
   },
   "dialog": {
     "confirm": {
