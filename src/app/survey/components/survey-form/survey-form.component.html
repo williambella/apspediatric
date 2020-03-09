@@ -1,34 +1,23 @@
 <app-title icon="library_add_check" title="survey.title"></app-title>
 
-<!-- <form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
-  <mat-card>
-    <mat-card-content>
-      <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
-        <div fxFlex.lg="50">
-          <mat-form-field>
-            <input matInput #title formControlName="group" [maxLength]="200" required type="text" [placeholder]="'group.form.group' | translate" autocomplete="off" />
-            <mat-hint align="end">{{title.value.length}} / {{title.maxLength}}</mat-hint>
-            <mat-error *ngIf="formGroup.hasError('required',['group'])">{{'form.validation.required' | translate}}</mat-error>
-          </mat-form-field>
-        </div>
+<mat-horizontal-stepper [linear]="false" #stepper>
+  <mat-step [stepControl]="formResponsible">
+    <ng-template matStepLabel>{{ 'responsible.title' | translate }}</ng-template>
+    <app-responsible-tabs [formGroup]="formResponsible"></app-responsible-tabs>
+  </mat-step>
 
-        <div fxFlex.lg="50">
-          <mat-form-field>
-            <input matInput #order formControlName="order" type="text" [placeholder]="'form.order' | translate" autocomplete="off" />
-            <mat-error *ngIf="formGroup.hasError('pattern',['order'])">{{'form.validation.required' | translate}}</mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-card-content>
+  <mat-step [stepControl]="formQuestion">
+    <ng-template matStepLabel>{{ 'question.title' | translate }}</ng-template>
+    <app-questions [formGroup]="formQuestion"></app-questions>
+  </mat-step>
 
-    <mat-card-actions align="end">
-      <button type="button" mat-flat-button [routerLink]="['/','appointment','groups']">
-        {{ 'commom.back' | translate }}
-      </button>
+  <mat-step>
+    <ng-template matStepLabel>{{ 'commom.done' | translate }}</ng-template>
+    <p>You are now done.</p>
 
-      <button mat-flat-button color="primary">
-        {{ 'commom.save' | translate }}
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</form> -->
+    <div align="end">
+      <button mat-button matStepperPrevious>Back</button>
+      <button type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.save' | translate }}</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
