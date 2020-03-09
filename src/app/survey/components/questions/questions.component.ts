@@ -37,6 +37,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
+  formSubmit(): void {}
+
   private loadGroups(): void {
     const groupsSubscription: Subscription = this.groupService.findAll()
     .subscribe((groups: Array<Group>) => {
