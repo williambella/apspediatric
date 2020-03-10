@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Responsible } from 'src/app/responsible/models/responsible';
 import { MessagesService } from '@core/services/messages.service';
@@ -13,6 +13,7 @@ import { ResponsibleService } from '@responsible/services/responsible.service';
 export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
   responsible: Responsible;
+  private readonly formGroupName = 'responsible';
 
   parentalDegree: Array<string> = [
     'Mother', 'Father', 'Aunty', 'Uncle', 'Grandmother', 'Grandfather', 'Other'
@@ -35,12 +36,12 @@ export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.formGroup.currentValue) {
-      this.formGroup = this.formBuilder.group(
+      this.formGroup.addControl(this.formGroupName, this.formBuilder.group(
         {
           name: ['', Validators.compose([Validators.required, Validators.max(100)])],
           parentalDegree: [null, Validators.required]
         }
-      );
+      ));
     }
   }
 
@@ -61,5 +62,9 @@ export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
 
       this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
     }
+  }
+
+  get formGroupResponsible(): FormControl {
+    return this.formGroup.get(this.formGroupName) as FormControl;
   }
 }

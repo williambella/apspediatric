@@ -8,16 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyFormComponent implements OnInit {
   isLinear = true;
-  formResponsible: FormGroup;
-  formQuestion: FormGroup;
+  formGroupResponsible: FormGroup;
+  formGroupQuestions: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    // this.firstFormGroup = this.formBuilder.group({
-    //   firstCtrl: [null, Validators.required]
-    // });
-    // this.secondFormGroup = this.formBuilder.group({
-    //   secondCtrl: [null, Validators.required]
-    // });
+    this.formGroupResponsible = this.formBuilder.group({});
+    this.formGroupQuestions = this.formBuilder.group({});
   }
 
   ngOnInit() {

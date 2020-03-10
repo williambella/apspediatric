@@ -8,6 +8,7 @@ import { SurveyFormComponent } from 'src/app/survey/components/survey-form/surve
 import { ResponsibleComponent } from './components/responsible/responsible.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { ResponsibleTabsComponent } from './components/responsible-tabs/responsible-tabs.component';
+import { PatientComponent } from './components/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ResponsibleTabsComponent } from './components/responsible-tabs/responsi
     SurveyFormComponent,
     ResponsibleComponent,
     QuestionsComponent,
-    ResponsibleTabsComponent
+    ResponsibleTabsComponent,
+    PatientComponent
   ],
   imports: [
     CommonModule,

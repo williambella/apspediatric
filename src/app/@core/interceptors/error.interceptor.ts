@@ -23,6 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           case 400:
             this.messagesService.message('auth.warning', MessagesStatus.WARNING);
             break;
+          case 401:
           case 403:
             this.userService.gotoLogin();
             break;

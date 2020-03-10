@@ -1,0 +1,17 @@
+<ng-container *ngIf="formPatientArray.controls.length">
+  <form [formGroup]="formGroupResponsible" (submit)="formSubmit()">
+    <div formArrayName="patients" class="parcelas">
+      <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px" *ngFor="let patient of formPatientArray.controls; let i=index" [formGroupName]="i">
+        <div fxFlex.lg="50">
+          <mat-form-field>
+            <input matInput [placeholder]="'responsible.identification.name' | translate" formControlName="name" required autocomplete="off" >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>
+
+<!-- <pre>{{ formPatientArray?.controls?.length }}</pre> -->
+
+<button (click)="addPatient()">ADD</button>
