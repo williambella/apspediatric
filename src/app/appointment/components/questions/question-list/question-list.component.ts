@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { QuestiontService } from '@appointment/services/question.service';
 import { Group } from '@appointment/models/group';
 import { Question } from '@appointment/models/question';
-import { DialogService, DialogConfirmSettings, DialogConfirmAction } from '@core/services/dialog.service';
+import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
 import { MessagesService } from '@core/services/messages.service';
 
 @Component({
@@ -48,10 +48,7 @@ export class QuestionListComponent implements OnInit, OnDestroy {
   }
 
   delete(question: Question): void {
-    const dialogConfirmSettings: DialogConfirmSettings = {
-    };
-
-    this.dialogService.confirm(dialogConfirmSettings)
+    this.dialogService.confirm()
     .then((confirm: DialogConfirmAction) => {
       if (confirm.value) {
         const deleteSubscription: Subscription = this.questionService.delete(question.id)

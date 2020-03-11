@@ -1,17 +1,17 @@
 <ng-container *ngIf="formGroup">
-  <mat-tab-group dynamicHeight>
+  <mat-tab-group #matTabGroup dynamicHeight [selectedIndex]="0">
     <mat-tab>
       <ng-template mat-tab-label>
         {{ 'responsible.identification.title' | translate }}
       </ng-template>
-      <app-responsible [formGroup]="formGroup"></app-responsible>
+      <app-responsible [formGroup]="formGroup" (tabChange)="selectTabChange($event)"></app-responsible>
     </mat-tab>
 
     <mat-tab>
       <ng-template mat-tab-label>
         {{ 'responsible.patients.title' | translate }}
       </ng-template>
-      <app-patient [formGroup]="formGroup"></app-patient>
+      <app-patient [formGroup]="formGroup" (tabChange)="selectTabChange($event)"></app-patient>
     </mat-tab>
 
     <mat-tab>

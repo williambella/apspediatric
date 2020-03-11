@@ -7,8 +7,8 @@
         <div fxFlex.lg="70">
           <mat-form-field>
             <input matInput #title formControlName="question" [maxLength]="200" required type="text" [placeholder]="'question.form.question' | translate" autocomplete="off" />
-            <mat-hint align="end">{{title.value.length}} / {{title.maxLength}}</mat-hint>
-            <mat-error *ngIf="formGroup.hasError('required',['question'])">{{'form.validation.required' | translate}}</mat-error>
+            <mat-hint align="end">{{ title.value.length }} / {{ title.maxLength }}</mat-hint>
+            <mat-error *ngIf="formGroup.hasError('required',['question'])">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>
 
@@ -24,7 +24,7 @@
       </div>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions class="btn-actions" align="end">
       <button type="button" mat-flat-button [routerLink]="['/','appointment','groups', group?.id, 'questions']">
         {{ 'commom.back' | translate }}
       </button>

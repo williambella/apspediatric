@@ -8,20 +8,20 @@
           <mat-form-field>
             <input matInput #title formControlName="group" [maxLength]="200" required type="text" [placeholder]="'group.form.group' | translate" autocomplete="off" />
             <mat-hint align="end">{{title.value.length}} / {{title.maxLength}}</mat-hint>
-            <mat-error *ngIf="formGroup.hasError('required',['group'])">{{'form.validation.required' | translate}}</mat-error>
+            <mat-error *ngIf="formGroup.hasError('required',['group'])">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>
 
         <div fxFlex.lg="50">
           <mat-form-field>
             <input matInput #order formControlName="order" type="text" [placeholder]="'form.order' | translate" autocomplete="off" />
-            <mat-error *ngIf="formGroup.hasError('pattern',['order'])">{{'form.validation.required' | translate}}</mat-error>
+            <mat-error *ngIf="formGroup.hasError('pattern',['order'])">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>
       </div>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions class="btn-actions" align="end">
       <button type="button" mat-flat-button [routerLink]="['/','appointment','groups']">
         {{ 'commom.back' | translate }}
       </button>

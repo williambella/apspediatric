@@ -1,27 +1,25 @@
-<ng-container *ngIf="formGroupResponsible">
-  <form [formGroup]="formGroupResponsible" (submit)="formSubmit()">
-    <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
-      <div fxFlex.lg="50">
-        <mat-form-field>
-          <input matInput [placeholder]="'responsible.identification.name' | translate" formControlName="name" required autocomplete="off" >
-        </mat-form-field>
-      </div>
-
-      <div fxFlex.lg="50">
-        <mat-form-field>
-          <mat-select [placeholder]="'responsible.identification.parental_degree' | translate" formControlName="parentalDegree" >
-            <mat-option *ngFor="let p of parentalDegree" [value]="p">
-              {{ p }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+<form [formGroup]="formGroupResponsible" (submit)="formSubmit()">
+  <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+    <div fxFlex.lg="50">
+      <mat-form-field>
+        <input #name matInput [placeholder]="'responsible.identification.name' | translate" maxLength="100" formControlName="name" required autocomplete="off" >
+        <mat-hint align="end">{{ name.value.length}} / {{ name.maxLength }}</mat-hint>
+        <mat-error *ngIf="formGroupResponsible.hasError('required',['name'])">{{ 'form.validation.required' | translate }}</mat-error>
+      </mat-form-field>
     </div>
 
-    <div align="end">
-      <!-- <button mat-flat-button color="primary" matStepperNext>{{ 'commom.save' | translate }}</button> -->
-      <button type="button" mat-button matStepperPrevious>{{ 'commom.back' | translate }}</button>
-      <button type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
+    <div fxFlex.lg="50">
+      <mat-form-field>
+        <mat-select [placeholder]="'responsible.identification.parental_degree' | translate" formControlName="parentalDegree" >
+          <mat-option *ngFor="let p of parentalDegree" [value]="p">
+            {{ p }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-  </form>
-</ng-container>
+  </div>
+
+  <div class="btn-actions" align="end">
+    <button type="button" mat-flat-button color="primary" (click)="tabChange.emit(1)">{{ 'commom.next' | translate }}</button>
+  </div>
+</form>

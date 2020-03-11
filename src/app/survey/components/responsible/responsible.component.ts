@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Responsible } from 'src/app/responsible/models/responsible';
@@ -12,7 +12,10 @@ import { ResponsibleService } from '@responsible/services/responsible.service';
 })
 export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
+  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
+
   responsible: Responsible;
+
   private readonly formGroupName = 'responsible';
 
   parentalDegree: Array<string> = [

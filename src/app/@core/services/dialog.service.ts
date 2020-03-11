@@ -25,11 +25,11 @@ export class DialogService {
   constructor(private languageService: LanguagesService) {
   }
 
-  confirm(dialogConfirmSettings?: DialogConfirmSettings): Promise<any> {
+  confirm(dialogConfirmSettings: DialogConfirmSettings = {} ): Promise<any> {
     return Swal.fire({
-      title: dialogConfirmSettings.title || this.languageService.getTranslate('dialog.confirm.title'),
+      title: (dialogConfirmSettings.title) || this.languageService.getTranslate('dialog.confirm.title'),
       text: dialogConfirmSettings.title || this.languageService.getTranslate('dialog.confirm.text'),
-      icon: dialogConfirmSettings.title as SweetAlertIcon || 'warning',
+      icon: dialogConfirmSettings.icon as SweetAlertIcon || 'warning',
       showCancelButton: dialogConfirmSettings.showCancelButton || true,
       confirmButtonText: dialogConfirmSettings.confirmButtonText || this.languageService.getTranslate('dialog.confirm.confirm'),
       cancelButtonText: dialogConfirmSettings.cancelButtonText || this.languageService.getTranslate('dialog.confirm.cancel')
