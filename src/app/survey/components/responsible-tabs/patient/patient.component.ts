@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
 import { Patient } from '@responsible/models/patient';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-patient',
@@ -41,6 +41,7 @@ export class PatientComponent implements OnInit, OnDestroy, OnChanges {
 
   addPatient(): void {
     this.formPatientArray.push(this.formBuilder.group({
+      responsilbleId: [null],
       name: [null, Validators.compose([Validators.required, Validators.maxLength(100)])],
       birth: [null, Validators.compose([Validators.required])]
     }));

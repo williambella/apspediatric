@@ -83,7 +83,14 @@
       "title": "Patients"
     },
     "contacts": {
-      "title": "Contacts"
+      "title": "Contacts",
+      "contact_type": "Contact Type",
+      "contact": "Contact",
+      "contacts": {
+        "t": "Telephone",
+        "e": "E-mail",
+        "w": "Web"
+      }
     }
   },
   "commom": {
