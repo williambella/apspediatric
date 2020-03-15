@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { DialogService, DialogConfirmSettings, DialogConfirmAction } from '@core/services/dialog.service';
+import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GroupService } from '@appointment/services/group.service';
 import { Group } from '@appointment/models/group';
@@ -42,10 +42,7 @@ export class GroupListComponent implements OnInit, OnDestroy {
   }
 
   delete(group: Group): void {
-    const dialogConfirmSettings: DialogConfirmSettings = {
-    };
-
-    this.dialogService.confirm(dialogConfirmSettings)
+    this.dialogService.confirm()
     .then((confirm: DialogConfirmAction) => {
       if (confirm.value) {
         const deleteSubscription: Subscription = this.groupService.delete(group.id)

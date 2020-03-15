@@ -4,5 +4,5 @@ export interface Patient {
   id?: string;
   name: string;
   birth: moment.Moment;
-  responsilbleId: string;
+  responsibleId: string;
 }

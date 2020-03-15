@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '@core/guard/auth.guard';
-import { SurveyComponent } from 'src/app/survey/components/survey/survey.component';
-import { SurveyFormComponent } from 'src/app/survey/components/survey-form/survey-form.component';
+import { SurveyComponent } from '@survey/components/survey/survey.component';
+import { SurveyStepperComponent } from '@survey/components/survey-stepper/survey-stepper.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'new',
-        component: SurveyFormComponent
+        component: SurveyStepperComponent
       }
     ]
   }

@@ -24,7 +24,9 @@
     "sure": "Form data has been modified. Are you sure ?",
     "validation": {
       "required": "Field is required",
-      "email": "Wrong email format"
+      "email": "Wrong email format",
+      "max_length": "Max {{ maxLength }} characters",
+      "mat_datepicker_parse": "Invalid date format"
     },
     "updated": "Register updated",
     "removed": "Register removed"
@@ -74,14 +76,21 @@
       "title": "Identification",
       "name": "Responsible Name",
       "child_name": "Child Name",
-      "child_age": "Child Age",
+      "child_age": "Date of birth",
       "parental_degree": "Parental Degree"
     },
     "patients": {
       "title": "Patients"
     },
     "contacts": {
-      "title": "Contacts"
+      "title": "Contacts",
+      "contact_type": "Contact Type",
+      "contact": "Contact",
+      "contacts": {
+        "t": "Telephone",
+        "e": "E-mail",
+        "w": "Web"
+      }
     }
   },
   "commom": {
@@ -91,7 +100,8 @@
     "next": "Next",
     "back": "Back",
     "date": "Date",
-    "done": "Done"
+    "done": "Done",
+    "add_new": "Add New"
   },
   "messages": {
     "SUCCESS": "Success ",
