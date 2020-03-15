@@ -1,26 +1,24 @@
-import { AppointmentModule } from './../appointment/appointment.module';
-import { SurveyRoutingModule } from './survey-routing.module';
-import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SurveyComponent } from 'src/app/survey/components/survey/survey.component';
-import { SurveyFormComponent } from 'src/app/survey/components/survey-form/survey-form.component';
-import { ResponsibleComponent } from './components/responsible/responsible.component';
-import { QuestionsComponent } from './components/questions/questions.component';
-import { ResponsibleTabsComponent } from './components/responsible-tabs/responsible-tabs.component';
-import { PatientComponent } from './components/patient/patient.component';
+import { SharedModule } from '@shared/shared.module';
+import { SurveyRoutingModule } from '@survey/survey-routing.module';
+import { SurveyComponent } from '@survey/components/survey/survey.component';
+import { SurveyStepperComponent } from '@survey/components/survey-stepper/survey-stepper.component';
+import { PatientComponent } from '@survey/components/patient/patient.component';
+import { ResponsibleComponent } from '@survey/components/responsible/responsible.component';
+import { ResponsibleTabsComponent } from '@survey/components/responsible-tabs/responsible-tabs.component';
+import { QuestionsComponent } from '@survey//components/questions/questions.component';
+import { AppointmentModule } from '@appointment/appointment.module';
 
 @NgModule({
   declarations: [
     SurveyComponent,
-    SurveyFormComponent,
+    SurveyStepperComponent,
     ResponsibleComponent,
     QuestionsComponent,
     ResponsibleTabsComponent,
     PatientComponent
   ],
   imports: [
-    CommonModule,
     SharedModule,
     AppointmentModule,
     SurveyRoutingModule

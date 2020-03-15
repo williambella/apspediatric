@@ -2,11 +2,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-survey-form',
-  templateUrl: './survey-form.component.html',
-  styleUrls: ['./survey-form.component.scss']
+  selector: 'app-survey-stepper',
+  templateUrl: './survey-stepper.component.html',
+  styleUrls: ['./survey-stepper.component.scss']
 })
-export class SurveyFormComponent implements OnInit {
+export class SurveyStepperComponent implements OnInit {
   isLinear = true;
   formGroupResponsible: FormGroup;
   formGroupQuestions: FormGroup;
