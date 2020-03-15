@@ -1,9 +1,9 @@
 import { ContactsType } from './../../../../responsible/models/contacts-type';
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, SimpleChanges, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Contact } from '@responsible/models/contact';
 import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -12,10 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
+  @Input() contacts: Array<Contact>;
+
   @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
   @Output() saveAll: EventEmitter<any> = new EventEmitter<any>();
-
-  contacts: Array<Contact>;
 
   contactsType: Array<ContactsType>  = [
     {
@@ -52,15 +52,20 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
     if (changes && changes.formGroup.currentValue) {
       this.formGroup.addControl(this.formArrayName, new FormArray([]));
 
-      this.addContact();
+      if (changes && changes.contacts.currentValue) {
+        (changes.contacts.currentValue as Array<Contact>).map((contact: Contact) => this.addContact(contact));
+      } else {
+        this.addContact();
+      }
     }
   }
 
-  addContact(): void {
-    this.formPatientArray.push(this.formBuilder.group({
-      responsilbleId: [null],
-      type: [null, Validators.compose([Validators.required])],
-      contact: [null, Validators.compose([Validators.required, Validators.maxLength(100)])]
+  addContact(contact?: Contact): void {
+    this.formContactArray.push(this.formBuilder.group({
+      id: [contact ? contact.id : null],
+      responsibleId: [contact ? contact.responsibleId : null],
+      type: [contact ? contact.type : null, Validators.compose([Validators.required])],
+      contact: [contact ? contact.contact : null, Validators.compose([Validators.required, Validators.maxLength(100)])]
     }));
   }
 
@@ -68,12 +73,12 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
     this.dialogService.confirm()
     .then((confirm: DialogConfirmAction) => {
       if (confirm.value) {
-        this.formPatientArray.removeAt(index);
+        this.formContactArray.removeAt(index);
       }
     });
   }
 
-  get formPatientArray(): FormArray {
+  get formContactArray(): FormArray {
     return this.formGroup.get(this.formArrayName) as FormArray;
   }
 

@@ -1,19 +1,20 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
 import { Patient } from '@responsible/models/patient';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-patient',
-  templateUrl: './patient.component.html',
+  templateUrl: './patients.component.html',
   styles: []
 })
-export class PatientComponent implements OnInit, OnDestroy, OnChanges {
+export class PatientsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
-  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
+  @Input() patients: Array<Patient>;
 
-  patients: Array<Patient>;
+  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
 
   private readonly formArrayName = 'patients';
 
@@ -35,15 +36,20 @@ export class PatientComponent implements OnInit, OnDestroy, OnChanges {
     if (changes && changes.formGroup.currentValue) {
       this.formGroup.addControl(this.formArrayName, new FormArray([]));
 
-      this.addPatient();
+      if (changes && changes.patients.currentValue) {
+        (changes.patients.currentValue as Array<Patient>).map((patient:Patient) => this.addPatient(patient));
+      } else {
+        this.addPatient();
+      }
     }
   }
 
-  addPatient(): void {
+  addPatient(patient?: Patient): void {
     this.formPatientArray.push(this.formBuilder.group({
-      responsilbleId: [null],
-      name: [null, Validators.compose([Validators.required, Validators.maxLength(100)])],
-      birth: [null, Validators.compose([Validators.required])]
+      id: [patient ? patient.id : null],
+      responsilbleId: [patient ? patient.responsibleId : null],
+      name: [patient ? patient.name : null, Validators.compose([Validators.required, Validators.maxLength(100)])],
+      birth: [patient ? moment(patient.birth) : null, Validators.compose([Validators.required])]
     }));
   }
 

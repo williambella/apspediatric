@@ -4,21 +4,21 @@
       <ng-template mat-tab-label>
         {{ 'responsible.identification.title' | translate }}
       </ng-template>
-      <app-responsible #appResponsible [formGroup]="formGroup" (tabChange)="selectTabChange($event)"></app-responsible>
+      <app-responsible #appResponsible [formGroup]="formGroup" [responsible]="responsible" (tabChange)="selectTabChange($event)"></app-responsible>
     </mat-tab>
 
     <mat-tab>
       <ng-template mat-tab-label>
         {{ 'responsible.patients.title' | translate }}
       </ng-template>
-      <app-patient #appPatient [formGroup]="formGroup" (tabChange)="selectTabChange($event)"></app-patient>
+      <app-patient #appPatient [formGroup]="formGroup" [patients]="patients" (tabChange)="selectTabChange($event)"></app-patient>
     </mat-tab>
 
     <mat-tab>
       <ng-template mat-tab-label>
         {{ 'responsible.contacts.title' | translate }}
       </ng-template>
-      <app-contacts #appContact [formGroup]="formGroup" (tabChange)="selectTabChange($event)" (saveAll)="formSubmit()"></app-contacts>
+      <app-contacts #appContact [formGroup]="formGroup" [contacts]="contacts" (tabChange)="selectTabChange($event)" (saveAll)="formSubmit()"></app-contacts>
     </mat-tab>
   </mat-tab-group>
 </form>
