@@ -8,7 +8,7 @@ import { ResponsibleService } from '@responsible/services/responsible.service';
 @Component({
   selector: 'app-responsible',
   templateUrl: './responsible.component.html',
-  styleUrls: []
+  styleUrls: ['responsible.component.scss']
 })
 export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;

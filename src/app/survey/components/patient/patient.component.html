@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup">
-  <ng-container formArrayName="formArrayName">
+  <ng-container [formArrayName]="getFormArrayName">
     <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px" *ngFor="let patient of formPatientArray.controls; let i=index">
       <ng-container [formGroupName]="i">
         <div fxFlex.lg="50">
@@ -28,15 +28,17 @@
       </ng-container>
     </div>
 
-    <div class="btn-actions" align="end">
-      <div fxFlex.lg="100">
-        <button type="button" mat-icon-button (click)="addPatient()">
-          <mat-icon>add</mat-icon>
+    <div class="btn-actions">
+      <div fxFlex.lg="100" align="start">
+        <button type="button" mat-flat-button (click)="addPatient()">
+          <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
         </button>
       </div>
 
-      <button type="button" mat-button (click)="tabChange.emit(0)">{{ 'commom.back' | translate }}</button>
-      <button type="button" mat-flat-button color="primary" (click)="tabChange.emit(2)">{{ 'commom.next' | translate }}</button>
+      <div fxFlex.lg="100" align="end">
+        <button type="button" mat-button (click)="tabChange.emit(0)">{{ 'commom.back' | translate }}</button>
+        <button type="button" mat-flat-button color="primary" (click)="tabChange.emit(2)">{{ 'commom.next' | translate }}</button>
+      </div>
     </div>
   </ng-container>
 </form>

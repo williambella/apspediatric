@@ -59,4 +59,8 @@ export class PatientComponent implements OnInit, OnDestroy, OnChanges {
     return this.formGroup.get(this.formArrayName) as FormArray;
   }
 
+  get getFormArrayName(): string {
+    return this.formArrayName;
+  }
+
 }

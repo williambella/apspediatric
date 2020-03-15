@@ -93,7 +93,8 @@
     "next": "Next",
     "back": "Back",
     "date": "Date",
-    "done": "Done"
+    "done": "Done",
+    "add_new": "Add New"
   },
   "messages": {
     "SUCCESS": "Success ",
