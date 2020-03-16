@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./survey-stepper.component.scss']
 })
 export class SurveyStepperComponent implements OnInit {
-  isLinear = true;
   formGroupResponsible: FormGroup;
   formGroupQuestions: FormGroup;
 
