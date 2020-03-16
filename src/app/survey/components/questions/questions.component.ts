@@ -4,6 +4,8 @@ import { GroupService } from '@appointment/services/group.service';
 import { QuestiontService } from '@appointment/services/question.service';
 import { Group } from '@appointment/models/group';
 import { Question } from '@appointment/models/question';
+import { Patient } from '@responsible/models/patient';
+import { Responsible } from '@responsible/models/responsible';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,6 +15,9 @@ import { Subscription } from 'rxjs';
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   @Input() formGroup: FormGroup;
+  @Input() responsible: Responsible;
+  @Input() patients: Array<Patient>;
+
   groups: Array<Group>;
   questions: Array<Question>;
 
