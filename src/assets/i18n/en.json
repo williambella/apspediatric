@@ -87,7 +87,7 @@
       "contact_type": "Contact Type",
       "contact": "Contact",
       "contacts": {
-        "t": "Telephone",
+        "p": "Phone",
         "e": "E-mail",
         "w": "Web"
       }
