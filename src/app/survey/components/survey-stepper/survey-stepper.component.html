@@ -8,7 +8,7 @@
 
   <mat-step [stepControl]="formGroupQuestions">
     <ng-template matStepLabel>{{ 'question.title' | translate }}</ng-template>
-    <app-questions [formGroup]="formGroupQuestions" [responsible]="responsibleTabs.responsible" [patients]="responsibleTabs.patients"></app-questions>
+    <app-responses [formGroup]="formGroupQuestions" [responsible]="responsibleTabs.responsible" [patients]="responsibleTabs.patients"></app-responses>
   </mat-step>
 
   <mat-step>
@@ -21,6 +21,9 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
+<h2>formGroupQuestions</h2>
+<pre>{{ formGroupQuestions.value | json }}</pre>
 
 <h2>formGroupResponsible</h2>
 <pre>{{ formGroupResponsible?.value | json }}</pre>

@@ -6,7 +6,7 @@ import { SurveyStepperComponent } from '@survey/components/survey-stepper/survey
 import { PatientsComponent } from '@survey/components/responsible-tabs/patients/patients.component';
 import { ResponsibleComponent } from '@survey/components/responsible-tabs/responsible/responsible.component';
 import { ResponsibleTabsComponent } from '@survey/components/responsible-tabs/responsible-tabs.component';
-import { QuestionsComponent } from '@survey//components/questions/questions.component';
+import { ResponsesComponent } from '@survey/components/responses/responses.component';
 import { ContactsComponent } from '@survey/components/responsible-tabs/contacts/contacts.component';
 import { AppointmentModule } from '@appointment/appointment.module';
 
@@ -15,7 +15,7 @@ import { AppointmentModule } from '@appointment/appointment.module';
     SurveyComponent,
     SurveyStepperComponent,
     ResponsibleComponent,
-    QuestionsComponent,
+    ResponsesComponent,
     ResponsibleTabsComponent,
     PatientsComponent,
     ContactsComponent
