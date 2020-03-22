@@ -1,6 +1,6 @@
 <div [formGroup]="formGroup">
   <ng-container [formArrayName]="getFormArrayName">
-    <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px" *ngFor="let patient of formContactArray.controls; let i=index">
+    <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px" *ngFor="let patient of formContactArray.controls; let i = index">
       <ng-container [formGroupName]="i">
         <div fxFlex.lg="50">
           <mat-form-field>

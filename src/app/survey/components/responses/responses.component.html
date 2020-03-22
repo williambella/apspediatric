@@ -1,27 +1,37 @@
-<!-- <form [formGroup]="formGroup" (submit)="formSubmit()">
-  <div class="form-stepper">
-    <div fxLayout="column" fxLayoutGap="20px" *ngFor="let group of groups">
+<form [formGroup]="formGroup" (submit)="formSubmit()">
+  <ng-container [formGroupName]="getFormArrayName">
+    <div class="form-stepper" fxLayout="column" fxLayoutGap="20px" *ngFor="let group of groups; let i=index">
       <h3>{{ group.group }}</h3>
 
-      <mat-accordion formArrayName="formArrayQuestions">
-        <mat-expansion-panel [id]="group.id" *ngFor="let question of group.questions">
-          <mat-expansion-panel-header>
-            {{ question.question }}
-          </mat-expansion-panel-header>
+      <ng-container [formArrayName]="group.id" *ngFor="let question of questionsFromGroup(group.id)?.controls; let qi = index">
+        <mat-accordion [formGroupName]="qi">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              {{ question.value.question }}
+            </mat-expansion-panel-header>
 
-          <ng-template matExpansionPanelContent>
-            <mat-form-field>
-              <input matInput #title [formControlName]="question.id" [maxLength]="200" required type="text" autocomplete="off" />
-              <mat-error *ngIf="formArrayQuestions.hasError('required',[question.id])">{{ 'form.validation.required' | translate }}</mat-error>
-            </mat-form-field>
-          </ng-template>
-        </mat-expansion-panel>
-      </mat-accordion>
+            <ng-template matExpansionPanelContent>
+              <mat-form-field>
+                <input matInput #title formControlName="response" [maxLength]="200" required type="text" autocomplete="off" />
+                <mat-error *ngIf="question.hasError('required',[response])">{{ 'form.validation.required' | translate }}</mat-error>
+              </mat-form-field>
+            </ng-template>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
     </div>
-  </div>
 
-  <div align="end">
-    <button type="button" mat-button matStepperPrevious>{{ 'commom.back' | translate }}</button>
-    <button type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
-  </div>
-</form> -->
+    <div class="btn-actions">
+      <div fxFlex.lg="100" align="start">
+        <button type="button" mat-flat-button (click)="addContact()">
+          <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
+        </button>
+      </div>
+
+      <div fxFlex.lg="100" align="end">
+        <!-- <button type="button" mat-button (click)="tabChange.emit(0)">{{ 'commom.back' | translate }}</button> -->
+        <button type="submit" mat-flat-button color="primary">{{ 'commom.save' | translate }}</button>
+      </div>
+    </div>
+  </ng-container>
+</form>
