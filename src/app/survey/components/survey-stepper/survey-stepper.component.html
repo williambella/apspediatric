@@ -1,14 +1,16 @@
 <app-title icon="library_add_check" title="survey.title"></app-title>
 
-<mat-horizontal-stepper [linear]="false" #stepper>
-  <mat-step [stepControl]="formResponsible">
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <!-- [stepControl]="formGroupResponsible" -->
+  <mat-step>
     <ng-template matStepLabel>{{ 'responsible.title' | translate }}</ng-template>
-    <app-responsible-tabs [formGroup]="formResponsible"></app-responsible-tabs>
+    <app-responsible-tabs [formGroup]="formGroupResponsible"></app-responsible-tabs>
   </mat-step>
 
-  <mat-step [stepControl]="formQuestion">
+  <!-- [stepControl]="formGroupQuestions" -->
+  <mat-step>
     <ng-template matStepLabel>{{ 'question.title' | translate }}</ng-template>
-    <app-questions [formGroup]="formQuestion"></app-questions>
+    <app-questions [formGroup]="formGroupQuestions"></app-questions>
   </mat-step>
 
   <mat-step>
@@ -21,3 +23,9 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
+<h2>formGroupResponsible</h2>
+<pre>{{ formGroupResponsible?.value | json }}</pre>
+
+<h2>formGroupQuestions</h2>
+<pre>{{ formGroupQuestions?.value | json }}</pre>

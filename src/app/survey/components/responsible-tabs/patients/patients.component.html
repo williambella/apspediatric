@@ -1,0 +1,44 @@
+<div [formGroup]="formGroup">
+  <ng-container [formArrayName]="getFormArrayName">
+    <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px" *ngFor="let patient of formPatientArray.controls; let i=index">
+      <ng-container [formGroupName]="i">
+        <div fxFlex.lg="50">
+          <mat-form-field>
+            <input #name matInput [placeholder]="'responsible.identification.child_name' | translate" maxLength="100" formControlName="name" required autocomplete="off"/>
+            <mat-hint align="end">{{ name.value.length}} / {{ name.maxLength }}</mat-hint>
+            <mat-error *ngIf="patient.hasError('required',['name'])">{{ 'form.validation.required' | translate }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex.lg="50">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" [placeholder]="'responsible.identification.child_age' | translate" formControlName="birth" required autocomplete="off"/>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="patient.hasError('required',['birth']) && !(patient.hasError('required',['birth']))">{{ 'form.validation.required' | translate }}</mat-error>
+            <mat-error *ngIf="patient.hasError('matDatepickerParse',['birth'])">{{ 'form.validation.mat_datepicker_parse' | translate }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex.lg="4" fxFlex.xs="50">
+          <button type="button" mat-icon-button (click)="removePatient(i)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="btn-actions">
+      <div fxFlex.lg="100" align="start">
+        <button type="button" mat-flat-button (click)="addPatient()">
+          <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
+        </button>
+      </div>
+
+      <div fxFlex.lg="100" align="end">
+        <button type="button" mat-button (click)="tabChange.emit(0)">{{ 'commom.back' | translate }}</button>
+        <button type="button" mat-flat-button color="primary" (click)="tabChange.emit(2)">{{ 'commom.next' | translate }}</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -16,6 +16,8 @@ import { UrlInterceptor } from './interceptors/url.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthGuard } from './guard/auth.guard';
 import { DeactiveGuard } from './guard/deactive.guard';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,6 +74,25 @@ export function createTranslateLoader(http: HttpClient) {
         StorageService
       ],
       multi: true
+    },
+    {
+      provide: MAT_DATE_LOCALE, useValue: 'en-GB'
+    },
+    {
+      provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]
+    },
+    {
+      provide: MAT_DATE_FORMATS, useValue: {
+        parse: {
+          dateInput: 'YYYY-MM-DD',
+        },
+        display: {
+          dateInput: 'YYYY-MM-DD',
+          monthYearLabel: 'MM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        }
+      }
     }
   ]
 })
