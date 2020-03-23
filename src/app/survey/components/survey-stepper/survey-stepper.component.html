@@ -8,25 +8,16 @@
 
   <mat-step [stepControl]="formGroupQuestions">
     <ng-template matStepLabel>{{ 'question.title' | translate }}</ng-template>
-    <app-responses [formGroup]="formGroupQuestions" [responsible]="responsibleTabs.responsible" [patients]="responsibleTabs.patients"></app-responses>
+    <app-responses [formGroup]="formGroupQuestions" [responsible]="responsibleTabs.responsible" [patients]="responsibleTabs.patients" [stepper]="stepper"></app-responses>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>{{ 'commom.done' | translate }}</ng-template>
     <p>You are now done.</p>
 
-    <div align="end">
+    <!-- <div align="end">
       <button mat-button matStepperPrevious>Back</button>
       <button type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.save' | translate }}</button>
-    </div>
+    </div> -->
   </mat-step>
 </mat-horizontal-stepper>
-
-<h2>formGroupQuestions</h2>
-<pre>{{ formGroupQuestions.value | json }}</pre>
-
-<h2>formGroupResponsible</h2>
-<pre>{{ formGroupResponsible?.value | json }}</pre>
-
-<h2>formGroupQuestions</h2>
-<pre>{{ formGroupQuestions?.value | json }}</pre>

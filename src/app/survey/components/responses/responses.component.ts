@@ -1,3 +1,4 @@
+import { SurveyService } from './../../services/survey.service';
 import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { GroupService } from '@appointment/services/group.service';
@@ -7,6 +8,7 @@ import { Question } from '@appointment/models/question';
 import { Patient } from '@responsible/models/patient';
 import { Responsible } from '@responsible/models/responsible';
 import { Subscription } from 'rxjs';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-responses',
@@ -17,6 +19,7 @@ export class ResponsesComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
   @Input() responsible: Responsible;
   @Input() patients: Array<Patient>;
+  @Input() stepper: MatStepper;
 
   groups: Array<Group>;
   questions: Array<Array<Question>> = new Array<[]>();
@@ -28,7 +31,8 @@ export class ResponsesComponent implements OnInit, OnDestroy, OnChanges {
   constructor(
     private groupService: GroupService,
     private questiontService: QuestiontService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private surveyService: SurveyService
   ) {
   }
 
@@ -41,15 +45,40 @@ export class ResponsesComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.formGroup.currentValue) {
+      this.formGroup =  this.formBuilder.group({
+        patientId: [null, Validators.compose([Validators.required])]
+      });
+
       this.formGroup.addControl(this.formArrayName, this.formBuilder.group({}));
-      this.loadGroups();
+
+      const patientIdSubscription: Subscription = this.formGroup.get('patientId').valueChanges
+      .subscribe((patientId: string) => {
+        if (!this.groups) {
+          this.loadGroups();
+        }
+      });
+
+      this.arraySubscriptions = [...this.arraySubscriptions, patientIdSubscription];
+
     }
   }
 
   formSubmit(): void {
-    console.log(this,this.formGroup.value);
     if (this.formGroup.valid) {
-      // TODO: Create or Update A Survey
+      const questions: Array<Question> = [];
+
+      Object.keys(this.formGroup.value.questions)
+      .map(a => {
+        return this.formGroup.value.questions[a];
+      }).map((b: Array<Question>) => {
+        b.map((q: Question) => questions.push(q));
+      });
+
+      // console.log(questions);
+      const patientIdSubscription: Subscription = this.surveyService.save(questions)
+      .subscribe(() => {
+        this.stepper.next();
+      });
     }
   }
 
@@ -88,10 +117,10 @@ export class ResponsesComponent implements OnInit, OnDestroy, OnChanges {
             id: [null],
             questionId: [question.id],
             idGroup: [question.idGroup],
-            idType: [null],
+            idType: [question.idType],
             question: [question.question],
             response: [null, Validators.required],
-            patientId: [null]
+            patientId: [this.formGroup.get('patientId').value]
           });
 
           (this.formQuestionsArray.get(group.id) as FormArray).push(formGroup);
