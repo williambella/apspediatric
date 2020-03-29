@@ -1,7 +1,7 @@
-import { Responsible } from './../../../../responsible/models/responsible';
-import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Responsible } from '../../../../responsible/models/responsible';
 
 @Component({
   selector: 'app-responsible',
@@ -11,9 +11,6 @@ import { Subscription } from 'rxjs';
 export class ResponsibleComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
   @Input() responsible: Responsible;
-
-  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
-
   private readonly formArrayName = 'responsible';
 
   parentalDegree: Array<string> = [

@@ -3,7 +3,8 @@
 }
 
 .container {
-  padding: 30pt;
+  padding-left: 30pt;
+  padding-right: 30pt;
 
   @media only screen and (max-width: 600px) {
     padding: 15pt;

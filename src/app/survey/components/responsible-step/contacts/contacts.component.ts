@@ -1,9 +1,9 @@
-import { ContactsType } from './../../../../responsible/models/contacts-type';
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, SimpleChanges, OnChanges } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogConfirmAction, DialogService } from '@core/services/dialog.service';
 import { Contact } from '@responsible/models/contact';
-import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
-import { Subscription, of } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { ContactsType } from '../../../../responsible/models/contacts-type';
 
 @Component({
   selector: 'app-contacts',
@@ -13,9 +13,6 @@ import { Subscription, of } from 'rxjs';
 export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
   @Input() contacts: Array<Contact>;
-
-  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
-  @Output() saveAll: EventEmitter<any> = new EventEmitter<any>();
 
   contactsType: Array<ContactsType>  = [
     {

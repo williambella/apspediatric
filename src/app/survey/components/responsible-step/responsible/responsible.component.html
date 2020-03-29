@@ -1,6 +1,6 @@
 <div [formGroup]="formGroupResponsible">
   <div class="form-stepper" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
-    <div fxFlex.lg="50">
+    <div fxFlex.lg="46">
       <mat-form-field>
         <input #name matInput [placeholder]="'responsible.identification.name' | translate" maxLength="100" formControlName="name" required autocomplete="off" >
         <mat-hint align="end">{{ name.value.length}} / {{ name.maxLength }}</mat-hint>
@@ -8,7 +8,7 @@
       </mat-form-field>
     </div>
 
-    <div fxFlex.lg="50">
+    <div fxFlex.lg="46">
       <mat-form-field>
         <mat-select [placeholder]="'responsible.identification.parental_degree' | translate" formControlName="parentalDegree" >
           <mat-option *ngFor="let p of parentalDegree" [value]="p">
@@ -20,7 +20,4 @@
     </div>
   </div>
 
-  <div class="btn-actions" align="end">
-    <button type="button" mat-flat-button color="primary" (click)="tabChange.emit(1)">{{ 'commom.next' | translate }}</button>
-  </div>
 </div>

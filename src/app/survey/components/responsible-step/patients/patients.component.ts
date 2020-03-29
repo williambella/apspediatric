@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DialogConfirmAction, DialogService } from '@core/services/dialog.service';
 import { Patient } from '@responsible/models/patient';
-import { Subscription } from 'rxjs';
 import * as moment from 'moment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-patient',
@@ -13,9 +13,6 @@ import * as moment from 'moment';
 export class PatientsComponent implements OnInit, OnDestroy, OnChanges {
   @Input() formGroup: FormGroup;
   @Input() patients: Array<Patient>;
-
-  @Output() tabChange: EventEmitter<number> = new EventEmitter<number>();
-
   private readonly formArrayName = 'patients';
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
@@ -37,7 +34,7 @@ export class PatientsComponent implements OnInit, OnDestroy, OnChanges {
       this.formGroup.addControl(this.formArrayName, new FormArray([]));
 
       if (changes && changes.patients.currentValue) {
-        (changes.patients.currentValue as Array<Patient>).map((patient:Patient) => this.addPatient(patient));
+        (changes.patients.currentValue as Array<Patient>).map((patient: Patient) => this.addPatient(patient));
       } else {
         this.addPatient();
       }
@@ -55,11 +52,11 @@ export class PatientsComponent implements OnInit, OnDestroy, OnChanges {
 
   removePatient(index: number): void {
     this.dialogService.confirm()
-    .then((confirm: DialogConfirmAction) => {
-      if (confirm.value) {
-        this.formPatientArray.removeAt(index);
-      }
-    });
+      .then((confirm: DialogConfirmAction) => {
+        if (confirm.value) {
+          this.formPatientArray.removeAt(index);
+        }
+      });
   }
 
   get formPatientArray(): FormArray {
