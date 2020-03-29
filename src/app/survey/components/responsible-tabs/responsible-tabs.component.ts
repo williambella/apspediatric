@@ -28,52 +28,52 @@ export class ResponsibleTabsComponent implements OnInit, OnDestroy {
   @Input() formGroup: FormGroup;
 
   // TODO: Temporário
-  // responsible: Responsible;
-  responsible: Responsible = {
-    id: '5e6e7bcd7664a32a66138ebb',
-    name: 'teste bruno 20:00',
-    parentalDegree: 'Father'
-  };
+  responsible: Responsible;
+  // responsible: Responsible = {
+  //   id: '5e6e7bcd7664a32a66138ebb',
+  //   name: 'teste bruno 20:00',
+  //   parentalDegree: 'Father'
+  // };
 
   // TODO: Temporário
-  // patients: Array<Patient>;
-  patients: Array<Patient> = [
-    {
-      id: '5e6e7bce7664a32a66138ebc',
-      name: 'Gabriela',
-      birth: moment('2020-03-11T23:00:00.000Z'),
-      responsibleId: '5e6e7bcd7664a32a66138ebb'
-    },
-    {
-      id: '5e6e7bce7664a32a66138ebd',
-      name: 'Rita',
-      birth: moment('2020-03-11T23:00:00.000Z'),
-      responsibleId: '5e6e7bcd7664a32a66138ebb'
-    },
-    {
-      id: '5e6e7bce7664a32a66138ebe',
-      name: 'Chico',
-      birth: moment('2020-03-11T23:00:00.000Z'),
-      responsibleId: '5e6e7bcd7664a32a66138ebb'
-    }
-  ];
+  patients: Array<Patient>;
+  // patients: Array<Patient> = [
+  //   {
+  //     id: '5e6e7bce7664a32a66138ebc',
+  //     name: 'Gabriela',
+  //     birth: moment('2020-03-11T23:00:00.000Z'),
+  //     responsibleId: '5e6e7bcd7664a32a66138ebb'
+  //   },
+  //   {
+  //     id: '5e6e7bce7664a32a66138ebd',
+  //     name: 'Rita',
+  //     birth: moment('2020-03-11T23:00:00.000Z'),
+  //     responsibleId: '5e6e7bcd7664a32a66138ebb'
+  //   },
+  //   {
+  //     id: '5e6e7bce7664a32a66138ebe',
+  //     name: 'Chico',
+  //     birth: moment('2020-03-11T23:00:00.000Z'),
+  //     responsibleId: '5e6e7bcd7664a32a66138ebb'
+  //   }
+  // ];
 
   // TODO: Temporário
-  // contacts: Array<Contact>;
-  contacts: Array<Contact> = [
-    {
-      id: '5e6e7bce7664a32a66138ebf',
-      responsibleId: '5e6e7bcd7664a32a66138ebb',
-      type: 'T',
-      contact: '234234234234234'
-    },
-    {
-      id: '5e6e7bce7664a32a66138ec0',
-      responsibleId: '5e6e7bcd7664a32a66138ebb',
-      type: 'E',
-      contact: 'bruno@gmail.com'
-    }
-  ];
+  contacts: Array<Contact>;
+  // contacts: Array<Contact> = [
+  //   {
+  //     id: '5e6e7bce7664a32a66138ebf',
+  //     responsibleId: '5e6e7bcd7664a32a66138ebb',
+  //     type: 'T',
+  //     contact: '234234234234234'
+  //   },
+  //   {
+  //     id: '5e6e7bce7664a32a66138ec0',
+  //     responsibleId: '5e6e7bcd7664a32a66138ebb',
+  //     type: 'E',
+  //     contact: 'bruno@gmail.com'
+  //   }
+  // ];
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 

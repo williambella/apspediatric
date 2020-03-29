@@ -22,6 +22,7 @@
     "order": "Order",
     "submit": "Submit",
     "sure": "Form data has been modified. Are you sure ?",
+    "answer": "Answer",
     "validation": {
       "required": "Field is required",
       "email": "Wrong email format",
@@ -77,7 +78,8 @@
       "name": "Responsible Name",
       "child_name": "Child Name",
       "child_age": "Date of birth",
-      "parental_degree": "Parental Degree"
+      "parental_degree": "Parental Degree",
+      "choose_patient": "Choose Patient"
     },
     "patients": {
       "title": "Patients"
@@ -87,7 +89,7 @@
       "contact_type": "Contact Type",
       "contact": "Contact",
       "contacts": {
-        "t": "Telephone",
+        "p": "Phone",
         "e": "E-mail",
         "w": "Web"
       }

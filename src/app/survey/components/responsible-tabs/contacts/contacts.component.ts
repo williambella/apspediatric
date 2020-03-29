@@ -20,7 +20,7 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   contactsType: Array<ContactsType>  = [
     {
       type: 'T',
-      label: 'responsible.contacts.contacts.t'
+      label: 'responsible.contacts.contacts.p'
     },
     {
       type: 'E',

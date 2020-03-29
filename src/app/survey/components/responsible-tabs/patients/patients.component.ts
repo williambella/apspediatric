@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DialogService, DialogConfirmAction } from '@core/services/dialog.service';
 import { Patient } from '@responsible/models/patient';
 import { Subscription } from 'rxjs';
