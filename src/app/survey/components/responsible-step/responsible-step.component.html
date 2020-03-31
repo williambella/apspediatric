@@ -1,11 +1,13 @@
-<mat-card>
-  <form [formGroup]="formGroup" (submit)="formSubmit()">
-    <app-responsible #appResponsible [formGroup]="formGroup" [responsible]="responsible"></app-responsible>
-    <app-patient #appPatient [formGroup]="formGroup" [patients]="patients">
-    </app-patient>
-    <app-contacts #appContact [formGroup]="formGroup" [contacts]="contacts"></app-contacts>
-  </form>
-</mat-card>
-<div class="right-button">
-  <button [disabled]="formGroup.invalid" (click)="viewForm()" type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
+<div *ngIf="formGroup">
+  <mat-card>
+    <form [formGroup]="formGroup" (submit)="formSubmit()">
+      <app-responsible #appResponsible [formGroup]="formGroup" [responsible]="responsible"></app-responsible>
+      <app-patient #appPatient [formGroup]="formGroup" [patients]="patients">
+      </app-patient>
+      <app-contacts #appContact [formGroup]="formGroup" [contacts]="contacts"></app-contacts>
+    </form>
+  </mat-card>
+  <div class="right-button">
+    <button [disabled]="formGroup.invalid" (click)="viewForm()" type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
+  </div>
 </div>

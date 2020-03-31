@@ -54,6 +54,7 @@ mat-form-field {
 .right-button {
   float: right;
   margin-right: 15px;
+  margin-bottom: 15px;
   margin-top: 15px;
 }
 
@@ -61,6 +62,11 @@ mat-form-field {
   border-radius: 20px !important;
   border: 1px solid #c1c1c191 !important;
 
+}
+
+mat-vertical-stepper,
+mat-step-header {
+  border-radius: 20px !important;
 }
 
 
@@ -104,4 +110,9 @@ form {
 
 .margin-bottom {
   margin-bottom: 20px;
+}
+
+mat-sidenav-container {
+  min-height: unset !important;
+  height: 91vh !important;
 }

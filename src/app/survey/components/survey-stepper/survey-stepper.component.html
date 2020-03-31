@@ -3,22 +3,10 @@
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="formGroupResponsible">
     <ng-template matStepLabel>{{ 'responsible.title' | translate }}</ng-template>
-    <app-responsible-step #responsibleTabs [formGroup]="formGroupResponsible"></app-responsible-step>
+    <app-responsible-step *ngIf="formGroupResponsible" #responsibleTabs [formGroup]="formGroupResponsible"></app-responsible-step>
   </mat-step>
 
-  <mat-step [stepControl]="formGroupQuestions">
-    <ng-template matStepLabel>{{ 'question.title' | translate }}</ng-template>
-    <app-responses [formGroup]="formGroupQuestions" [responsible]="responsibleTabs.responsible"
-      [patients]="responsibleTabs.patients" [stepper]="stepper"></app-responses>
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel>{{ 'commom.next' | translate }}</ng-template>
-    <p>You are now done.</p>
-
-    <!-- <div align="end">
-      <button mat-button matStepperPrevious>Back</button>
-      <button type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.save' | translate }}</button>
-    </div> -->
+  <mat-step *ngFor="let group of groups">
+    <ng-template matStepLabel>{{ group.group }}</ng-template>
   </mat-step>
 </mat-vertical-stepper>

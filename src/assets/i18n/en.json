@@ -69,10 +69,10 @@
     "title": "Type"
   },
   "survey": {
-    "title": "Survey"
+    "title": "Questionnaire"
   },
   "responsible": {
-    "title": "Responsible",
+    "title": "Personal Information",
     "identification": {
       "title": "Identification",
       "name": "Responsible Name",
