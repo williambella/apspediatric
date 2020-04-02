@@ -16,7 +16,6 @@
         <div fxFlex.lg="50">
           <mat-form-field>
             <input #contact matInput [placeholder]="'responsible.contacts.contact' | translate" maxLength="100" formControlName="contact" required autocomplete="off"/>
-            <mat-hint align="end">{{ contact.value.length}} / {{ contact.maxLength }}</mat-hint>
             <mat-error *ngIf="patient.hasError('required',['contact']) && !(patient.hasError('required',['contact']))">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>

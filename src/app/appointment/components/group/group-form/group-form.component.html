@@ -7,7 +7,6 @@
         <div fxFlex.lg="50">
           <mat-form-field>
             <input matInput #title formControlName="group" [maxLength]="200" required type="text" [placeholder]="'group.form.group' | translate" autocomplete="off" />
-            <mat-hint align="end">{{title.value.length}} / {{title.maxLength}}</mat-hint>
             <mat-error *ngIf="formGroup.hasError('required',['group'])">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>

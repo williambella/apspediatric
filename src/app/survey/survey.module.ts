@@ -9,6 +9,9 @@ import { ResponsibleStepComponent } from '@survey/components/responsible-step/re
 import { ResponsesComponent } from '@survey/components/responses/responses.component';
 import { ContactsComponent } from '@survey/components/responsible-step/contacts/contacts.component';
 import { AppointmentModule } from '@appointment/appointment.module';
+import { GenericStepComponent } from './components/generic-step/generic-step.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './components/dynamic-form-question/dynamic-form-question.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { AppointmentModule } from '@appointment/appointment.module';
     ResponsesComponent,
     ResponsibleStepComponent,
     PatientsComponent,
-    ContactsComponent
+    ContactsComponent,
+    GenericStepComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ],
   imports: [
     SharedModule,

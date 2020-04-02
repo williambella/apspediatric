@@ -1,28 +1,29 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Group } from '@appointment/models/group';
 import { GroupService } from '@appointment/services/group.service';
 import { QuestiontService } from '@appointment/services/question.service';
+import { QuestionService } from '@survey/services/question.service';
 import { forkJoin, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-survey-stepper',
   templateUrl: './survey-stepper.component.html',
-  styleUrls: ['./survey-stepper.component.scss']
+  styleUrls: ['./survey-stepper.component.scss'],
+  providers: [QuestionService]
 })
 export class SurveyStepperComponent implements OnInit, OnDestroy {
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
   formGroupResponsible: FormGroup;
-  formGroupQuestions: FormGroup;
   groups: Array<Group>;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private groupService: GroupService,
-    private questiontService: QuestiontService,
+    private questiontService: QuestiontService
   ) {
     this.formGroupResponsible = this.formBuilder.group({});
-    this.formGroupQuestions = this.formBuilder.group({});
   }
 
   ngOnInit() {
@@ -42,8 +43,10 @@ export class SurveyStepperComponent implements OnInit, OnDestroy {
         .map(group => this.questiontService
           .findAllByGroupId(group.id)))
         .subscribe(questionArray => {
+
           const questionArrayWithoutEmpty = questionArray
             .filter(questions => questions && questions.length !== 0);
+
           this.groups = groups
             .filter(group => questionArrayWithoutEmpty
               .some(questions => questions[0].idGroup === group.id))
@@ -54,6 +57,7 @@ export class SurveyStepperComponent implements OnInit, OnDestroy {
                 .find(questions => group.id === questions[0].idGroup)
             }));
         });
+
     this.arraySubscriptions.push(questionSubList);
   }
 

@@ -9,7 +9,6 @@
         <div fxFlex="100">
           <mat-form-field>
             <input matInput #email formControlName="email" [maxLength]="200" required type="email" [placeholder]="'commom.email' | translate" autocomplete="off" />
-            <mat-hint align="end">{{email.value.length}} / {{email.maxLength}}</mat-hint>
             <mat-error *ngIf="formGroup.hasError('required',['email'])">{{ 'form.validation.required' | translate }}</mat-error>
             <mat-error *ngIf="formGroup.hasError('email',['email'])">{{ 'form.validation.email' | translate }}</mat-error>
           </mat-form-field>
@@ -18,7 +17,6 @@
         <div fxFlex="100">
           <mat-form-field>
             <input matInput #password formControlName="password" [maxLength]="200" required type="password" [placeholder]="'commom.password' | translate" autocomplete="off" />
-            <mat-hint align="end">{{password.value.length}} / {{password.maxLength}}</mat-hint>
             <mat-error *ngIf="formGroup.hasError('required',['password'])">{{ 'form.validation.required' | translate }}</mat-error>
           </mat-form-field>
         </div>
