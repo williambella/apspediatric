@@ -11,7 +11,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        redirectTo: 'survey',
+        pathMatch: 'full'
       },
       {
         path: 'auth',

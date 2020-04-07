@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <a *ngFor="let menu of menus" mat-list-item [routerLink]="menu.routerLink">
+  <a *ngFor="let menu of menus" mat-list-item [routerLink]="menu.routerLink" (click)="selectMenu($event)">
     {{ menu.title | translate }}
   </a>
 </mat-nav-list>

@@ -14,9 +14,9 @@
 
 <mat-sidenav-container fxFlexFill>
   <!-- fxHide.gt-sm="true" -->
-  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false">
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" disableClose="false"  opened="false">
     <div fxLayout="column">
-      <app-menu></app-menu>
+      <app-menu [onSelectMenu]="doSeletMenu"></app-menu>
     </div>
   </mat-sidenav>
 

@@ -48,7 +48,8 @@
       "new": "New Question",
       "edit": "Edit Question",
       "questions": "Questions",
-      "question": "Question"
+      "question": "Question",
+      "option": "Option"
     }
   },
   "group": {
@@ -59,7 +60,7 @@
       "select_group": "Select Group"
     },
     "list": {
-      "title": "Groups",
+      "title": "Manage Groups",
       "tooptip": {
         "questions": "Manage Questions from Group"
       }
