@@ -10,6 +10,7 @@ import { SharedModule } from '@shared/shared.module';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { QuestionsComponent } from './components/questions/questions/questions.component';
 import { TypesResolver } from './resolvers/types.resolver';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TypesResolver } from './resolvers/types.resolver';
   ],
   imports: [
     SharedModule,
+    FormsModule,
     AppointmentRoutingModule
   ],
   exports: [

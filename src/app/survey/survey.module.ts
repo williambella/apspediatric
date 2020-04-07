@@ -6,7 +6,6 @@ import { SurveyStepperComponent } from '@survey/components/survey-stepper/survey
 import { PatientsComponent } from '@survey/components/responsible-step/patients/patients.component';
 import { ResponsibleComponent } from '@survey/components/responsible-step/responsible/responsible.component';
 import { ResponsibleStepComponent } from '@survey/components/responsible-step/responsible-step.component';
-import { ResponsesComponent } from '@survey/components/responses/responses.component';
 import { ContactsComponent } from '@survey/components/responsible-step/contacts/contacts.component';
 import { AppointmentModule } from '@appointment/appointment.module';
 import { GenericStepComponent } from './components/generic-step/generic-step.component';
@@ -18,7 +17,6 @@ import { DynamicFormQuestionComponent } from './components/dynamic-form-question
     SurveyComponent,
     SurveyStepperComponent,
     ResponsibleComponent,
-    ResponsesComponent,
     ResponsibleStepComponent,
     PatientsComponent,
     ContactsComponent,
@@ -30,6 +28,6 @@ import { DynamicFormQuestionComponent } from './components/dynamic-form-question
     SharedModule,
     AppointmentModule,
     SurveyRoutingModule
-  ],
+  ]
 })
 export class SurveyModule { }

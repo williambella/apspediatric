@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { QuestionBase } from '@survey/models/question-base';
+import { Question } from '@appointment/models/question';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { QuestionBase } from '@survey/models/question-base';
     styleUrls: ['./dynamic-form-question.component.scss']
 })
 export class DynamicFormQuestionComponent {
-    @Input() question: QuestionBase<string>;
+    @Input() question: Question;
     @Input() form: FormGroup;
-    get isValid() { return this.form.controls[this.question.key].valid; }
+    get isValid() { return this.form.controls[this.question.id].valid; }
 }

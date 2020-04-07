@@ -2,29 +2,27 @@
 
     <div [ngSwitch]="question.controlType">
 
-        <mat-form-field *ngSwitchCase="'textbox'">
-            <input #name matInput [formControlName]="question.key" [placeholder]="question.label" autocomplete="off" />
+        <mat-form-field *ngSwitchCase="'text'">
+            <input #name matInput [formControlName]="question.id" [placeholder]="question.question" autocomplete="off" />
         </mat-form-field>
 
-        <mat-form-field *ngSwitchCase="'dropdown'">
-            <mat-label>{{ question.label }}</mat-label>
-            <mat-select [formControlName]="question.key">
-                <mat-option *ngFor="let opt of question.options" [value]="opt.key">
+        <mat-form-field *ngSwitchCase="'select'">
+            <mat-label>{{ question.question }}</mat-label>
+            <mat-select [formControlName]="question.id">
+                <mat-option *ngFor="let opt of question.options" [value]="opt.value">
                     {{opt.value}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <div *ngSwitchCase="'dropdown'" class="radio-button">
-            <mat-label>{{ question.label }}</mat-label>
-            <mat-radio-group aria-label="Select an option" [formControlName]="question.key">
-                <mat-radio-button *ngFor="let opt of question.options" [value]="opt.key">
+        <div *ngSwitchCase="'radio'" class="radio-button">
+            <mat-label>{{ question.question }}</mat-label>
+            <mat-radio-group aria-label="Select an option" [formControlName]="question.id">
+                <mat-radio-button *ngFor="let opt of question.options" [value]="opt.value">
                     {{opt.value}}
                 </mat-radio-button>
             </mat-radio-group>
         </div>
     </div>
     
-
-    <!-- <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div> -->
 </div>

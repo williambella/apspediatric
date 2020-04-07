@@ -1,14 +1,14 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Group } from '@appointment/models/group';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Type } from '@appointment/models/type';
-import { Subscription, Observable } from 'rxjs';
-import { CanDeactiveAbstract } from '@core/abstracts/can-deactive-abstract';
-import { QuestiontService } from '@appointment/services/question.service';
-import { LanguagesService } from '@core/services/languages.service';
 import { Question } from '@appointment/models/question';
+import { Type } from '@appointment/models/type';
+import { QuestiontService } from '@appointment/services/question.service';
+import { CanDeactiveAbstract } from '@core/abstracts/can-deactive-abstract';
+import { LanguagesService } from '@core/services/languages.service';
 import { MessagesService } from '@core/services/messages.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-question-form',
@@ -21,6 +21,8 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
   group: Group;
   question: Question;
   types: Array<Type>;
+  isToInsertOptions = false;
+  options = new Array<{ value: string }>();
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 
@@ -36,7 +38,24 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
 
     this.formGroup = this.formBuilder.group({
       question: [null, Validators.compose([Validators.required])],
-      idType: [null, Validators.compose([Validators.required])]
+      idType: [null, Validators.compose([Validators.required])],
+    });
+
+    this.formGroup.controls.idType.valueChanges.subscribe(value => {
+
+      if (this.types && this.types
+        .some(type => type.id === value
+          && (type.abbrev.toLowerCase() === 'select'
+            || type.abbrev.toLowerCase() === 'radio'))) {
+
+        this.isToInsertOptions = true;
+        this.options.push({ value: '' });
+
+      } else {
+        this.isToInsertOptions = false;
+      }
+
+
     });
   }
 
@@ -47,6 +66,15 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
 
         this.formGroup.get('question').setValue(this.question.question);
         this.formGroup.get('idType').setValue(this.question.idType);
+
+        const options = data.question.options;
+        if (options) {
+          Object
+            .keys(options)
+            .forEach(key => this.options.push({ value: options[key] }));
+
+          this.isToInsertOptions = true;
+        }
       }
 
       if (data && data.types) {
@@ -62,41 +90,53 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
     });
   }
 
+  removeOption = (option: { value: string }) => {
+    this.options = this.options.filter(opt => opt.value !== option.value);
+  };
+
+  addOption() {
+    this.options.push({ value: '' });
+  }
+
   ngOnDestroy(): void {
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  canDeactivate(): Observable<boolean> | boolean  {
-    return super.canDeactivate(this.formGroup.dirty);
+  isFormValid(): boolean {
+    return this.formGroup.valid && (!this.isToInsertOptions
+      || this.isToInsertOptions && this.options.length > 0
+      && !!this.options[0].value);
   }
 
   formSubmit(): void {
-    if (this.formGroup.valid) {
-      const localQuestion: Question = {
-        idGroup: this.group.id,
-        idType: this.formGroup.get('idType').value,
-        question: this.formGroup.get('question').value,
-        idLang: this.languageService.geCurrenttLang().id
-      };
+    const localQuestion: Question = {
+      idGroup: this.group.id,
+      idType: this.formGroup.get('idType').value,
+      question: this.formGroup.get('question').value,
+      idLang: this.languageService.geCurrenttLang().id
+    };
 
-      if (this.question) {
-        localQuestion.id = this.question.id;
-        localQuestion.idLang = this.question.idLang;
-      }
+    if (this.options.length > 0) {
+      let options = {};
+      this.options
+        .forEach(option => options[option.value.toLowerCase().replace(' ', '')] = option.value)
 
-      const formSubmitSubscription: Subscription =  this.questionService.save(localQuestion)
-      .subscribe((question: Question) => {
+      localQuestion.options = options;
+    }
+
+    if (this.question) {
+      localQuestion.id = this.question.id;
+      localQuestion.idLang = this.question.idLang;
+    }
+
+    const formSubmitSubscription: Subscription = this.questionService.save(localQuestion)
+      .subscribe(() => {
         this.formGroup.markAsPristine();
-        this.router.navigate(['/', 'appointment',  'groups', this.group.id, 'questions']);
+        this.router.navigate(['/', 'appointment', 'groups', this.group.id, 'questions']);
 
         this.messageService.message('form.updated');
       });
 
-      this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
-    }
-  }
-
-  compareFn(x: Type, y: Type): boolean {
-    return x && y ? x === y : x === y;
+    this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
   }
 }

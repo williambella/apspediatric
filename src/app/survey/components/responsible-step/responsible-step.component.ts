@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { MessagesService } from '@core/services/messages.service';
 import { Contact } from '@responsible/models/contact';
 import { Patient } from '@responsible/models/patient';
@@ -22,7 +22,7 @@ export class ResponsibleStepComponent implements OnDestroy {
   @ViewChild('appPatient', { static: false }) appPatient: PatientsComponent;
   @ViewChild('appContact', { static: false }) appContact: ContactsComponent;
 
-  @Input() formGroup: FormGroup;
+  formGroup: FormGroup;
 
   responsible: Responsible;
   patients: Array<Patient>;
@@ -34,8 +34,11 @@ export class ResponsibleStepComponent implements OnDestroy {
     private responsibleService: ResponsibleService,
     private patientService: PatientService,
     private contactService: ContactService,
-    private messageService: MessagesService
-  ) { }
+    private messageService: MessagesService,
+    private formBuilder: FormBuilder
+  ) { 
+    this.formGroup = this.formBuilder.group({});
+  }
 
 
   ngOnDestroy(): void {

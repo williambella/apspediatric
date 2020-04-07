@@ -4,4 +4,5 @@ export interface Question {
   idType: string;
   question: string;
   idLang: string;
+  options?: any;
 }

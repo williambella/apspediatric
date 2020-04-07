@@ -1,13 +1,15 @@
 <app-title icon="poll" [title]="question ? 'question.form.edit' : 'question.form.new'"></app-title>
 
-<form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
-  <mat-card>
-    <mat-card-content>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup">
       <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
         <div fxFlex.lg="70">
           <mat-form-field>
-            <input matInput #title formControlName="question" [maxLength]="200" required type="text" [placeholder]="'question.form.question' | translate" autocomplete="off" />
-            <mat-error *ngIf="formGroup.hasError('required',['question'])">{{ 'form.validation.required' | translate }}</mat-error>
+            <input matInput #title formControlName="question" [maxLength]="200" required type="text"
+              [placeholder]="'question.form.question' | translate" autocomplete="off" />
+            <mat-error *ngIf="formGroup.hasError('required',['question'])">{{ 'form.validation.required' | translate }}
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -21,17 +23,37 @@
           </mat-form-field>
         </div>
       </div>
-    </mat-card-content>
+    </form>
 
-    <mat-card-actions class="btn-actions" align="end">
-      <button type="button" mat-flat-button [routerLink]="['/','appointment','groups', group?.id, 'questions']">
-        {{ 'commom.back' | translate }}
-      </button>
+    <div *ngIf="isToInsertOptions">
+      <div *ngFor="let option of options; let i = index" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+        <div fxFlex.lg="40" fxFlex.xs="20">
+          <mat-form-field>
+            <input #input matInput [(ngModel)]="option.value" [maxLength]="30" type="text"
+              [placeholder]="'question.form.option' | translate" autocomplete="off" />
+          </mat-form-field>
+        </div>
+        <div fxFlex.lg="10">
+          <button type="button" mat-icon-button (click)="removeOption(option)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+      </div>
 
-      <!-- <button mat-flat-button color="primary">
-        {{ 'commom.save' | translate }}
-      </button> -->
-      <button type="button" mat-flat-button color="primary">{{ 'commom.save' | translate }}</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+      <div fxFlex.lg="10" align="start">
+        <button type="button" mat-flat-button (click)="addOption()">
+          <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
+        </button>
+      </div>
+
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="btn-actions" align="end">
+    <button type="button" mat-flat-button [routerLink]="['/','appointment','groups', group?.id, 'questions']">
+      {{ 'commom.back' | translate }}
+    </button>
+
+    <button [disabled]="!isFormValid()" (click)="formSubmit()" type="button" mat-flat-button color="primary">{{ 'commom.save' | translate }}</button>
+  </mat-card-actions>
+</mat-card>

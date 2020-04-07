@@ -63,10 +63,6 @@ export class QuestionListComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggle(question: Question): void {
-    console.log(question);
-  }
-
   private findAll(): void {
     const findQuestionsSubscription: Subscription = this.questionService.findAllByGroupId(this.group.id)
     .subscribe((questions: Array<Question>) => {
