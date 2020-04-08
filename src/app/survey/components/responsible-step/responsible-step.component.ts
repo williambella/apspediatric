@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessagesService } from '@core/services/messages.service';
 import { Contact } from '@responsible/models/contact';
 import { Patient } from '@responsible/models/patient';
@@ -11,6 +11,7 @@ import { ContactsComponent } from '@survey/components/responsible-step/contacts/
 import { PatientsComponent } from '@survey/components/responsible-step/patients/patients.component';
 import { ResponsibleComponent } from '@survey/components/responsible-step/responsible/responsible.component';
 import { forkJoin, Observable, Subscription } from 'rxjs';
+import { SurveyService } from '@survey/services/survey.service';
 
 @Component({
   selector: 'app-responsible-step',
@@ -35,8 +36,9 @@ export class ResponsibleStepComponent implements OnDestroy {
     private patientService: PatientService,
     private contactService: ContactService,
     private messageService: MessagesService,
-    private formBuilder: FormBuilder
-  ) { 
+    private formBuilder: FormBuilder,
+    private surveyService: SurveyService
+  ) {
     this.formGroup = this.formBuilder.group({});
   }
 
@@ -45,11 +47,8 @@ export class ResponsibleStepComponent implements OnDestroy {
     this.arraySubscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  viewForm() {
-    console.log(this.appResponsible);
-    console.log(this.appPatient);
-    console.log(this.appContact);
-    console.log(this.formGroup);
+  goNextAndSaveForm() {
+    this.surveyService.setForm(this.formGroup);
   }
 
   formSubmit(): void {

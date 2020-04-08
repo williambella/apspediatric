@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'new',
         component: SurveyStepperComponent
+      },
+      {
+        path: 'done',
+        component: SurveyStepperComponent
       }
     ]
   }

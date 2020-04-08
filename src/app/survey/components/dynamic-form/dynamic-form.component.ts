@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Question } from '@appointment/models/question';
 import { Type } from '@appointment/models/type';
 import { QuestionControlService } from '@survey/services/question-control.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-dynamic-form',
@@ -10,13 +12,15 @@ import { QuestionControlService } from '@survey/services/question-control.servic
     styleUrls: ['./dynamic-form.component.scss'],
     providers: [QuestionControlService]
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent implements OnInit, OnDestroy {
 
+    destroy$: Subject<boolean> = new Subject<boolean>();
     @Input() questions: Array<Question> = [];
     @Input() types: Array<Type> = [];
     form: FormGroup;
     payLoad = '';
     showForm = true;
+    @Input() onFormValid: Function
 
     constructor(private qcs: QuestionControlService) { }
 
@@ -34,12 +38,24 @@ export class DynamicFormComponent implements OnInit {
                         : []
                 }));
 
+            this.form.statusChanges
+                .pipe(takeUntil(this.destroy$))
+                .subscribe(() => {
+                    this.onFormValid(this.form);
+                });
+
         } else {
             this.showForm = false;
         }
+
     }
 
     onSubmit() {
         this.payLoad = JSON.stringify(this.form.getRawValue());
+    }
+
+    ngOnDestroy() {
+        this.destroy$.next(true);
+        this.destroy$.unsubscribe();
     }
 }

@@ -34,8 +34,11 @@ export class SurveyStepperComponent implements OnInit, OnDestroy {
   private getGroups() {
     const groupSub = this.groupService
       .findAll()
-      .subscribe(groups =>
-        this.groups = groups.sort((group1, group2) => group1.order - group2.order));
+      .subscribe(groups => {
+        this.groups = groups.sort((group1, group2) => group1.order - group2.order)
+        this.groups[this.groups.length - 1].isLastGroup = true;
+      });
+
     this.arraySubscriptions.push(groupSub);
   }
 

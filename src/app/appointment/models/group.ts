@@ -6,4 +6,5 @@ export interface Group {
   order: number;
   idLang: string;
   questions?: Array<Question>;
+  isLastGroup?: boolean;
 }

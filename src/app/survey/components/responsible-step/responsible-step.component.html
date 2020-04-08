@@ -8,6 +8,6 @@
     </form>
   </mat-card>
   <div class="right-button">
-    <button [disabled]="formGroup.invalid" (click)="viewForm()" type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
+    <button [disabled]="formGroup.invalid" (click)="goNextAndSaveForm()" type="button" mat-flat-button color="primary" matStepperNext>{{ 'commom.next' | translate }}</button>
   </div>
 </div>

@@ -70,7 +70,8 @@
     "title": "Type"
   },
   "survey": {
-    "title": "Questionnaire"
+    "title": "Questionnaire",
+    "finish_step": "Done"
   },
   "responsible": {
     "title": "Personal Information",
@@ -104,6 +105,7 @@
     "back": "Back",
     "date": "Date",
     "done": "Done",
+    "finish": "Finish",
     "add_new": "Add New"
   },
   "messages": {

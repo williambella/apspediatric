@@ -11,5 +11,4 @@ import { Question } from '@appointment/models/question';
 export class DynamicFormQuestionComponent {
     @Input() question: Question;
     @Input() form: FormGroup;
-    get isValid() { return this.form.controls[this.question.id].valid; }
 }
