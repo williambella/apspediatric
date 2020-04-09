@@ -38,17 +38,27 @@ export class GenericStepComponent implements OnInit, OnDestroy {
   }
 
   goNextAndSaveForm() {
-    this.surveyService.setForm(this.form);
+    this.surveyService.setResponses(this.getQuestionWithResponse());
+  }
+
+  private getQuestionWithResponse() {
+    return this.questions.map(question => ({
+      questionId: question.id,
+      idGroup: question.idGroup,
+      idType: question.idType,
+      question: question.question,
+      response: this.form.value[question.id]
+    }));
   }
 
   finishSurvey() {
-    this.surveyService.setForm(this.form);
+    this.surveyService.setResponses(this.getQuestionWithResponse());
     this.surveyService.finishSurvey();
   }
 
   doFormValid = (form: FormGroup) => {
     this.isDisabled = form.invalid;
-    if(form.valid) {
+    if (form.valid) {
       this.form = form;
     }
   }

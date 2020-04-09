@@ -1,6 +1,5 @@
 <table mat-table [dataSource]="dataSource" matSort class="xmat-elevation-z8">
 
-  <!-- Name Column -->
   <ng-container *ngFor="let column of headersLabels">
     <ng-container [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column | translate }} </th>

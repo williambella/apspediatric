@@ -35,7 +35,6 @@ export class ResponsibleStepComponent implements OnDestroy {
     private responsibleService: ResponsibleService,
     private patientService: PatientService,
     private contactService: ContactService,
-    private messageService: MessagesService,
     private formBuilder: FormBuilder,
     private surveyService: SurveyService
   ) {
@@ -47,36 +46,31 @@ export class ResponsibleStepComponent implements OnDestroy {
     this.arraySubscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
   }
 
-  goNextAndSaveForm() {
-    this.surveyService.setForm(this.formGroup);
+  onFormSubmit() {
+    this.surveyService.setPatientForm(this.formGroup);
   }
 
-  formSubmit(): void {
+  formSubmit = (): void => {
 
-    if (this.formGroup.valid) {
-      const responsible: Responsible = this.formGroup.get(this.appResponsible.getFormGroupName).value;
+    const responsible: Responsible = this.formGroup.get(this.appResponsible.getFormGroupName).value;
 
-      if (this.responsible) {
-        responsible.id = this.responsible.id;
-      }
-
-      const formSubmitSubscription: Subscription = this.responsibleService
-        .save(responsible)
-        .subscribe((data: Responsible) => {
-          this.responsible = data;
-
-          forkJoin([this.savePatients(), this.saveContacts()])
-            .subscribe((results: Array<any>) => {
-              this.patients = results[0] as Array<Patient>;
-              this.contacts = results[1] as Array<Contact>;
-
-              this.messageService.message('form.updated');
-
-            });
-        });
-
-      this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
+    if (this.responsible) {
+      responsible.id = this.responsible.id;
     }
+
+    const formSubmitSubscription: Subscription = this.responsibleService
+      .save(responsible)
+      .subscribe((data: Responsible) => {
+        this.responsible = data;
+
+        forkJoin([this.savePatients(), this.saveContacts()])
+          .subscribe((results: Array<any>) => {
+            this.patients = results[0] as Array<Patient>;
+            this.contacts = results[1] as Array<Contact>;
+          });
+      });
+
+    this.arraySubscriptions = [...this.arraySubscriptions, formSubmitSubscription];
   }
 
   savePatients(): Observable<Array<Patient>> {
