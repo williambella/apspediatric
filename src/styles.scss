@@ -132,3 +132,13 @@ app-title {
 .mat-radio-outer-circle {
   border-color: #3f51b5 !important;
 }
+
+@media (max-width: 450px) {
+  mat-step-header {
+    padding-left: 0px !important;
+  }
+
+  .mat-vertical-content-container.mat-stepper-vertical-line {
+    margin-left: 0px !important;
+  }
+}

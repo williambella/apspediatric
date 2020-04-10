@@ -30,9 +30,9 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
             return forkJoin(this.saveSurveyList$(patients));
           }))
-          .subscribe(() => {
+          .subscribe((results: Array<any>) => {
             this.showProgressBar = false;
-            this.router.navigate(['survey/done']);
+            this.router.navigate(['survey/done', { questionnareResult: results}]);
           });
 
         this.subArray.push(savePatientSub);
