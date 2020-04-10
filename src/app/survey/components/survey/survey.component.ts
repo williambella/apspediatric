@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SurveyService } from '@survey/services/survey.service';
-import { Subscription, of, forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Patient } from '@responsible/models/patient';
+import { SurveyService } from '@survey/services/survey.service';
+import { forkJoin, Subscription } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-survey',
@@ -11,25 +12,27 @@ import { Patient } from '@responsible/models/patient';
 })
 export class SurveyComponent implements OnInit, OnDestroy {
   subArray = new Array<Subscription>();
-  constructor(private surveyService: SurveyService) { }
+  showProgressBar = false;
+
+  constructor(
+    private surveyService: SurveyService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const finishSurveySub = this.surveyService
       .onSurveyFinish()
       .subscribe(() => {
-
+        this.showProgressBar = true;
         const savePatientSub = this.surveyService
           .savePatientForm()
           .pipe(mergeMap(({ patients }: { patients: Array<Patient> }) => {
 
             return forkJoin(this.saveSurveyList$(patients));
           }))
-          .subscribe((results: Array<any>) => {
-
-            console.log(results);
-            // TODO: Mudar de tela
-            // TODO: botar mensagem de sucesso
-
+          .subscribe(() => {
+            this.showProgressBar = false;
+            this.router.navigate(['survey/done']);
           });
 
         this.subArray.push(savePatientSub);

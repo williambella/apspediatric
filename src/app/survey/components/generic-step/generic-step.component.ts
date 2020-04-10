@@ -52,6 +52,7 @@ export class GenericStepComponent implements OnInit, OnDestroy {
   }
 
   finishSurvey() {
+    this.isDisabled = true;
     this.surveyService.setResponses(this.getQuestionWithResponse());
     this.surveyService.finishSurvey();
   }

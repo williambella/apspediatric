@@ -1,3 +1,6 @@
 <div class="container">
   <router-outlet></router-outlet>
+  <div class="survey-footer">
+    <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+  </div>
 </div>

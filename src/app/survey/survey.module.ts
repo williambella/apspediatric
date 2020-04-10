@@ -11,6 +11,7 @@ import { AppointmentModule } from '@appointment/appointment.module';
 import { GenericStepComponent } from './components/generic-step/generic-step.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './components/dynamic-form-question/dynamic-form-question.component';
+import { SurveyFinishComponent } from './components/survey-finish/survey-finish.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DynamicFormQuestionComponent } from './components/dynamic-form-question
     ContactsComponent,
     GenericStepComponent,
     DynamicFormComponent,
-    DynamicFormQuestionComponent
+    DynamicFormQuestionComponent,
+    SurveyFinishComponent
   ],
   imports: [
     SharedModule,
