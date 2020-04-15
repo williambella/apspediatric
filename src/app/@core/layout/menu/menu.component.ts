@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
     this.menus = [
       {
         title: 'group.list.title',
-        routerLink: '/appointment/groups/'
+        routerLink: '/management/groups/'
       },
       {
         title: 'survey.title',
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
       },
       {
         title: 'appointment.title',
-        routerLink: '/survey'
+        routerLink: '/management/appointment/'
       }
     ];
   }

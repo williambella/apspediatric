@@ -40,7 +40,14 @@
     "title": "Language"
   },
   "appointment": {
-    "title": "Appointments"
+    "title": "Appointments",
+    "list": {
+      "title": "Query Appointments"
+    },
+    "form": {
+      "new": "New Appointment",
+      "detail": "Appointment Detail"
+    }
   },
   "question": {
     "title": "Question",

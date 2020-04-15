@@ -11,6 +11,9 @@ import { DeactiveGuard } from '@core/guard/deactive.guard';
 import { QuestionListComponent } from './components/questions/question-list/question-list.component';
 import { QuestionsComponent } from './components/questions/questions/questions.component';
 import { TypesResolver } from './resolvers/types.resolver';
+import { AppointmentQueryComponent } from './components/appointment/query/appointment-query.component';
+import { AppointmentCreateComponent } from './components/appointment/create/appointment-create.component';
+import { AppointmentDetailComponent } from './components/appointment/detail/appointment-detail.component';
 
 const routes: Routes = [
   {
@@ -20,6 +23,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        canDeactivate: [DeactiveGuard],
         component: GroupListComponent
       },
       {
@@ -64,6 +68,28 @@ const routes: Routes = [
             }
           }
         ]
+      }
+    ]
+  },
+  {
+    path: 'appointment',
+    component: AppointmentComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canDeactivate: [DeactiveGuard],
+        component: AppointmentQueryComponent
+      },
+      {
+        path: 'new',
+        canDeactivate: [DeactiveGuard],
+        component: AppointmentCreateComponent
+      },
+      {
+        path: ':id',
+        canDeactivate: [DeactiveGuard],
+        component: AppointmentDetailComponent
       }
     ]
   }

@@ -19,7 +19,7 @@ const routes: Routes = [
         loadChildren: () => import('./auth/auth.module').then(auth => auth.AuthModule)
       },
       {
-        path: 'appointment',
+        path: 'management',
         loadChildren: () => import('./appointment/appointment.module').then(appointment => appointment.AppointmentModule)
       },
       {

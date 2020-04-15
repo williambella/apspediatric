@@ -11,6 +11,9 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
 import { QuestionsComponent } from './components/questions/questions/questions.component';
 import { TypesResolver } from './resolvers/types.resolver';
 import { FormsModule } from '@angular/forms';
+import { AppointmentQueryComponent } from './components/appointment/query/appointment-query.component';
+import { AppointmentCreateComponent } from './components/appointment/create/appointment-create.component';
+import { AppointmentDetailComponent } from './components/appointment/detail/appointment-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     GroupFormComponent,
     GroupListComponent,
     AppointmentComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    AppointmentQueryComponent,
+    AppointmentCreateComponent,
+    AppointmentDetailComponent
   ],
   imports: [
     SharedModule,
