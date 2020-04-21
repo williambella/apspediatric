@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
-  styles: []
+  styleUrls: ['./appointment.component.scss']
 })
 export class AppointmentComponent implements OnDestroy {
   patient: Patient;

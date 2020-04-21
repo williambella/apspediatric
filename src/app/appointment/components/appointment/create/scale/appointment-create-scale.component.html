@@ -1,3 +1,11 @@
+<p>Avaliation Scale: {{ formGroup.value.scale }} </p>
+
 <div>
-    Scale
+    
+</div>
+<div [formGroup]="formGroup">
+
+    <mat-slider [color]="deeppurple-amber" [max]="4" [min]="1" [thumbLabel]="true" formControlName="scale">
+    </mat-slider>
+
 </div>
