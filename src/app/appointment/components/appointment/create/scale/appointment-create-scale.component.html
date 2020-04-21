@@ -1,11 +1,28 @@
-<p>Avaliation Scale: {{ formGroup.value.scale }} </p>
+<p>Avaliation Scale </p>
+<mat-divider></mat-divider>
+<br>
 
-<div>
-    
-</div>
 <div [formGroup]="formGroup">
 
     <mat-slider [color]="deeppurple-amber" [max]="4" [min]="1" [thumbLabel]="true" formControlName="scale">
-    </mat-slider>
+    </mat-slider> {{ formGroup.value.scale }} 
 
+</div>
+<div>
+    <p>1. Definitivamente Negativo ( Recusa de tratamento, choro forçado, medo ou
+        qualquer outra evidência aberta de extremo negativismo)
+        2. Negativo ( Relutante em aceitar o tratamento, não cooperativo, alguma evidência
+        de atitude negativa, mas não pronunciada; da sinais de incomodo evidentes; choro
+        ligeiro; movimentos, mas permite executar o procedimento.</p>
+
+    <p>2. Negativo ( Relutante em aceitar o tratamento, não cooperativo, alguma evidência
+        de atitude negativa, mas não pronunciada; da sinais de incomodo evidentes; choro
+        ligeiro; movimentos, mas permite executar o procedimento.</p>
+
+    <p>3. Positivo (Aceitação do proc edimento; às vezes curioso, vontade de obedecer ao
+        dentista, às vezes com reserva, mas o paciente segue as instruções do dentista
+        cooperativamente.)</p>
+
+    <p>4. Definitivamente positivo ( ri; relaxado; sem qualquer sinal de preocupação;
+        disfruta da situação )</p>
 </div>

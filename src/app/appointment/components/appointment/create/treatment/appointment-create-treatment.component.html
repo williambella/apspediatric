@@ -1,11 +1,12 @@
 <p>Treatments</p>
+
 <div [formGroup]="formGroup">
 
     <div formArrayName="treatments">
 
         <div *ngFor="let treat of treatmentFormArray.controls; let i=index">
 
-            <div [formGroupName]="i" fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px">
+            <div [formGroupName]="i" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
 
                 <div fxFlex="50%">
                     <mat-form-field>

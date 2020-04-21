@@ -12,8 +12,11 @@
 </app-appointment-query-select>
 
 <div *ngIf="patient">
-  <p>Patient Name: {{patient.name}}</p>
+  <p>Patient Information</p>
+  <p>Name: {{patient.name}}</p>
   <p>Birth Date: {{patient.birth | date}}</p>
+  <mat-divider></mat-divider>
+  <br>
 </div>
 
 <div class="container">
