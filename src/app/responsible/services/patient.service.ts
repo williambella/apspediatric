@@ -22,4 +22,8 @@ export class PatientService {
   saveAll(patients: Array<Patient>): Observable<Array<Patient>> {
     return this.httpClient.post<Array<Patient>>(`${this.endpoint}`, patients);
   }
+
+  findAll(): Observable<Array<Patient>> {
+    return this.httpClient.get<Array<Patient>>(`${this.endpoint}`);
+  }
 }

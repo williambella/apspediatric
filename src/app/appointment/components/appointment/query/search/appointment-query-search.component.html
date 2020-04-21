@@ -1,0 +1,18 @@
+<form fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" (submit)="search()">
+    <div fxFlex="100%">
+        <mat-form-field>
+            <input type="text" placeholder="Patient" aria-label="Patient" matInput [formControl]="searchKey"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let patient of filteredPatients | async" [value]="patient">
+                    {{patient.name}}, born in {{patient.birth | date}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="!isValidPatient(searchKey.value)">Select a Patient from the list</mat-error>
+        </mat-form-field>
+    </div>
+
+    <button type="submit"  [disabled]="searchKey.invalid" mat-icon-button aria-label="Search Button" fxFlex="35px">
+        <mat-icon>search</mat-icon>
+    </button>
+</form>

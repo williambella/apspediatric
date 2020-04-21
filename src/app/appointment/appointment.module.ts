@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AppointmentQueryComponent } from './components/appointment/query/appointment-query.component';
 import { AppointmentCreateComponent } from './components/appointment/create/appointment-create.component';
 import { AppointmentDetailComponent } from './components/appointment/detail/appointment-detail.component';
+import { AppointmentQuerySearchComponent } from './components/appointment/query/search/appointment-query-search.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AppointmentDetailComponent } from './components/appointment/detail/appo
     QuestionsComponent,
     AppointmentQueryComponent,
     AppointmentCreateComponent,
-    AppointmentDetailComponent
+    AppointmentDetailComponent,
+    AppointmentQuerySearchComponent
   ],
   imports: [
     SharedModule,

@@ -23,17 +23,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        canDeactivate: [DeactiveGuard],
         component: GroupListComponent
       },
       {
         path: 'new',
-        canDeactivate: [DeactiveGuard],
         component: GroupFormComponent
       },
       {
         path: ':id/edit',
-        canDeactivate: [DeactiveGuard],
         component: GroupFormComponent,
         resolve: {
           group: GroupResolver
@@ -52,7 +49,6 @@ const routes: Routes = [
           },
           {
             path: 'new',
-            canDeactivate: [DeactiveGuard],
             component: QuestionFormComponent,
             resolve: {
               types: TypesResolver
@@ -60,7 +56,6 @@ const routes: Routes = [
           },
           {
             path: ':id',
-            canDeactivate: [DeactiveGuard],
             component: QuestionFormComponent,
             resolve: {
               question: QuestionResolver,
@@ -78,17 +73,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        canDeactivate: [DeactiveGuard],
         component: AppointmentQueryComponent
       },
       {
         path: 'new',
-        canDeactivate: [DeactiveGuard],
         component: AppointmentCreateComponent
       },
       {
         path: ':id',
-        canDeactivate: [DeactiveGuard],
         component: AppointmentDetailComponent
       }
     ]

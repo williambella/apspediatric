@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '@core/guard/auth.guard';
-import { SurveyComponent } from '@survey/components/survey/survey.component';
+import { RouterModule, Routes } from '@angular/router';
 import { SurveyStepperComponent } from '@survey/components/survey-stepper/survey-stepper.component';
+import { SurveyComponent } from '@survey/components/survey/survey.component';
 import { SurveyFinishComponent } from './components/survey-finish/survey-finish.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SurveyComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
