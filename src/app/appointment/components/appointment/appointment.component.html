@@ -8,8 +8,8 @@
 
 </app-title>
 
-<app-appointment-query-search [onSelect]="doSelect" [selectedPatientId]="selectedPatientId">
-</app-appointment-query-search>
+<app-appointment-query-select [onSelect]="doSelect" [selectedPatientId]="selectedPatientId">
+</app-appointment-query-select>
 
 <div *ngIf="patient">
   <p>Patient Name: {{patient.name}}</p>

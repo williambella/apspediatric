@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 import { map, startWith, take } from 'rxjs/operators';
 
 @Component({
-    selector: 'app-appointment-query-search',
-    templateUrl: 'appointment-query-search.component.html'
+    selector: 'app-appointment-query-select',
+    templateUrl: 'appointment-query-select.component.html'
 })
 
-export class AppointmentQuerySearchComponent implements OnInit {
+export class AppointmentQuerySelectComponent implements OnInit {
     searchKey = new FormControl();
     filteredPatients: Observable<Patient[]>;
     patients: Array<Patient> = [];
