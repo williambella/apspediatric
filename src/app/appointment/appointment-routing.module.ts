@@ -73,15 +73,18 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: AppointmentQueryComponent
+        component: AppointmentQueryComponent,
+        data: { title: 'Query Appointments', showNewButton: true }
       },
       {
-        path: 'new/:id',
-        component: AppointmentCreateComponent
+        path: ':id/new',
+        component: AppointmentCreateComponent,
+        data: { title: 'New Appointments', showNewButton: false }
       },
       {
-        path: ':id',
-        component: AppointmentDetailComponent
+        path: ':id/detail',
+        component: AppointmentDetailComponent,
+        data: { title: 'Detail Appointments', showNewButton: false }
       }
     ]
   }

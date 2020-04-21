@@ -1,5 +1,11 @@
-<app-title icon="poll" title="appointment.list.title">
-  <button [disabled]="!patient" mat-flat-button color="primary" [routerLink]="['./new/', patient?.id]">{{ 'app_title.new' | translate }}</button>
+<app-title icon="poll" [title]="title">
+  <button *ngIf="showNewButton; else back_button" [disabled]="!patient" mat-flat-button color="primary"
+    (click)="onNew()">{{ 'app_title.new' | translate }}</button>
+
+  <ng-template #back_button>
+    <button mat-flat-button color="primary" (click)="onBack()">{{ 'commom.back' | translate }}</button>
+  </ng-template>
+
 </app-title>
 
 <app-appointment-query-search [onSelect]="doSelect" [selectedPatientId]="selectedPatientId">
