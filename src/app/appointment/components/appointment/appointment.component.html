@@ -1,3 +1,15 @@
+<app-title icon="poll" title="appointment.list.title">
+  <button [disabled]="!patient" mat-flat-button color="primary" [routerLink]="['./new/', patient?.id]">{{ 'app_title.new' | translate }}</button>
+</app-title>
+
+<app-appointment-query-search [onSelect]="doSelect" [selectedPatientId]="selectedPatientId">
+</app-appointment-query-search>
+
+<div *ngIf="patient">
+  <p>Patient Name: {{patient.name}}</p>
+  <p>Birth Date: {{patient.birth | date}}</p>
+</div>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>

@@ -72,11 +72,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: '',
+        path: ':id',
         component: AppointmentQueryComponent
       },
       {
-        path: 'new',
+        path: 'new/:id',
         component: AppointmentCreateComponent
       },
       {

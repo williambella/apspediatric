@@ -1,7 +1,7 @@
-<form fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" (submit)="search()">
+<form fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px" (submit)="select()">
     <div fxFlex="100%">
         <mat-form-field>
-            <input type="text" placeholder="Patient" aria-label="Patient" matInput [formControl]="searchKey"
+            <input type="text" placeholder="Select the patient" aria-label="Patient" matInput [formControl]="searchKey"
                 [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let patient of filteredPatients | async" [value]="patient">
@@ -13,6 +13,6 @@
     </div>
 
     <button type="submit"  [disabled]="searchKey.invalid" mat-icon-button aria-label="Search Button" fxFlex="35px">
-        <mat-icon>search</mat-icon>
+        Select
     </button>
 </form>

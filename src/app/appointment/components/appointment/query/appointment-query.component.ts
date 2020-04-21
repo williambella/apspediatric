@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Patient } from '@responsible/models/patient';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppointmentService } from '@appointment/services/appointment.service';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-appointment-query',
@@ -7,9 +9,29 @@ import { Patient } from '@responsible/models/patient';
     styleUrls: ['appointment-query.component.scss']
 })
 
-export class AppointmentQueryComponent{
-  
-    doSearch = (patient: Patient) => {
-        console.log(patient);
+export class AppointmentQueryComponent implements OnInit {
+    appointments: any;
+    showProgressBar: boolean;
+
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private appointmentService: AppointmentService
+    ) { }
+
+    ngOnInit() {
+        this.activatedRoute.params.subscribe(params => {
+            this.showProgressBar = true;
+            this.getAppointmentByPatientId(params.id);
+        });
+    }
+
+    private getAppointmentByPatientId(patientId: string) {
+        this.appointmentService
+            .getByPatientId(patientId)
+            .pipe(take(1))
+            .subscribe(res => {
+                this.showProgressBar = false;
+                this.appointments = res;
+            });
     }
 }

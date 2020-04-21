@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Patient } from '@responsible/models/patient';
 import { PatientService } from '@responsible/services/patient.service';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-appointment-query-search',
@@ -14,17 +14,26 @@ export class AppointmentQuerySearchComponent implements OnInit {
     searchKey = new FormControl();
     filteredPatients: Observable<Patient[]>;
     patients: Array<Patient> = [];
-    @Input() onSearch: Function;
+    @Input() onSelect: Function;
+    @Input() selectedPatientId: string;
 
     constructor(private patientService: PatientService) {
         this.searchKey.setValidators(Validators.required);
+
     }
 
     ngOnInit() {
+
         this.patientService
             .findAll()
+            .pipe(take(1))
             .subscribe(patients => {
                 this.patients = patients;
+
+                if (this.selectedPatientId) {
+                    this.searchKey.setValue(this.patients.find(patient => patient.id === this.selectedPatientId));
+                    this.select();
+                }
 
                 this.filteredPatients = this.searchKey.valueChanges
                     .pipe(
@@ -47,8 +56,8 @@ export class AppointmentQuerySearchComponent implements OnInit {
         return patient && patient.name ? patient.name : '';
     }
 
-    search() {
-        this.onSearch(this.searchKey.value);
+    select() {
+        this.onSelect(this.searchKey.value);
     }
 
     isValidPatient(value: any) {
