@@ -1,9 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppointmentService } from '@appointment/services/appointment.service';
 import { Patient } from '@responsible/models/patient';
-import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-appointment',
@@ -20,7 +19,6 @@ export class AppointmentComponent implements OnDestroy {
   showNewButton = true;
 
   constructor(
-    private appointmentService: AppointmentService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {

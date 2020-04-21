@@ -13,4 +13,9 @@ export class AppointmentService {
         return this.httpClient.get<Array<Appointment>>(`${this.endpoint}/patient/${patientId}`);
     }
 
+    save(appointment: Appointment): Observable<Appointment> {
+        return this.httpClient.post<Appointment>(this.endpoint, appointment);
+    }
+
+
 }

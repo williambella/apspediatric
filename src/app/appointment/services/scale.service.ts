@@ -9,8 +9,8 @@ export class ScaleService {
 
     constructor(private httpClient: HttpClient) { }
 
-    save(scale: Scale): Observable<Scale> {
-        return this.httpClient.post<Scale>(this.endpoint, scale);
+    findAll(): Observable<Array<Scale>> {
+        return this.httpClient.get<Array<Scale>>(this.endpoint);
     }
 
 }

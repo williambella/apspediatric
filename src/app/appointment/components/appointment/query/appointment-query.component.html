@@ -1,6 +1,13 @@
-<div>
-    {{appointments | json}}
-</div>
+<mat-card *ngFor="let appointment of appointments">
+    <mat-card-header>
+        <mat-card-title>{{appointment.description}}</mat-card-title>
+        <mat-card-subtitle>Date {{appointment.date}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- {{appointments | json}} -->
+    <mat-card-actions>
+        <button class="button-card-float" mat-button>Detail</button>
+      </mat-card-actions>
+</mat-card>
 
 <div *ngIf="showProgressBar" class="query-footer">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>

@@ -2,10 +2,12 @@
 <mat-divider></mat-divider>
 <br>
 
-<div [formGroup]="formGroup">
+<div fxLayout="row" fxLayout.xs="column">
 
-    <mat-slider [color]="deeppurple-amber" [max]="4" [min]="1" [thumbLabel]="true" formControlName="scale">
-    </mat-slider> {{ formGroup.value.scale }} 
+    <mat-slider fxFlex="30%" [max]="4" [min]="1" [thumbLabel]="true" [(ngModel)]="scale"
+        (change)="changeValue()">
+    </mat-slider>
+    <div fxFlex="5%">{{ formGroup.value.scale }} </div>
 
 </div>
 <div>
