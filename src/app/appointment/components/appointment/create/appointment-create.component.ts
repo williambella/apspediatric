@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-appointment-create',
     templateUrl: 'appointment-create.component.html'
 })
 
-export class AppointmentCreateComponent implements OnInit {
-    constructor() { }
+export class AppointmentCreateComponent {
+    appointmentForm: FormGroup;
 
-    ngOnInit() { }
+    constructor(private fb: FormBuilder) { 
+        this.appointmentForm = this.fb.group({ description: ['', Validators.required] });
+    }
+
+    show() {
+        console.log(this.appointmentForm);
+    }
+
 }

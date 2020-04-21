@@ -46,7 +46,8 @@
     },
     "form": {
       "new": "New Appointment",
-      "detail": "Appointment Detail"
+      "detail": "Appointment Detail",
+      "description": "Appointment Description"
     }
   },
   "question": {

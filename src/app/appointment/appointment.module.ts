@@ -15,6 +15,10 @@ import { AppointmentQueryComponent } from './components/appointment/query/appoin
 import { AppointmentCreateComponent } from './components/appointment/create/appointment-create.component';
 import { AppointmentDetailComponent } from './components/appointment/detail/appointment-detail.component';
 import { AppointmentQuerySelectComponent } from './components/appointment/query/select/appointment-query-select.component';
+import { AppointmentCreateTreatmentComponent } from './components/appointment/create/treatment/appointment-create-treatment.component';
+import { AppointmentCreateProcedureComponent } from './components/appointment/create/procedure/appointment-create-procedure.component';
+import { AppointmentCreateScaleComponent } from './components/appointment/create/scale/appointment-create-scale.component';
+import { GroupComponent } from './components/group/group.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { AppointmentQuerySelectComponent } from './components/appointment/query/
     AppointmentQueryComponent,
     AppointmentCreateComponent,
     AppointmentDetailComponent,
-    AppointmentQuerySelectComponent
+    AppointmentQuerySelectComponent,
+    AppointmentCreateTreatmentComponent,
+    AppointmentCreateProcedureComponent,
+    AppointmentCreateScaleComponent,
+    GroupComponent  
   ],
   imports: [
     SharedModule,

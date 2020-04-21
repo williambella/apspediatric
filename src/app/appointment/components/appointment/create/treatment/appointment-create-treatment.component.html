@@ -1,0 +1,50 @@
+<p>Treatments</p>
+<div [formGroup]="formGroup">
+
+    <div formArrayName="treatments">
+
+        <div *ngFor="let treat of treatmentFormArray.controls; let i=index">
+
+            <div [formGroupName]="i" fxLayout="row" fxLayout.xs="row" fxLayoutGap="20px">
+
+                <div fxFlex="50%">
+                    <mat-form-field>
+                        <mat-label>Treatment</mat-label>
+                        <mat-select formControlName="treatment">
+                            <mat-option *ngFor="let treatment of treatmentList" [value]="treatment">
+                                {{treatment.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div fxFlex="50%">
+                    <mat-form-field>
+                        <mat-label>Tooths</mat-label>
+                        <mat-select formControlName="teeth" multiple>
+                            <mat-option *ngFor="let tooth of teeth" [value]="tooth">
+                                {{tooth.number}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <button type="button" mat-icon-button (click)="removeTreatment(i)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="btn-actions">
+    <button type="button" mat-flat-button (click)="addTreatment()">
+        <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
+    </button>
+</div>

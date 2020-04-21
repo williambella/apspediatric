@@ -1,3 +1,22 @@
-<div>
-    Ola Create
-</div>
+<form [formGroup]="appointmentForm">
+
+    <mat-form-field>
+        <input matInput [placeholder]="'appointment.form.description' | translate" maxLength="100"
+            formControlName="description" required autocomplete="off">
+    </mat-form-field>
+
+    <app-appointment-create-treatment [formGroup]="appointmentForm">
+    </app-appointment-create-treatment>
+
+    <app-appointment-create-procedure [formGroup]="appointmentForm">
+    </app-appointment-create-procedure>
+
+    <app-appointment-create-scale [formGroup]="appointmentForm">
+    </app-appointment-create-scale>
+
+    <div class="right-button">
+        <button [disabled]="appointmentForm.invalid" (click)="show()" type="button" mat-flat-button color="primary">
+            {{ 'commom.save' | translate }}
+        </button>
+    </div>
+</form>

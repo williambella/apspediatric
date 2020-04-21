@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup">
+
+    <mat-form-field>
+        <mat-label>Select Procedures</mat-label>
+        <mat-select formControlName="procedures" multiple>
+            <mat-option *ngFor="let proc of procedureList" [value]="proc">
+                {{proc.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>

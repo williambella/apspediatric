@@ -1,24 +1,24 @@
-import { QuestionResolver } from '@appointment/resolvers/question.resolver';
-import { QuestionFormComponent } from '@appointment/components/questions/question-form/question-form.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { GroupResolver } from './resolvers/group.resolver';
-import { GroupListComponent } from '@appointment/components/group/group-list/group-list.component';
+import { RouterModule, Routes } from '@angular/router';
 import { GroupFormComponent } from '@appointment/components/group/group-form/group-form.component';
-import { AppointmentComponent } from './components/appointment/appointment.component';
+import { GroupListComponent } from '@appointment/components/group/group-list/group-list.component';
+import { QuestionFormComponent } from '@appointment/components/questions/question-form/question-form.component';
+import { QuestionResolver } from '@appointment/resolvers/question.resolver';
 import { AuthGuard } from '@core/guard/auth.guard';
-import { DeactiveGuard } from '@core/guard/deactive.guard';
-import { QuestionListComponent } from './components/questions/question-list/question-list.component';
-import { QuestionsComponent } from './components/questions/questions/questions.component';
-import { TypesResolver } from './resolvers/types.resolver';
-import { AppointmentQueryComponent } from './components/appointment/query/appointment-query.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
 import { AppointmentCreateComponent } from './components/appointment/create/appointment-create.component';
 import { AppointmentDetailComponent } from './components/appointment/detail/appointment-detail.component';
+import { AppointmentQueryComponent } from './components/appointment/query/appointment-query.component';
+import { QuestionListComponent } from './components/questions/question-list/question-list.component';
+import { QuestionsComponent } from './components/questions/questions/questions.component';
+import { GroupResolver } from './resolvers/group.resolver';
+import { TypesResolver } from './resolvers/types.resolver';
+import { GroupComponent } from './components/group/group.component';
 
 const routes: Routes = [
   {
     path: 'groups',
-    component: AppointmentComponent,
+    component: GroupComponent,
     canActivate: [AuthGuard],
     children: [
       {
