@@ -29,14 +29,16 @@ export class AppointmentCreateScaleComponent implements OnInit {
             .findAll()
             .pipe(take(1))
             .subscribe(scales => {
-                this.scales = scales;
+                this.scales = scales.sort((scale1, scale2) => scale1.orderScale - scale2.orderScale);
                 this.scale = 2;
+                this.changeValue();
             });
 
 
     }
 
     changeValue() {
-        console.log(this.scale);
+        this.formGroup.controls.scale
+            .setValue(this.scales.find(scale => scale.orderScale === this.scale));
     }
 }

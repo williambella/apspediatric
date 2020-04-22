@@ -14,8 +14,13 @@
     <app-appointment-create-scale [formGroup]="appointmentForm">
     </app-appointment-create-scale>
 
+    <div *ngIf="showProgressBar" class="query-footer">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
     <div class="right-button">
-        <button [disabled]="appointmentForm.invalid" (click)="create()" type="button" mat-flat-button color="primary">
+        <button [disabled]="appointmentForm.invalid || showProgressBar" (click)="create()" type="button" mat-flat-button
+            color="primary">
             {{ 'commom.save' | translate }}
         </button>
     </div>

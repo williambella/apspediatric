@@ -4,27 +4,13 @@
 
 <div fxLayout="row" fxLayout.xs="column">
 
-    <mat-slider fxFlex="30%" [max]="4" [min]="1" [thumbLabel]="true" [(ngModel)]="scale"
-        (change)="changeValue()">
+    <mat-slider fxFlex="30%" [max]="4" [min]="1" [thumbLabel]="true" [(ngModel)]="scale" (change)="changeValue()">
     </mat-slider>
-    <div fxFlex="5%">{{ formGroup.value.scale }} </div>
+    <div fxFlex="5%">{{ scale }} </div>
 
 </div>
 <div>
-    <p>1. Definitivamente Negativo ( Recusa de tratamento, choro forçado, medo ou
-        qualquer outra evidência aberta de extremo negativismo)
-        2. Negativo ( Relutante em aceitar o tratamento, não cooperativo, alguma evidência
-        de atitude negativa, mas não pronunciada; da sinais de incomodo evidentes; choro
-        ligeiro; movimentos, mas permite executar o procedimento.</p>
-
-    <p>2. Negativo ( Relutante em aceitar o tratamento, não cooperativo, alguma evidência
-        de atitude negativa, mas não pronunciada; da sinais de incomodo evidentes; choro
-        ligeiro; movimentos, mas permite executar o procedimento.</p>
-
-    <p>3. Positivo (Aceitação do proc edimento; às vezes curioso, vontade de obedecer ao
-        dentista, às vezes com reserva, mas o paciente segue as instruções do dentista
-        cooperativamente.)</p>
-
-    <p>4. Definitivamente positivo ( ri; relaxado; sem qualquer sinal de preocupação;
-        disfruta da situação )</p>
+    <p *ngFor="let scale of scales">
+        {{scale.orderScale}}. {{scale.title}} - {{scale.descripton}}
+    </p>
 </div>

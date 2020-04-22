@@ -14,6 +14,7 @@ import { Appointment } from '@appointment/models/Appointment';
 export class AppointmentCreateComponent {
     appointmentForm: FormGroup;
     patientId: string;
+    showProgressBar = false;
 
     constructor(
         private fb: FormBuilder,
@@ -27,9 +28,8 @@ export class AppointmentCreateComponent {
     }
 
     create() {
+        this.showProgressBar = true;
         const values = this.appointmentForm.value;
-        console.log(this.appointmentForm.value);
-        console.log(this.getAppointment(values))
 
         this.appointmentService
             .save(this.getAppointment(values))
@@ -40,13 +40,13 @@ export class AppointmentCreateComponent {
                     return this.evaluationService.save({
                         appointmentId: appointment.id,
                         patientId: appointment.patientId,
-                        description: values.scale.description,
+                        description: values.scale.descripton,
                         scaleId: values.scale.id
                     })
                 })
             )
             .subscribe(res => {
-                console.log(res);
+                this.showProgressBar = false;
                 this.router.navigate([`management/appointment/${this.patientId}`]);
             });
     }
