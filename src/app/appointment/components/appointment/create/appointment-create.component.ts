@@ -40,7 +40,7 @@ export class AppointmentCreateComponent {
                     return this.evaluationService.save({
                         appointmentId: appointment.id,
                         patientId: appointment.patientId,
-                        description: values.scale.descripton,
+                        description: values.evaluation,
                         scaleId: values.scale.id
                     })
                 })

@@ -19,6 +19,7 @@ import { AppointmentCreateTreatmentComponent } from './components/appointment/cr
 import { AppointmentCreateProcedureComponent } from './components/appointment/create/procedure/appointment-create-procedure.component';
 import { AppointmentCreateScaleComponent } from './components/appointment/create/scale/appointment-create-scale.component';
 import { GroupComponent } from './components/group/group.component';
+import { AppointmentDetailQuestionnareComponent } from './components/appointment/detail/questionnare/appointment-detail-questionnare.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { GroupComponent } from './components/group/group.component';
     AppointmentCreateTreatmentComponent,
     AppointmentCreateProcedureComponent,
     AppointmentCreateScaleComponent,
-    GroupComponent  
+    GroupComponent,
+    AppointmentDetailQuestionnareComponent
   ],
   imports: [
     SharedModule,

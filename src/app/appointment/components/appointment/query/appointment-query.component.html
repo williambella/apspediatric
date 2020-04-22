@@ -1,14 +1,15 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column">
 
     <mat-card 
-        fxFlex="0 1 calc(33.3%)"
+        fxFlex.lg="calc(33%-20px)"
+        fxFlex.md="calc(50%-20px)"
         *ngFor="let appointment of appointments">
         <mat-card-header>
             <mat-card-title>{{appointment.description}}</mat-card-title>
-            <mat-card-subtitle>Date {{ appointment.date | date:'shortTime' }}</mat-card-subtitle>
+            <mat-card-subtitle>Date {{ appointment.date | date:'short' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
-            <button class="button-card-float" mat-button>Detail</button>
+            <button (click)="detail(appointment)" class="button-card-float" mat-button>Detail</button>
         </mat-card-actions>
     </mat-card>
 
@@ -17,7 +18,6 @@
 <div *ngIf="appointments && appointments.length === 0">
     <p>No appointments found for this patient.</p>
 </div>
-
 
 <div *ngIf="showProgressBar" class="query-footer">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>

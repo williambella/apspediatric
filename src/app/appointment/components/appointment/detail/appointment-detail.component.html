@@ -1,3 +1,43 @@
-<div>
-    Ola detail
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{appointment?.description}}</mat-card-title>
+        <mat-card-subtitle>Date {{ appointment?.date | date:'short' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <h3>Treatments</h3>
+
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap">
+            <div fxFlex.lg="calc(33%-20px)" fxFlex.md="calc(50%-20px)" fxFlex.sm="calc(50%-20px)"
+                *ngFor="let treatment of appointment?.treatments; let i = index;">
+                <p>{{i+1}}. {{treatment.description}}</p>
+                <p>Teeth: </p>
+                <span *ngFor="let tooth of treatment?.toothNumber">{{tooth.number}}</span>
+            </div>
+        </div>
+
+
+        <h3>Procedures</h3>
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap">
+            <div fxFlex.lg="calc(33%-20px)" fxFlex.md="calc(50%-20px)" fxFlex.sm="calc(50%-20px)"
+                *ngFor="let procedure of appointment?.procedures; let i = index;">
+                <p>{{i+1}}. {{procedure.description}}</p>
+            </div>
+        </div>
+
+        <h3>Evaluation</h3>
+        <p>{{evaluation?.description}}</p>
+        <h3>Scale</h3>
+        <mat-slider [max]="4" [min]="1" value="{{getScale(evaluation?.scaleId)?.orderScale}}" [thumbLabel]="true"
+            disabled>
+        </mat-slider> <span>{{getScale(evaluation?.scaleId)?.orderScale}}</span>
+        <p>{{getScale(evaluation?.scaleId)?.descripton}}</p>
+        <br>
+
+        <app-appointment-detail-questionnare [patientId]="patientId">
+
+        </app-appointment-detail-questionnare>
+    </mat-card-content>
+</mat-card>
+<div *ngIf="showProgressBar" class="query-footer">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>

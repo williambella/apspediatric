@@ -23,6 +23,7 @@ export class AppointmentCreateScaleComponent implements OnInit {
 
     ngOnInit() {
         this.formGroup.addControl('scale', this.fb.control(undefined, Validators.required));
+        this.formGroup.addControl('evaluation', this.fb.control('', Validators.required));
 
 
         this.scaleService

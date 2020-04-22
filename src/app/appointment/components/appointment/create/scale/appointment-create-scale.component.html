@@ -1,9 +1,16 @@
-<p>Avaliation Scale </p>
+<p>Evaluation</p>
 <mat-divider></mat-divider>
 <br>
+<div [formGroup]="formGroup">
+    <mat-form-field>
+        <input matInput [placeholder]="'appointment.form.evaluation' | translate" maxLength="100"
+            formControlName="evaluation" required autocomplete="off">
+    </mat-form-field>
+</div>
 
 <div fxLayout="row" fxLayout.xs="column">
 
+    <p>Scale</p>
     <mat-slider fxFlex="30%" [max]="4" [min]="1" [thumbLabel]="true" [(ngModel)]="scale" (change)="changeValue()">
     </mat-slider>
     <div fxFlex="5%">{{ scale }} </div>

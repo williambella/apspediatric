@@ -82,7 +82,7 @@ const routes: Routes = [
         data: { title: 'New Appointments', showNewButton: false }
       },
       {
-        path: ':id/detail',
+        path: ':id/detail/:idAppointment',
         component: AppointmentDetailComponent,
         data: { title: 'Detail Appointments', showNewButton: false }
       }

@@ -74,6 +74,10 @@ export class SurveyService {
       )
   }
 
+  findByPatientId(id: string): Observable<Array<Answer>> {
+    return this.httpClient.get<Array<Answer>>(`${this.endpoint}/${id}`);
+  }
+
   savePatients(responsible: Responsible): Observable<Array<Patient>> {
     const patients: Array<Patient> = ((this.form.value.patients) as Array<Patient>)
       .map((patient: Patient) => {

@@ -13,6 +13,10 @@ export class AppointmentService {
         return this.httpClient.get<Array<Appointment>>(`${this.endpoint}/patient/${patientId}`);
     }
 
+    getById(id: string): Observable<Appointment> {
+        return this.httpClient.get<Appointment>(`${this.endpoint}/${id}`);
+    }
+
     save(appointment: Appointment): Observable<Appointment> {
         return this.httpClient.post<Appointment>(this.endpoint, appointment);
     }
