@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentService } from '@appointment/services/appointment.service';
 import { take } from 'rxjs/operators';
+import { Appointment } from '@appointment/models/Appointment';
 
 @Component({
     selector: 'app-appointment-query',
@@ -10,7 +11,7 @@ import { take } from 'rxjs/operators';
 })
 
 export class AppointmentQueryComponent implements OnInit {
-    appointments: any;
+    appointments: Array<Appointment>;
     showProgressBar: boolean;
 
     constructor(
