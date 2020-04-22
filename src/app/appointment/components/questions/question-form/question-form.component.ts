@@ -132,7 +132,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
     const formSubmitSubscription: Subscription = this.questionService.save(localQuestion)
       .subscribe(() => {
         this.formGroup.markAsPristine();
-        this.router.navigate(['/', 'appointment', 'groups', this.group.id, 'questions']);
+        this.router.navigate(['/', 'management', 'groups', this.group.id, 'questions']);
 
         this.messageService.message('form.updated');
       });
