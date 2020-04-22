@@ -5,11 +5,16 @@
                 Questionnare
             </mat-panel-title>
             <mat-panel-description>
-                Type your name and age
+                Answered by {{ responsible?.name}}, {{responsible?.parentalDegree}}
             </mat-panel-description>
         </mat-expansion-panel-header>
 
+        <div *ngFor="let answer of questionnare">
+            
+            <p><strong>Question: </strong>{{ answer.question}}</p>
+            <p>Answer: {{ answer.response}}</p>
+        </div>
 
-      
+
     </mat-expansion-panel>
 </mat-accordion>

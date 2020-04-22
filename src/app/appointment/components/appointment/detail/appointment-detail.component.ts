@@ -6,7 +6,6 @@ import { Scale } from '@appointment/models/Scale';
 import { AppointmentService } from '@appointment/services/appointment.service';
 import { EvaluationService } from '@appointment/services/evaluation.service';
 import { ScaleService } from '@appointment/services/scale.service';
-import { Answer } from '@survey/models/Answer';
 import { flatMap, take } from 'rxjs/operators';
 
 @Component({
@@ -20,7 +19,6 @@ export class AppointmentDetailComponent implements OnInit {
     evaluation: Evaluation;
     scales: Array<Scale>;
     showProgressBar = false;
-    questionnare: Array<Answer>;
     patientId: string;
 
     constructor(

@@ -25,4 +25,8 @@ export class ResponsibleService {
       return this.httpClient.post<Responsible>(`${this.endpoint}`, responsible);
     }
   }
+
+  findById(id: string): Observable<Responsible> {
+      return this.httpClient.get<Responsible>(`${this.endpoint}/${id}`);
+  }
 }

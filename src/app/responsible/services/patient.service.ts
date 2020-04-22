@@ -26,4 +26,8 @@ export class PatientService {
   findAll(): Observable<Array<Patient>> {
     return this.httpClient.get<Array<Patient>>(`${this.endpoint}`);
   }
+
+  findById(id: string): Observable<Patient> {
+    return this.httpClient.get<Patient>(`${this.endpoint}/${id}`);
+  }
 }
