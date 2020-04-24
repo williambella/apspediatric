@@ -49,7 +49,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
             || type.abbrev.toLowerCase() === 'radio'))) {
 
         this.isToInsertOptions = true;
-        this.options.push({ value: '' });
+        this.options = [{ value: '' }];
 
       } else {
         this.isToInsertOptions = false;

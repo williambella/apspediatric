@@ -27,9 +27,9 @@
 
     <div *ngIf="isToInsertOptions">
       <div *ngFor="let option of options; let i = index" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
-        <div fxFlex.lg="40" fxFlex.xs="20">
+        <div fxFlex.lg="70">
           <mat-form-field>
-            <input #input matInput [(ngModel)]="option.value" [maxLength]="30" type="text"
+            <input #input matInput [(ngModel)]="option.value" type="text"
               [placeholder]="'question.form.option' | translate" autocomplete="off" />
           </mat-form-field>
         </div>
