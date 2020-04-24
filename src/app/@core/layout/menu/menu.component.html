@@ -2,4 +2,5 @@
   <a *ngFor="let menu of menus" mat-list-item [routerLink]="menu.routerLink" (click)="selectMenu($event)">
     {{ menu.title | translate }}
   </a>
+  <img class="logo" [src]="logo?.logo" alt="logo">
 </mat-nav-list>

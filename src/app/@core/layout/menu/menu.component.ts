@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LogoService } from '@core/services/logo.service';
+import { Logo } from '@core/models/Logo';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +12,14 @@ export class MenuComponent implements OnInit {
 
   menus: Array<any>;
   @Input() onSelectMenu: Function;
+  logo: Logo;
 
-  constructor() {
-  }
+  constructor(private logoService: LogoService) { }
 
   ngOnInit() {
+    this.logoService.findLogo().pipe(take(1))
+      .subscribe(logo => this.logo = logo);
+
     this.menus = [
       {
         title: 'group.list.title',

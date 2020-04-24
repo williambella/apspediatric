@@ -5,6 +5,9 @@ import { Type } from '@appointment/models/type';
 import { GroupService } from '@appointment/services/group.service';
 import { TypeService } from '@appointment/services/type.service';
 import { Subscription } from 'rxjs';
+import { LogoService } from '@core/services/logo.service';
+import { take } from 'rxjs/operators';
+import { Logo } from '@core/models/Logo';
 
 @Component({
   selector: 'app-survey-stepper',
@@ -16,16 +19,21 @@ export class SurveyStepperComponent implements OnInit, OnDestroy {
   formGroupResponsible: FormGroup;
   groups: Array<Group>;
   types: Array<Type>;
+  logo: Logo;
 
   constructor(
     private formBuilder: FormBuilder,
     private groupService: GroupService,
-    private typeService: TypeService
+    private typeService: TypeService,
+    private logoService: LogoService
   ) {
     this.formGroupResponsible = this.formBuilder.group({});
   }
 
   ngOnInit() {
+    this.logoService.findLogo().pipe(take(1))
+    .subscribe(logo => this.logo = logo);
+    
     this.arraySubscriptions
       .push(this.typeService.findAll().subscribe(types => this.types = types));
     this.getGroups();
