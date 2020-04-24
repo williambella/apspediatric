@@ -27,20 +27,20 @@
 
     <div *ngIf="isToInsertOptions">
       <div *ngFor="let option of options; let i = index" fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
-        <div fxFlex.lg="70">
+        <div fxFlex.lg="50" fxFlex.xs="20">
           <mat-form-field>
             <input #input matInput [(ngModel)]="option.value" type="text"
               [placeholder]="'question.form.option' | translate" autocomplete="off" />
           </mat-form-field>
         </div>
-        <div fxFlex.lg="10">
+        <div fxFlex.lg="20">
           <button type="button" mat-icon-button (click)="removeOption(option)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </div>
       </div>
 
-      <div fxFlex.lg="10" align="start">
+      <div align="start">
         <button type="button" mat-flat-button (click)="addOption()">
           <mat-icon>add</mat-icon> {{ 'commom.add_new' | translate }}
         </button>

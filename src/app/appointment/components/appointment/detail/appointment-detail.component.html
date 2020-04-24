@@ -7,7 +7,11 @@
         <h3>Treatments</h3>
 
         <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap">
-            <div fxFlex.lg="calc(33%-20px)" fxFlex.md="calc(50%-20px)" fxFlex.sm="calc(50%-20px)"
+            <div 
+                fxFlex.xl="calc(33%-20px)" 
+                fxFlex.lg="calc(33%-20px)" 
+                fxFlex.md="calc(50%-20px)" 
+                fxFlex.sm="calc(50%-20px)"
                 *ngFor="let treatment of appointment?.treatments; let i = index;">
                 <p>{{i+1}}. {{treatment.description}}</p>
                 <p>Teeth: </p>
@@ -18,7 +22,11 @@
 
         <h3>Procedures</h3>
         <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="row wrap">
-            <div fxFlex.lg="calc(33%-20px)" fxFlex.md="calc(50%-20px)" fxFlex.sm="calc(50%-20px)"
+            <div 
+                fxFlex.xl="calc(33%-20px)" 
+                fxFlex.lg="calc(33%-20px)" 
+                fxFlex.md="calc(50%-20px)" 
+                fxFlex.sm="calc(50%-20px)"
                 *ngFor="let procedure of appointment?.procedures; let i = index;">
                 <p>{{i+1}}. {{procedure.description}}</p>
             </div>
