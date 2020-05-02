@@ -20,7 +20,7 @@ export class GroupListComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private groupService: GroupService,
+    private groupService: GroupService, 
     private dialogService: DialogService,
     private messageService: MessagesService
   ) { }

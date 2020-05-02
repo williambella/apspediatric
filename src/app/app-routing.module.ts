@@ -23,9 +23,21 @@ const routes: Routes = [
         loadChildren: () => import('./appointment/appointment.module').then(appointment => appointment.AppointmentModule)
       },
       {
+        path: 'procedure',
+        loadChildren: () => import('./procedure/procedure.module').then(procedure => procedure.ProcedureModule)
+      },
+      {
+        path: 'treatment',
+        loadChildren: () => import('./treatment/treatment.module').then(treatment => treatment.TreatmentModule)
+      },
+      {
         path: 'survey',
         loadChildren: () => import('./survey/survey.module').then(reports => reports.SurveyModule)
       },
+      {
+        path: 'scale',
+        loadChildren: () => import('./scale/scale.module').then(reports => reports.ScaleModule)
+      }
     ]
   },
   {

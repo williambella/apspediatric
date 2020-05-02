@@ -1,3 +1,6 @@
+<button mat-button>
+  Logout
+</button>
 <button mat-button [matMenuTriggerFor]="matMenuLanguages">
   <span [ngClass]="'flag-icon-' + (actualLanguage | async).icon?.toLowerCase()" class="flag-icon flag-icon-menu"></span>
   {{ (actualLanguage | async).label }}

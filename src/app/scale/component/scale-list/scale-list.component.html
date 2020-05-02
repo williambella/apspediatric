@@ -1,0 +1,30 @@
+<app-title icon="poll" title="scale.title"> 
+  <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+</app-title>
+
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'scale.title' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let scale of scales">
+        <td>{{ scale.orderScale}} - {{ scale.title}} <br><p style="font-size: smaller; font-style: italic;">{{scale.descripton}}</p></td>
+
+        <td class="actions">
+          <button type="button" mat-mini-fab color="accent" (click)="edit(scale)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(scale)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>

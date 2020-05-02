@@ -1,0 +1,30 @@
+<app-title icon="poll" title="procedure.title"> 
+  <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+</app-title>
+
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'procedure.title' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let procedure of procedures">
+        <td>{{ procedure.description}}</td>
+
+        <td class="actions">
+          <button type="button" mat-mini-fab color="accent" (click)="edit(procedure)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(procedure)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>

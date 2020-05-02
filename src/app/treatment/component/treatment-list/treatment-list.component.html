@@ -1,0 +1,30 @@
+<app-title icon="poll" title="treatment.title"> 
+  <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+</app-title>
+
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'treatment.title' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let treatment of treatments">
+        <td>{{ treatment.description}}</td>
+
+        <td class="actions">
+          <button type="button" mat-mini-fab color="accent" (click)="edit(treatment)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(treatment)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>

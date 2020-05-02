@@ -14,7 +14,7 @@ import { Appointment } from '@appointment/models/Appointment';
 export class AppointmentCreateComponent {
     appointmentForm: FormGroup;
     patientId: string;
-    showProgressBar = false;
+    showProgressBar = false; 
 
     constructor(
         private fb: FormBuilder,

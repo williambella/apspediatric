@@ -1,0 +1,38 @@
+<app-title icon="poll" [title]="treatment ? 'treatment.form.edit' : 'treatment.form.new'"></app-title>
+
+<form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
+  <mat-card>
+    <mat-card-content>
+        <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+          <div fxFlex.lg="50">
+            <mat-form-field>
+                <input matInput #title formControlName="description" [maxLength]="200" required type="text" [placeholder]="'treatment.form.description' | translate" autocomplete="off" />
+                <mat-error *ngIf="formGroup.hasError('required',['description'])">{{ 'form.validation.required' | translate }}</mat-error>
+              </mat-form-field>
+          </div>
+  
+          <div fxFlex.lg="50">
+            <mat-form-field>
+                <mat-label>Tooths</mat-label>
+                <mat-select formControlName="teeth" multiple>
+                    <mat-option *ngFor="let tooth of teeth" [value]="tooth">
+                        {{tooth.number}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+    <mat-card-actions class="btn-actions" align="end">
+
+      <button type="button" mat-flat-button [routerLink]="['/','treatment']">
+        {{ 'commom.back' | translate }}
+      </button>
+
+      <button mat-flat-button color="primary">
+        {{ 'commom.save' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

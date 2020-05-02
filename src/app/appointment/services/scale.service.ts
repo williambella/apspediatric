@@ -24,4 +24,20 @@ export class ScaleService {
             : of(this.scales);
     }
 
+    findById(id: string): Observable<Scale> {
+        return this.httpClient.get<Scale>(`${this.endpoint}/${id}`); 
+      }
+
+    save(scale: Scale): Observable<Scale> {
+        if (scale.id) {
+            return this.httpClient.put<Scale>(`${this.endpoint}/${scale.id}`, scale);
+        } else {
+            return this.httpClient.post<Scale>(`${this.endpoint}`, scale);
+        }
+    }
+
+    delete(id: string): Observable<Array<Scale>> {
+        return this.httpClient.delete<Array<Scale>>(`${this.endpoint}/${id}`);
+      }
+
 }

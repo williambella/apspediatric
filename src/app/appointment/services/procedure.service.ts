@@ -13,4 +13,26 @@ export class ProcedureService {
         return this.httpClient.get<Array<Procedure>>(this.endpoint);
     }
 
+    findById(id: string): Observable<Procedure> {
+        return this.httpClient.get<Procedure>(`${this.endpoint}/${id}`); 
+      }
+
+    save(procedure: Procedure): Observable<Procedure> {
+        if (procedure.id) {
+          return this.httpClient.put<Procedure>(`${this.endpoint}/${procedure.id}`, procedure);
+        } else {
+          return this.httpClient.post<Procedure>(`${this.endpoint}`, procedure);
+        }
+      }
+    
+      /**
+       * Delete Procedure by Id
+       *
+       * @param id: string
+       * @returns Observable<Array<Procedure>>
+       */
+      delete(id: string): Observable<Array<Procedure>> {
+        return this.httpClient.delete<Array<Procedure>>(`${this.endpoint}/${id}`);
+      }
+
 }

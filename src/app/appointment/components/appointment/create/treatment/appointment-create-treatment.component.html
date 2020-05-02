@@ -3,7 +3,7 @@
 <div [formGroup]="formGroup">
 
     <div formArrayName="treatments">
-
+ 
         <div *ngFor="let treat of treatmentFormArray.controls; let i=index">
 
             <div [formGroupName]="i" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">

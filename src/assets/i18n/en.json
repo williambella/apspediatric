@@ -51,6 +51,53 @@
       "evaluation": "Description"
     }
   },
+  "scale": {
+    "title": "Scale",
+    "list": {
+      "title": "Query Scale"
+    },
+    "form": {
+      "new": "New Scale",
+      "detail": "Scale Detail",
+      "edit": "Edit Scale",
+      "description": "Scale Description",
+      "orderScale": "Order Scale",
+      "title": "Title",
+      "evaluation": "Description"
+    }
+  },
+  "procedure": {
+    "title": "Procedure",
+    "form": {
+      "new": "New Procedure",
+      "detail": "Procedure Detail",
+      "description": "Procedure Description",
+      "edit": "Edit Procedure",
+      "evaluation": "Description"
+    },
+    "list": {
+      "title": "Manage Procedure",
+      "tooptip": {
+        "questions": "Manage Questions from Group"
+      }
+    }
+  },
+  "treatment": {
+    "title": "Treatment",
+    "form": {
+      "new": "New Treatment",
+      "detail": "Treatment Detail",
+      "description": "Treatment Description",
+      "edit": "Edit Treatment",
+      "evaluation": "Description"
+    },
+    "list": {
+      "title": "Manage Treatment",
+      "tooptip": {
+        "questions": "Manage Questions from Group"
+      }
+    }
+  },
   "question": {
     "title": "Question",
     "form": {

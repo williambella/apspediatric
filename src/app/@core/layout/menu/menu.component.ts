@@ -32,6 +32,18 @@ export class MenuComponent implements OnInit {
       {
         title: 'appointment.title',
         routerLink: '/management/appointment/'
+      },
+      {
+        title: 'procedure.title',
+        routerLink: '/procedure/'
+      },
+      {
+        title: 'treatment.title',
+        routerLink: '/treatment/'
+      },
+      {
+        title: 'scale.title',
+        routerLink: '/scale/'
       }
     ];
   }

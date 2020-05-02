@@ -5,12 +5,12 @@
                 [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let patient of filteredPatients | async" [value]="patient">
-                    {{patient.name}}, born in {{patient.birth | date}}
+                    {{patient.name}}
                 </mat-option>
             </mat-autocomplete>
             <mat-error *ngIf="!isValidPatient(searchKey.value)">Select a Patient from the list</mat-error>
         </mat-form-field>
-    </div>
+    </div> 
 
     <button type="submit"  [disabled]="searchKey.invalid" mat-icon-button aria-label="Search Button" fxFlex="35px">
         Select
