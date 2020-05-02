@@ -11,7 +11,7 @@ export class ScaleService {
 
     constructor(private httpClient: HttpClient) { }
 
-    findAll(): Observable<Array<Scale>> {
+    findAll(): Observable<Array<Scale>> { 
         return !this.scales
 
             ? this.httpClient
@@ -38,6 +38,10 @@ export class ScaleService {
 
     delete(id: string): Observable<Array<Scale>> {
         return this.httpClient.delete<Array<Scale>>(`${this.endpoint}/${id}`);
+      }
+
+      getAll(): Observable<Array<Scale>> {
+        return this.httpClient.get<Array<Scale>>(`${this.endpoint}`);
       }
 
 }

@@ -30,4 +30,16 @@ export class PatientService {
   findById(id: string): Observable<Patient> {
     return this.httpClient.get<Patient>(`${this.endpoint}/${id}`);
   }
+
+  delete(id: string): Observable<Array<Patient>> {
+    return this.httpClient.delete<Array<Patient>>(`${this.endpoint}/${id}`);
+  }
+
+  save(patient: Patient): Observable<Patient> {
+    if (patient.id) {
+      return this.httpClient.put<Patient>(`${this.endpoint}/${patient.id}`, patient);
+    } else {
+      return this.httpClient.post<Patient>(`${this.endpoint}`, patient);
+    }
+  }
 }

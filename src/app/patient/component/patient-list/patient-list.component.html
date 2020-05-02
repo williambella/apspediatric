@@ -1,0 +1,31 @@
+<app-title icon="poll" title="patients.title"> 
+  <button mat-flat-button color="primary" [routerLink]="['new']">{{ 'app_title.new' | translate }}</button>
+</app-title>
+
+<mat-card>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ 'patients.title' | translate }}</th>
+        <th class="actions">{{ 'table.actions' | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.name}}</td>
+
+        <td class="actions">
+          <button type="button" mat-mini-fab color="accent" (click)="edit(patient)" matTooltip="{{ 'table.buttons.edit' | translate }}">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button type="button" mat-mini-fab color="warn" (click)="delete(patient)" matTooltip="{{ 'table.buttons.remove' | translate }}">
+            <mat-icon>close</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
+ 

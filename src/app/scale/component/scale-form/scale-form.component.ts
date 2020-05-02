@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Scale } from '@appointment/models/Scale';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ScaleService } from '@appointment/services/scale.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguagesService } from '@core/services/languages.service';
@@ -13,7 +13,7 @@ import { CanDeactiveAbstract } from '@core/abstracts/can-deactive-abstract';
   templateUrl: './scale-form.component.html',
   styleUrls: ['./scale-form.component.css']
 })
-export class ScaleFormComponent extends CanDeactiveAbstract implements OnInit, OnDestroy {
+export class ScaleFormComponent extends CanDeactiveAbstract implements OnInit {
 
   formGroup: FormGroup;
   scale: Scale;
@@ -60,6 +60,10 @@ export class ScaleFormComponent extends CanDeactiveAbstract implements OnInit, O
     this.arraySubscriptions.map((subscription: Subscription) => subscription.unsubscribe());
   }
 
+  canDeactivate(): Observable<boolean> | boolean  {
+    return super.canDeactivate(this.formGroup.dirty);
+  }
+ 
   formSubmit(): void {
     
     if (this.formGroup) {
@@ -72,14 +76,6 @@ export class ScaleFormComponent extends CanDeactiveAbstract implements OnInit, O
         title: this.formGroup.get('title').value
 
       };
-
-      if (this.scale) {
-        localScale.id = this.scale.id;
-        localScale.idLang = this.scale.idLang; 
-        localScale.orderScale = this.scale.orderScale;
-        localScale.status = this.scale.status;
-        localScale.title = this.scale.title;
-      }
 
       const formSubmitSubscription: Subscription = this.scaleService.save(localScale)
       .subscribe((scale: Scale) => {

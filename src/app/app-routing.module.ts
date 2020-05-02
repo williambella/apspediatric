@@ -37,6 +37,10 @@ const routes: Routes = [
       {
         path: 'scale',
         loadChildren: () => import('./scale/scale.module').then(reports => reports.ScaleModule)
+      },
+      {
+        path: 'patient',
+        loadChildren: () => import('./patient/patient.module').then(reports => reports.PatientModule)
       }
     ]
   },

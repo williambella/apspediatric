@@ -117,8 +117,24 @@
     },
     "list": {
       "title": "Manage Groups",
-      "tooptip": {
+      "tooptip": { 
         "questions": "Manage Questions from Group"
+      }
+    }
+  },
+  "patients": {
+    "title": "Patient",
+    "form": {
+      "new": "New Patient",
+      "edit": "Edit Patient",
+      "group": "Patient Title",
+      "name": "Name",
+      "birth": "Birth"
+    },
+    "list": {
+      "title": "Manage Patient",
+      "tooptip": {
+        "questions": "Manage Questions from Patient"
       }
     }
   },

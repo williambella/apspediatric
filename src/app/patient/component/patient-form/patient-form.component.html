@@ -1,0 +1,34 @@
+<app-title icon="poll" [title]="patient ? 'patients.form.edit' : 'patients.form.new'"></app-title>
+
+<form [formGroup]="formGroup" (ngSubmit)="formSubmit()">
+  <mat-card>
+    <mat-card-content>
+      <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutGap="20px">
+        <div fxFlex.lg="50">
+          <mat-form-field>
+            <input matInput #title formControlName="name" [maxLength]="200" required type="text" [placeholder]="'patients.form.name' | translate" autocomplete="off" />
+            <mat-error *ngIf="formGroup.hasError('required',['name'])">{{ 'form.validation.required' | translate }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex.lg="50">
+          <mat-form-field>
+            <input matInput #title formControlName="birth" [maxLength]="200" required type="text" [placeholder]="'patients.form.birth' | translate" autocomplete="off" />
+            <mat-error *ngIf="formGroup.hasError('required',['birth'])">{{ 'form.validation.required' | translate }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="btn-actions" align="end">
+
+      <button type="button" mat-flat-button [routerLink]="['/','patient']">
+        {{ 'commom.back' | translate }}
+      </button>
+
+      <button mat-flat-button color="primary">
+        {{ 'commom.save' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -9,4 +9,4 @@ export const appSettings: AppSettings = {
   environment: environment.key,
   apiUrl: 'localhost:8080',
   apiProtocol: 'http'
-};
+}; 
