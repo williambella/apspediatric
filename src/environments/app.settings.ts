@@ -7,6 +7,6 @@ export const appSettings: AppSettings = {
   name,
   version,
   environment: environment.key,
-  apiUrl: 'apspediatric-frontend.herokuapp.com/',
-  apiProtocol: 'https'
-}; 
+  apiUrl: environment.apiUrl,
+  apiProtocol: environment.apiProtocol
+};
