@@ -58,7 +58,7 @@ export class GenericStepComponent implements OnInit, OnDestroy {
   }
 
   doFormValid = (form: FormGroup) => {
-    this.isDisabled = form.invalid;
+    this.isDisabled = form.valid;
     if (form.valid) {
       this.form = form;
     }
