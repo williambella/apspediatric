@@ -105,7 +105,8 @@
       "edit": "Edit Question",
       "questions": "Questions",
       "question": "Question",
-      "option": "Option"
+      "option": "Option",
+      "order": "Order"
     }
   },
   "group": {

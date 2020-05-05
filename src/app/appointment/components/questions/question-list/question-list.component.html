@@ -13,6 +13,7 @@
     <thead>
       <tr>
         <th>{{ 'question.title' | translate }}</th>
+        <th>{{ 'question.form.order' | translate }}</th>
         <th class="actions">{{ 'table.actions' | translate }}</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
     <tbody>
       <tr *ngFor="let question of questions">
         <td>{{ question.question }}</td>
+        <td>{{ question.order }}</td>
         <td class="actions">
           <button type="button" mat-mini-fab color="accent" (click)="edit(question)" matTooltip="{{ 'table.buttons.edit' | translate }}">
             <mat-icon>edit</mat-icon>

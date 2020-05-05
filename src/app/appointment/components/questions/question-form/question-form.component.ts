@@ -39,6 +39,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
     this.formGroup = this.formBuilder.group({
       question: [null, Validators.compose([Validators.required])],
       idType: [null, Validators.compose([Validators.required])],
+      order: [null, Validators.compose([Validators.required])],
     });
 
     this.formGroup.controls.idType.valueChanges.subscribe(value => {
@@ -46,7 +47,8 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
       if (this.types && this.types
         .some(type => type.id === value
           && (type.abbrev.toLowerCase() === 'select'
-            || type.abbrev.toLowerCase() === 'radio'))) {
+            || type.abbrev.toLowerCase() === 'radio'
+            || type.abbrev.toLowerCase() === 'checkbox'))) {
 
         this.isToInsertOptions = true;
         this.options = [{ value: '' }];
@@ -66,6 +68,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
 
         this.formGroup.get('question').setValue(this.question.question);
         this.formGroup.get('idType').setValue(this.question.idType);
+        this.formGroup.get('order').setValue(this.question.order);
 
         const options = data.question.options;
         if (options) {
@@ -113,6 +116,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
       idGroup: this.group.id,
       idType: this.formGroup.get('idType').value,
       question: this.formGroup.get('question').value,
+      order: this.formGroup.get('order').value,
       idLang: this.languageService.geCurrenttLang().id
     };
 

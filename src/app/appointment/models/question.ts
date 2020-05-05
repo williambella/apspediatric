@@ -5,6 +5,7 @@ export class Question {
   controlType?: string;
   question: string;
   idLang: string;
+  order: number;
   options?: any;
   response?: string;
 }

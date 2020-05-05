@@ -21,5 +21,12 @@ export class AppointmentService {
         return this.httpClient.post<Appointment>(this.endpoint, appointment);
     }
 
+    getAll(): Observable<Array<Appointment>> {
+        return this.httpClient.get<Appointment[]>(`${this.endpoint}`)
+    } 
+
+    getOrdered(): Observable<Array<Appointment>> {
+        return this.httpClient.get<Array<Appointment>>(`${this.endpoint}/ordered`);
+    }
 
 }

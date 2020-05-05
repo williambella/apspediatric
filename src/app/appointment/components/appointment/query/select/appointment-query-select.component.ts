@@ -4,6 +4,9 @@ import { Patient } from '@responsible/models/patient';
 import { PatientService } from '@responsible/services/patient.service';
 import { Observable } from 'rxjs';
 import { map, startWith, take } from 'rxjs/operators';
+import { AppointmentService } from '@appointment/services/appointment.service';
+import { Appointment } from '@appointment/models/Appointment';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-appointment-query-select',
@@ -16,13 +19,17 @@ export class AppointmentQuerySelectComponent implements OnInit {
     patients: Array<Patient> = [];
     @Input() onSelect: Function;
     @Input() selectedPatientId: string;
+    recentAppointment: Observable<Array<Appointment>>
+    baseRoute = 'management/appointment';
 
-    constructor(private patientService: PatientService) {
+    constructor(private patientService: PatientService, private appointmentService: AppointmentService, private router: Router) {
         this.searchKey.setValidators(Validators.required);
 
     }
 
     ngOnInit() {
+
+        this.recentAppointment = this.appointmentService.getOrdered();
 
         this.patientService
             .findAll()
@@ -68,5 +75,9 @@ export class AppointmentQuerySelectComponent implements OnInit {
 
         this.searchKey.setErrors({});
         return false;
+    }
+
+    detail(appointment: Appointment) {
+        this.router.navigate([`${this.baseRoute}/${appointment.patientId}/detail/${appointment.id}`]);
     }
 }
