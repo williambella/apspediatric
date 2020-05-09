@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   key: 'dev',
-  apiUrl: 'localhost:8080',
+  apiUrl: 'apspediatric.herokuapp.com',
   apiProtocol: 'http'
 };

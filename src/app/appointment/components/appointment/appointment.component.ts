@@ -1,15 +1,16 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '@responsible/models/patient';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { AppointmentService } from '@appointment/services/appointment.service';
 
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
   styleUrls: ['./appointment.component.scss']
 })
-export class AppointmentComponent implements OnDestroy {
+export class AppointmentComponent implements OnDestroy, OnInit {
   patient: Patient;
   appointments: any;
   selectedPatientId: string;
@@ -17,6 +18,7 @@ export class AppointmentComponent implements OnDestroy {
   routeSub: Subscription;
   baseRoute = 'management/appointment';
   showNewButton = true;
+  showRecentAppointments = false;
 
   constructor(
     private router: Router,
@@ -25,11 +27,16 @@ export class AppointmentComponent implements OnDestroy {
 
     this.routeSub = activatedRoute.url.subscribe(() => {
       if (activatedRoute.snapshot.firstChild) {
+
         const data = activatedRoute.snapshot.firstChild.data;
         this.title = data.title;
         this.showNewButton = data.showNewButton;
+        this.showRecentAppointments = data.showRecent;
+
       } else {
         this.showNewButton = true;
+        this.showRecentAppointments = true;
+
       }
 
     });
@@ -41,6 +48,10 @@ export class AppointmentComponent implements OnDestroy {
         .pipe(take(1))
         .subscribe(params => this.selectedPatientId = params.id);
     }
+  }
+
+  ngOnInit() {
+
   }
 
   doSelect = (patient: Patient) => {
