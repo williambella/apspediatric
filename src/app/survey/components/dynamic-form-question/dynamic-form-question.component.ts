@@ -35,7 +35,7 @@ export class DynamicFormQuestionComponent implements OnInit {
         }
     }
 
-    changeCheckbox(opt: any, value: string) {
+    changeCheckbox(opt: any, value: boolean) {
         if (value) {
             this.checkboxList.push(opt.value);
         } else {

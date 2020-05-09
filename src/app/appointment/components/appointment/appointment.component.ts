@@ -55,9 +55,17 @@ export class AppointmentComponent implements OnDestroy, OnInit {
   }
 
   doSelect = (patient: Patient) => {
+    if(this.patient && this.patient.id === patient.id) return ;
     this.patient = patient;
     this.navigateToQuery();
   }
+
+  doDetail = (appointment: any) => {
+    this.patient = appointment.patient;
+    this.selectedPatientId = this.patient.id;
+    this.router.navigate([`${this.baseRoute}/${this.patient.id}/detail/${appointment.id}`]);
+  }
+
 
   onNew = () => {
     this.router.navigate([`${this.baseRoute}/${this.patient.id}/new`]);

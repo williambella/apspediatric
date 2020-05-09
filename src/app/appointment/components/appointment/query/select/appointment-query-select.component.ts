@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Patient } from '@responsible/models/patient';
 import { PatientService } from '@responsible/services/patient.service';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
     templateUrl: 'appointment-query-select.component.html'
 })
 
-export class AppointmentQuerySelectComponent implements OnInit {
+export class AppointmentQuerySelectComponent implements OnInit, OnChanges {
     searchKey = new FormControl();
     filteredPatients: Observable<Patient[]>;
     patients: Array<Patient> = [];
@@ -51,6 +51,18 @@ export class AppointmentQuerySelectComponent implements OnInit {
             })
 
 
+    }
+
+    ngOnChanges(changes) {
+        if (changes.selectedPatientId && changes.selectedPatientId.currentValue) {
+            this.patientService.findById(changes.selectedPatientId.currentValue)
+                .pipe(take(1))
+                .subscribe(patient => {
+                    this.searchKey.setValue(patient);
+                    this.select();
+                })
+
+        }
     }
 
     private _filter(value: string): Patient[] {

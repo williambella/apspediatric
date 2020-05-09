@@ -24,6 +24,6 @@
 </div>
 
 <div *ngIf="showRecentAppointments">
-  <app-appointment-recent>
+  <app-appointment-recent [onDetail]="doDetail">
   </app-appointment-recent>
 </div>
