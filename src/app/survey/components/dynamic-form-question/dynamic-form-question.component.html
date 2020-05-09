@@ -3,7 +3,8 @@
     <div [ngSwitch]="question.controlType">
 
         <mat-form-field *ngSwitchCase="'text'">
-            <input #name matInput [formControlName]="question.id" [placeholder]="question.question" autocomplete="off" />
+            <input #name matInput [formControlName]="question.id" [placeholder]="question.question"
+                autocomplete="off" />
         </mat-form-field>
 
         <mat-form-field *ngSwitchCase="'select'">
@@ -15,14 +16,24 @@
             </mat-select>
         </mat-form-field>
 
+        <section class="checkbox" *ngSwitchCase="'checkbox'">
+            <span>{{ question.question }}</span>
+            <mat-checkbox #checkbox (change)="changeCheckbox(opt, checkbox.checked)" *ngFor="let opt of question.options">
+                {{opt.value}}</mat-checkbox>
+                <br><br>
+        </section>
+
         <div *ngSwitchCase="'radio'" class="radio-button">
             <mat-label>{{ question.question }}</mat-label>
-            <mat-radio-group aria-label="Select an option" [formControlName]="question.id">
-                <mat-radio-button *ngFor="let opt of question.options" [value]="opt.value">
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button *ngFor="let opt of question.options" (change)="changeValue(opt)" [value]="opt.value">
                     {{opt.value}}
                 </mat-radio-button>
             </mat-radio-group>
+            <mat-form-field *ngIf="showOtherInput">
+                <input #other matInput (change)="changeValue(other.value)" autocomplete="off" />
+            </mat-form-field>
         </div>
     </div>
-    
+
 </div>

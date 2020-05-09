@@ -10,3 +10,16 @@ mat-radio-button {
     margin-right: 15px;
     margin-bottom: 20px;
 }
+
+.checkbox {
+
+    span {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    mat-checkbox {
+        padding-right: 40px;
+    }
+
+ }

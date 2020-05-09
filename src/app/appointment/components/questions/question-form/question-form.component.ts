@@ -23,6 +23,7 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
   types: Array<Type>;
   isToInsertOptions = false;
   options = new Array<{ value: string }>();
+  showRadioMessage = false;
 
   private arraySubscriptions: Array<Subscription> = new Array<Subscription>();
 
@@ -55,6 +56,17 @@ export class QuestionFormComponent extends CanDeactiveAbstract implements OnInit
 
       } else {
         this.isToInsertOptions = false;
+      }
+
+      if (this.types && this.types
+        .some(type => type.id === value && (type.abbrev.toLowerCase() === 'radio'))) {
+
+        this.showRadioMessage = true;
+
+      } else {
+
+        this.showRadioMessage = false;
+
       }
 
 

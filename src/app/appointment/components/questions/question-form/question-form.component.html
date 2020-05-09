@@ -56,6 +56,10 @@
       </div>
 
     </div>
+    <div *ngIf="showRadioMessage">
+      <br>
+      <p>*Note: Write an option named "Other" to open a text input in the questionnare when it is selected.</p>
+    </div>
   </mat-card-content>
 
   <mat-card-actions class="btn-actions" align="end">
@@ -63,6 +67,7 @@
       {{ 'commom.back' | translate }}
     </button>
 
-    <button [disabled]="!isFormValid()" (click)="formSubmit()" type="button" mat-flat-button color="primary">{{ 'commom.save' | translate }}</button>
+    <button [disabled]="!isFormValid()" (click)="formSubmit()" type="button" mat-flat-button
+      color="primary">{{ 'commom.save' | translate }}</button>
   </mat-card-actions>
 </mat-card>

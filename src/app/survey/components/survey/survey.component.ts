@@ -23,6 +23,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
     const finishSurveySub = this.surveyService
       .onSurveyFinish()
       .subscribe(() => {
+
         this.showProgressBar = true;
         const savePatientSub = this.surveyService
           .savePatientForm()

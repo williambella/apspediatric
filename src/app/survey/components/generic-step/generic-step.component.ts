@@ -42,6 +42,7 @@ export class GenericStepComponent implements OnInit, OnDestroy {
   }
 
   private getQuestionWithResponse() {
+
     return this.questions.map(question => ({
       questionId: question.id,
       idGroup: question.idGroup,
@@ -58,7 +59,7 @@ export class GenericStepComponent implements OnInit, OnDestroy {
   }
 
   doFormValid = (form: FormGroup) => {
-    this.isDisabled = form.valid;
+    this.isDisabled = form.invalid;
     if (form.valid) {
       this.form = form;
     }
